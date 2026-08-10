@@ -1,0 +1,204 @@
+/* --- Hero ---------------------------------------------------------------- */
+
+.hero {
+  padding-top: var(--space-12);
+  background:
+    linear-gradient(180deg, var(--brand-50) 0%, transparent 100%),
+    var(--surface-page);
+}
+
+.title {
+  margin: var(--space-3) 0 0;
+  font-size: var(--text-3xl);
+}
+
+.updated {
+  display: flex;
+  align-items: center;
+  gap: var(--space-2);
+  margin: var(--space-4) 0 0;
+  font-size: var(--text-sm);
+  color: var(--text-secondary);
+}
+
+.updated strong {
+  color: var(--text-primary);
+  font-weight: var(--weight-semibold);
+}
+
+.intro {
+  margin-top: var(--space-6);
+  max-width: var(--measure-prose);
+  font-size: var(--text-lg);
+  line-height: var(--leading-relaxed);
+  color: var(--text-secondary);
+}
+
+.intro p {
+  margin: 0;
+}
+
+.intro p + p {
+  margin-top: var(--space-4);
+}
+
+.templateWarning {
+  margin-top: var(--space-8);
+}
+
+/* --- Body ---------------------------------------------------------------- */
+
+.body {
+  padding-top: var(--space-10);
+}
+
+.layout {
+  display: grid;
+  gap: var(--space-10);
+  align-items: start;
+}
+
+/* --- Table of contents --------------------------------------------------- */
+
+.toc {
+  padding: var(--space-5) var(--space-5) var(--space-6);
+  border-radius: var(--radius-lg);
+  background-color: var(--surface-sunken);
+}
+
+.tocHeading {
+  margin: 0 0 var(--space-3);
+  font-size: var(--text-sm);
+  font-weight: var(--weight-semibold);
+  letter-spacing: var(--tracking-wide);
+  text-transform: uppercase;
+  color: var(--text-brand);
+}
+
+.tocList {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-1);
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  counter-reset: none;
+}
+
+.tocLink {
+  display: flex;
+  align-items: baseline;
+  gap: var(--space-3);
+  padding: var(--space-2) var(--space-3);
+  border-radius: var(--radius-sm);
+  font-size: var(--text-sm);
+  line-height: var(--leading-normal);
+  color: var(--text-primary);
+  text-decoration: none;
+  transition: background-color var(--duration-fast) var(--ease-out),
+    color var(--duration-fast) var(--ease-out);
+}
+
+.tocLink:hover {
+  background-color: var(--surface-raised);
+  color: var(--text-brand);
+  text-decoration: none;
+}
+
+.tocNumber {
+  flex-shrink: 0;
+  min-width: 1.4em;
+  font-variant-numeric: tabular-nums;
+  font-weight: var(--weight-semibold);
+  color: var(--brand-600);
+}
+
+/* --- Sections ------------------------------------------------------------ */
+
+.content {
+  min-width: 0;
+}
+
+.section {
+  scroll-margin-top: calc(var(--header-height) + var(--space-8));
+}
+
+.section + .section {
+  margin-top: var(--space-12);
+  padding-top: var(--space-12);
+  border-top: 1px solid var(--border-subtle);
+}
+
+.sectionHeading {
+  display: flex;
+  gap: var(--space-3);
+  margin: 0 0 var(--space-5);
+  font-size: var(--text-2xl);
+  line-height: var(--leading-snug);
+}
+
+.sectionNumber {
+  flex-shrink: 0;
+  color: var(--brand-600);
+  font-variant-numeric: tabular-nums;
+}
+
+/* --- Contact footer ------------------------------------------------------ */
+
+.contact {
+  margin-top: var(--space-16);
+  padding: var(--space-8);
+  border-radius: var(--radius-lg);
+  background-color: var(--surface-accent);
+}
+
+.contactHeading {
+  margin: 0 0 var(--space-3);
+  font-size: var(--text-xl);
+}
+
+.contactBody {
+  margin: 0 0 var(--space-5);
+  max-width: var(--measure-prose);
+  line-height: var(--leading-relaxed);
+  color: var(--text-secondary);
+}
+
+.contactList {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-4);
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.contactList li {
+  display: flex;
+  align-items: flex-start;
+  gap: var(--space-3);
+  font-size: var(--text-base);
+  line-height: var(--leading-normal);
+  color: var(--text-primary);
+}
+
+.contactList svg {
+  margin-top: 3px;
+  color: var(--text-brand);
+}
+
+/* --- Breakpoints --------------------------------------------------------- */
+
+@media (min-width: 62rem) {
+  .layout {
+    grid-template-columns: 15rem minmax(0, 1fr);
+    column-gap: var(--space-12);
+  }
+
+  .toc {
+    position: sticky;
+    top: calc(var(--header-height) + var(--space-6));
+    max-height: calc(100vh - var(--header-height) - var(--space-12));
+    overflow-y: auto;
+  }
+}

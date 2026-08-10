@@ -1,0 +1,140 @@
+/* HowItWorks — three numbered steps, joined by a line on wide screens. */
+
+.how {
+  position: relative;
+}
+
+.steps {
+  position: relative;
+  display: grid;
+  gap: var(--space-10);
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  grid-template-columns: 1fr;
+}
+
+.step {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-3);
+  min-width: 0;
+  padding-left: calc(var(--space-16) + var(--space-2));
+}
+
+/* The connector: vertical on mobile, horizontal from tablet up. */
+.step:not(:last-child)::before {
+  content: '';
+  position: absolute;
+  left: var(--space-8);
+  top: calc(var(--space-16) + var(--space-2));
+  bottom: calc(var(--space-10) * -1);
+  width: 2px;
+  border-radius: var(--radius-pill);
+  background-image: linear-gradient(
+    to bottom,
+    var(--brand-300) 0 6px,
+    transparent 6px 12px
+  );
+  background-size: 2px 12px;
+}
+
+.num {
+  position: absolute;
+  left: 0;
+  top: 0;
+  display: grid;
+  place-items: center;
+  width: 56px;
+  height: 56px;
+  border-radius: 50%;
+  background-color: var(--brand-800);
+  color: var(--white);
+  font-family: var(--font-heading);
+  font-size: var(--text-xl);
+  font-weight: var(--weight-medium);
+  line-height: 1;
+  box-shadow: var(--shadow-sm);
+}
+
+.stepTitle {
+  margin: 0;
+  padding-top: var(--space-3);
+  font-size: var(--text-xl);
+  color: var(--text-primary);
+}
+
+.stepBody {
+  margin: 0;
+  max-width: 42ch;
+  font-size: var(--text-base);
+  line-height: var(--leading-relaxed);
+  color: var(--text-secondary);
+}
+
+.phone {
+  font-weight: var(--weight-semibold);
+  white-space: nowrap;
+}
+
+/* --- Closing action ----------------------------------------------------- */
+
+.cta {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--space-4);
+  margin-top: var(--space-16);
+  text-align: center;
+}
+
+.ctaNote {
+  margin: 0;
+  font-size: var(--text-base);
+  color: var(--text-secondary);
+}
+
+/* --- Breakpoints -------------------------------------------------------- */
+
+@media (min-width: 48rem) {
+  .steps {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: var(--space-8);
+  }
+
+  .step {
+    padding-left: 0;
+    padding-top: calc(var(--space-16) + var(--space-6));
+    text-align: left;
+  }
+
+  .step:not(:last-child)::before {
+    left: calc(56px + var(--space-4));
+    right: calc(var(--space-8) * -1);
+    top: 28px;
+    bottom: auto;
+    width: auto;
+    height: 2px;
+    background-image: linear-gradient(
+      to right,
+      var(--brand-300) 0 6px,
+      transparent 6px 12px
+    );
+    background-size: 12px 2px;
+  }
+
+  .stepTitle {
+    padding-top: 0;
+  }
+}
+
+@media (min-width: 62rem) {
+  .steps {
+    gap: var(--space-12);
+  }
+
+  .step:not(:last-child)::before {
+    right: calc(var(--space-12) * -1);
+  }
+}

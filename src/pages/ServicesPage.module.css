@@ -1,0 +1,321 @@
+/* ==========================================================================
+   ServicesPage — /services
+   ========================================================================== */
+
+/* --- Hero ---------------------------------------------------------------- */
+
+.hero {
+  padding-bottom: var(--section-y-tight);
+}
+
+.heroInner {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-4);
+  max-width: var(--measure-prose);
+}
+
+.lead {
+  font-size: var(--text-lg);
+  line-height: var(--leading-relaxed);
+  color: var(--text-secondary);
+}
+
+.heroNote {
+  display: flex;
+  align-items: flex-start;
+  gap: var(--space-3);
+  margin-top: var(--space-2);
+  padding: var(--space-4) var(--space-5);
+  border-radius: var(--radius-md);
+  border: 1px solid var(--brand-200);
+  background-color: var(--brand-50);
+  color: var(--text-primary);
+  font-size: var(--text-base);
+  line-height: var(--leading-normal);
+}
+
+.heroNote svg {
+  color: var(--text-brand);
+  margin-top: var(--space-1);
+}
+
+/* --- Service catalogue --------------------------------------------------- */
+
+.grid {
+  display: grid;
+  gap: var(--space-6);
+  grid-template-columns: 1fr;
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+@media (min-width: 34rem) {
+  .grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+@media (min-width: 62rem) {
+  .grid {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+}
+
+.gridItem {
+  display: flex;
+}
+
+.serviceCard {
+  width: 100%;
+}
+
+.cardHead {
+  flex-direction: row;
+  align-items: center;
+  gap: var(--space-4);
+  margin-bottom: var(--space-4);
+}
+
+.cardIcon {
+  display: grid;
+  place-items: center;
+  width: var(--space-12);
+  height: var(--space-12);
+  flex-shrink: 0;
+  border-radius: var(--radius-md);
+  background-color: var(--brand-100);
+  color: var(--text-brand);
+}
+
+.cardTitle {
+  margin: 0;
+  font-size: var(--text-xl);
+  color: var(--text-primary);
+}
+
+.cardBody {
+  gap: var(--space-5);
+}
+
+.cardSummary {
+  color: var(--text-secondary);
+  font-size: var(--text-base);
+  line-height: var(--leading-relaxed);
+}
+
+.meta {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-2);
+  padding-top: var(--space-4);
+  border-top: 1px solid var(--border-subtle);
+  font-size: var(--text-sm);
+}
+
+.metaRow {
+  display: grid;
+  grid-template-columns: 5.5rem minmax(0, 1fr);
+  gap: var(--space-3);
+  align-items: baseline;
+}
+
+.metaTerm {
+  color: var(--text-secondary);
+  font-weight: var(--weight-semibold);
+  font-size: var(--text-sm);
+}
+
+.metaValue {
+  color: var(--text-primary);
+  font-size: var(--text-sm);
+}
+
+.cardFoot {
+  justify-content: space-between;
+  border-top: 1px solid var(--border-subtle);
+  margin-top: var(--space-5);
+}
+
+.rate {
+  font-family: var(--font-heading);
+  font-size: var(--text-lg);
+  color: var(--text-primary);
+}
+
+.rateUnit {
+  font-family: var(--font-body);
+  font-size: var(--text-sm);
+  color: var(--text-secondary);
+}
+
+.learnMore {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-2);
+  font-size: var(--text-sm);
+  font-weight: var(--weight-semibold);
+  color: var(--text-brand);
+}
+
+.serviceCard:hover .learnMore svg {
+  transform: translateX(var(--space-1));
+}
+
+.learnMore svg {
+  transition: transform var(--duration-fast) var(--ease-out);
+}
+
+/* --- Not-sure band ------------------------------------------------------- */
+
+.bandInner {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-6);
+}
+
+@media (min-width: 62rem) {
+  .bandInner {
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    gap: var(--space-12);
+  }
+}
+
+.bandCopy {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-3);
+  max-width: var(--measure-prose);
+}
+
+.bandCopy p {
+  color: var(--text-primary);
+  font-size: var(--text-base);
+  line-height: var(--leading-relaxed);
+}
+
+.bandTitle {
+  font-size: var(--text-2xl);
+}
+
+.bandActions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-3);
+  flex-shrink: 0;
+}
+
+/* --- Starting points ----------------------------------------------------- */
+
+.mapList {
+  display: grid;
+  gap: var(--space-1);
+  grid-template-columns: 1fr;
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  border-top: 1px solid var(--border-default);
+}
+
+@media (min-width: 62rem) {
+  .mapList {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    column-gap: var(--space-10);
+  }
+}
+
+.mapRow {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: var(--space-2);
+  padding-block: var(--space-5);
+  border-bottom: 1px solid var(--border-default);
+}
+
+@media (min-width: 48rem) {
+  .mapRow {
+    grid-template-columns: minmax(0, 1.2fr) minmax(0, 1fr);
+    gap: var(--space-6);
+    align-items: center;
+  }
+}
+
+@media (min-width: 62rem) {
+  .mapRow {
+    grid-template-columns: 1fr;
+    gap: var(--space-2);
+    align-items: start;
+  }
+}
+
+.mapConcern {
+  color: var(--text-primary);
+  font-family: var(--font-heading);
+  font-size: var(--text-lg);
+  line-height: var(--leading-snug);
+  text-wrap: pretty;
+}
+
+.mapTarget {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-1);
+}
+
+.mapLabel {
+  font-size: var(--text-sm);
+  font-weight: var(--weight-semibold);
+  letter-spacing: var(--tracking-wide);
+  text-transform: uppercase;
+  color: var(--text-secondary);
+}
+
+.mapLink {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-2);
+  align-self: flex-start;
+  min-height: var(--space-12);
+  padding-right: var(--space-2);
+  font-weight: var(--weight-semibold);
+  color: var(--text-brand);
+  text-decoration: none;
+}
+
+.mapLink:hover span {
+  text-decoration: underline;
+  text-underline-offset: 0.18em;
+}
+
+.mapNote {
+  margin-top: var(--space-8);
+  max-width: var(--measure-prose);
+  color: var(--text-secondary);
+  font-size: var(--text-base);
+  line-height: var(--leading-relaxed);
+}
+
+/* --- Closing CTA --------------------------------------------------------- */
+
+.ctaInner {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-4);
+  max-width: var(--measure-prose);
+}
+
+.ctaCopy {
+  color: var(--text-on-inverse-muted);
+  font-size: var(--text-lg);
+  line-height: var(--leading-relaxed);
+}
+
+.ctaActions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-3);
+  margin-top: var(--space-2);
+}

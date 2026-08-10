@@ -1,0 +1,17 @@
+{
+  "name": "Healing Horizon — Counselling & Therapy",
+  "short_name": "Healing Horizon",
+  "description": "A group therapy practice offering individual, couples, family and group counselling.",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#FCFCFA",
+  "theme_color": "#285C61",
+  "icons": [
+    {
+      "src": "/favicon.svg",
+      "sizes": "any",
+      "type": "image/svg+xml",
+      "purpose": "any maskable"
+    }
+  ]
+}

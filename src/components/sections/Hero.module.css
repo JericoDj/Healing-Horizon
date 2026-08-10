@@ -1,0 +1,360 @@
+/* Hero — full-bleed sunrise gradient with an inline horizon composition. */
+
+.hero {
+  position: relative;
+  isolation: isolate;
+  overflow-x: clip;
+  background-image:
+    radial-gradient(100% 70% at 85% 10%, rgba(27, 117, 188, 0.12) 0%, transparent 60%),
+    radial-gradient(75% 60% at 15% 15%, rgba(27, 117, 188, 0.08) 0%, transparent 65%),
+    radial-gradient(80% 80% at 50% 0%, rgba(27, 117, 188, 0.10) 0%, transparent 70%),
+    linear-gradient(180deg, #f4f8fb 0%, var(--surface-page) 100%);
+}
+
+/* A hairline that lets the hero settle onto the page rather than stop dead. */
+.hero::after {
+  content: '';
+  position: absolute;
+  inset-inline: 0;
+  bottom: 0;
+  height: 1px;
+  background-color: var(--border-subtle);
+}
+
+.grid {
+  display: flex;
+  flex-direction: column-reverse;
+  gap: var(--space-12);
+  align-items: center;
+}
+
+/* --- Copy column -------------------------------------------------------- */
+
+.copy {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: var(--space-6);
+  min-width: 0;
+}
+
+.eyebrow {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-3);
+  margin: 0;
+  padding: 6px 16px;
+  border-radius: var(--radius-pill);
+  background-color: transparent;
+  border: 1.5px solid var(--green-500);
+  color: var(--green-text);
+  font-size: var(--text-xs);
+  font-weight: var(--weight-semibold);
+  letter-spacing: var(--tracking-wide);
+  text-transform: uppercase;
+}
+
+.eyebrowDot {
+  width: 5px;
+  height: 5px;
+  border-radius: 50%;
+  background-color: var(--green-500);
+}
+
+.title {
+  margin: 0;
+  max-width: none;
+  white-space: nowrap;
+  color: var(--ink-900);
+  font-size: clamp(1.75rem, 3.2vw, 3rem);
+  font-weight: 600;
+  letter-spacing: -0.025em;
+  line-height: 1.12;
+}
+
+.intro {
+  margin: 0;
+  max-width: 44ch;
+  font-size: var(--text-xl);
+  font-weight: 400;
+  line-height: var(--leading-relaxed);
+  color: var(--ink-600);
+}
+
+.actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-4);
+  width: 100%;
+}
+
+.actions > * {
+  flex: 1 1 auto;
+}
+
+.reassure {
+  display: flex;
+  align-items: center;
+  gap: var(--space-3);
+  margin: 0;
+  font-size: var(--text-base);
+  font-weight: var(--weight-medium);
+  color: var(--text-secondary);
+}
+
+.reassure svg {
+  color: var(--blue-500);
+}
+
+/* --- Visual column ------------------------------------------------------ */
+
+.visual {
+  position: relative;
+  width: 100%;
+  max-width: 21rem;
+  margin-inline: auto;
+}
+
+.art {
+  width: 100%;
+  height: auto;
+  overflow: visible;
+  filter: drop-shadow(
+    0 18px 38px color-mix(in srgb, var(--brand-800) 14%, transparent)
+  );
+}
+
+/* Gradient stops — set here so they can reference tokens. */
+.skyTop {
+  stop-color: rgba(27, 117, 188, 0.15);
+}
+.skyMid {
+  stop-color: rgba(245, 130, 32, 0.12);
+}
+.skyLow {
+  stop-color: var(--brand-50);
+}
+.sunCore {
+  stop-color: var(--white);
+}
+.sunEdge {
+  stop-color: #ffd166;
+}
+.glowIn {
+  stop-color: #ffd166;
+  stop-opacity: 0.55;
+}
+.glowOut {
+  stop-color: #ffd166;
+  stop-opacity: 0;
+}
+
+/* Shapes */
+.archOutline {
+  fill: none;
+  stroke: var(--blue-500);
+  stroke-width: 1.5;
+}
+
+.rays {
+  fill: none;
+  stroke: #ffd166;
+  stroke-width: 3.5;
+  stroke-linecap: round;
+}
+
+.bandFar {
+  fill: var(--blue-500);
+  opacity: 0.45;
+}
+.bandMid {
+  fill: var(--teal-500);
+  opacity: 0.65;
+}
+.bandEdge {
+  fill: none;
+  stroke: rgba(255, 255, 255, 0.5);
+  stroke-width: 1.5;
+  opacity: 0.55;
+}
+.bandNear {
+  fill: #164775;
+  opacity: 0.92;
+}
+.bandFront {
+  fill: var(--navy-700);
+}
+
+.ring {
+  fill: none;
+  stroke: var(--blue-500);
+  stroke-width: 1.5;
+  opacity: 0.5;
+}
+
+.dot {
+  fill: var(--blue-500);
+  opacity: 0.85;
+}
+
+.motes circle {
+  fill: var(--white);
+  opacity: 0.65;
+}
+
+.satellites {
+  animation: drift 14s var(--ease-in-out) infinite alternate;
+}
+
+.sun {
+  animation: rise 11s var(--ease-in-out) infinite alternate;
+}
+
+@keyframes drift {
+  from {
+    transform: translateY(0);
+  }
+  to {
+    transform: translateY(-8px);
+  }
+}
+
+@keyframes rise {
+  from {
+    transform: translateY(4px);
+  }
+  to {
+    transform: translateY(-6px);
+  }
+}
+
+/* --- Floating overlays -------------------------------------------------- */
+
+.licence {
+  position: absolute;
+  top: var(--space-5);
+  right: var(--space-1);
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-2);
+  margin: 0;
+  padding: var(--space-2) var(--space-4);
+  border: 1px solid var(--border-default);
+  border-radius: var(--radius-pill);
+  background-color: var(--surface-raised);
+  box-shadow: var(--shadow-md);
+  font-size: var(--text-sm);
+  font-weight: var(--weight-semibold);
+  color: var(--text-brand);
+  white-space: nowrap;
+}
+
+.availability {
+  position: absolute;
+  left: var(--space-1);
+  bottom: var(--space-5);
+  display: none;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: var(--space-2);
+  max-width: 15.5rem;
+  padding: var(--space-4) var(--space-5);
+  border: 1px solid var(--border-default);
+  border-radius: var(--radius-lg);
+  background-color: var(--surface-raised);
+  box-shadow: var(--shadow-lg);
+}
+
+.availabilityText {
+  margin: 0;
+  font-size: var(--text-sm);
+  line-height: var(--leading-normal);
+  color: var(--text-secondary);
+}
+
+/* --- Entrance ----------------------------------------------------------- */
+
+.copy > *,
+.visual {
+  animation: settle var(--duration-deliberate) var(--ease-entrance) both;
+}
+
+.copy > *:nth-child(2) {
+  animation-delay: 60ms;
+}
+.copy > *:nth-child(3) {
+  animation-delay: 120ms;
+}
+.copy > *:nth-child(4) {
+  animation-delay: 180ms;
+}
+.copy > *:nth-child(5) {
+  animation-delay: 240ms;
+}
+.visual {
+  animation-delay: 120ms;
+}
+
+@keyframes settle {
+  from {
+    opacity: 0;
+    transform: translateY(14px);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .copy > *,
+  .visual,
+  .satellites,
+  .sun {
+    animation: none;
+  }
+}
+
+/* --- Breakpoints -------------------------------------------------------- */
+
+@media (min-width: 34rem) {
+  .actions > * {
+    flex: 0 0 auto;
+  }
+
+  .visual {
+    max-width: 26rem;
+  }
+
+  .licence {
+    right: var(--space-4);
+  }
+
+  .availability {
+    left: 0;
+    bottom: var(--space-8);
+  }
+}
+
+@media (min-width: 62rem) {
+  .grid {
+    grid-template-columns: minmax(0, 1.02fr) minmax(0, 0.98fr);
+    gap: var(--space-16);
+  }
+
+  .visual {
+    max-width: none;
+    margin-inline: 0;
+  }
+
+  .licence {
+    top: var(--space-8);
+    right: calc(var(--space-6) * -1);
+  }
+
+  .availability {
+    display: flex;
+    left: calc(var(--space-8) * -1);
+    bottom: var(--space-10);
+  }
+}

@@ -1,0 +1,84 @@
+/* ClosingCta — Deep Teal, centred, one clear next step.
+   background-image layers over .section--inverse without a specificity fight. */
+
+.closing {
+  position: relative;
+  overflow-x: clip;
+  background-image: radial-gradient(
+      70% 90% at 50% 0%,
+      var(--brand-700) 0%,
+      transparent 62%
+    ),
+    linear-gradient(180deg, var(--brand-800) 0%, var(--brand-900) 100%);
+}
+
+.inner {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+}
+
+.actions {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: var(--space-4);
+  width: 100%;
+}
+
+.actions > * {
+  flex: 1 1 auto;
+}
+
+.note {
+  margin: var(--space-6) 0 0;
+  max-width: 46ch;
+  font-size: var(--text-base);
+  line-height: var(--leading-relaxed);
+  color: var(--text-on-inverse-muted);
+}
+
+.note a {
+  color: var(--white);
+  font-weight: var(--weight-medium);
+}
+
+.note a:hover {
+  color: var(--brand-200);
+}
+
+.crisis {
+  display: flex;
+  align-items: flex-start;
+  gap: var(--space-3);
+  max-width: 52ch;
+  margin: var(--space-10) 0 0;
+  padding-top: var(--space-6);
+  border-top: 1px solid var(--border-inverse);
+  font-size: var(--text-sm);
+  line-height: var(--leading-relaxed);
+  text-align: left;
+  color: var(--text-on-inverse-muted);
+}
+
+.crisis svg {
+  flex-shrink: 0;
+  margin-top: 2px;
+  color: var(--brand-300);
+}
+
+.crisis a {
+  color: var(--white);
+  font-weight: var(--weight-semibold);
+}
+
+.crisis a:hover {
+  color: var(--brand-200);
+}
+
+@media (min-width: 34rem) {
+  .actions > * {
+    flex: 0 0 auto;
+  }
+}

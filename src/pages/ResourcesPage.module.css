@@ -1,0 +1,344 @@
+/* --- Hero ---------------------------------------------------------------- */
+
+.hero {
+  background:
+    radial-gradient(72% 100% at 12% 0%, var(--brand-100) 0%, transparent 60%),
+    var(--surface-page);
+}
+
+.title {
+  margin: var(--space-3) 0 0;
+  max-width: 16ch;
+}
+
+.lede {
+  margin: var(--space-5) 0 0;
+  max-width: var(--measure-prose);
+  font-size: var(--text-lg);
+  line-height: var(--leading-relaxed);
+  color: var(--text-secondary);
+}
+
+.disclaimer {
+  margin-top: var(--space-8);
+  max-width: 52rem;
+}
+
+/* --- Filters ------------------------------------------------------------- */
+
+.filterBar {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-3);
+  margin-bottom: var(--space-4);
+}
+
+.filterLabel {
+  font-size: var(--text-sm);
+  font-weight: var(--weight-semibold);
+  letter-spacing: var(--tracking-wide);
+  text-transform: uppercase;
+  color: var(--text-brand);
+}
+
+.filterChips {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-2);
+}
+
+.chip {
+  min-height: 40px;
+  padding: var(--space-2) var(--space-4);
+  border: 1px solid var(--border-default);
+  border-radius: var(--radius-pill);
+  background-color: var(--surface-raised);
+  font-size: var(--text-sm);
+  font-weight: var(--weight-medium);
+  color: var(--text-primary);
+  transition: background-color var(--duration-fast) var(--ease-out),
+    border-color var(--duration-fast) var(--ease-out),
+    color var(--duration-fast) var(--ease-out);
+}
+
+.chip:hover {
+  border-color: var(--brand-400);
+  background-color: var(--brand-50);
+}
+
+.chipActive {
+  background-color: var(--action-primary);
+  border-color: var(--action-primary);
+  color: var(--white);
+}
+
+.chipActive:hover {
+  background-color: var(--action-primary-hover);
+  border-color: var(--action-primary-hover);
+}
+
+.resultCount {
+  margin: 0 0 var(--space-8);
+  font-size: var(--text-sm);
+  color: var(--text-secondary);
+}
+
+.empty {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: var(--space-4);
+  padding: var(--space-10);
+  border: 1px dashed var(--border-default);
+  border-radius: var(--radius-lg);
+  background-color: var(--surface-raised);
+}
+
+.emptyText {
+  margin: 0;
+  font-size: var(--text-lg);
+  color: var(--text-secondary);
+}
+
+/* --- Lead article -------------------------------------------------------- */
+
+.lead {
+  display: grid;
+  gap: 0;
+  margin-bottom: var(--space-8);
+  border: 1px solid var(--border-default);
+  border-radius: var(--radius-xl);
+  background-color: var(--surface-raised);
+  box-shadow: var(--shadow-sm);
+  overflow: hidden;
+  transition: box-shadow var(--duration-normal) var(--ease-out);
+}
+
+.lead:hover {
+  box-shadow: var(--shadow-lg);
+}
+
+.leadArt {
+  background-color: var(--brand-200);
+  min-height: 180px;
+}
+
+.leadSvg {
+  width: 100%;
+  height: 100%;
+  display: block;
+}
+
+.leadSun {
+  fill: var(--brand-100);
+}
+
+.leadBandFar {
+  fill: var(--brand-500);
+  opacity: 0.55;
+}
+
+.leadBandNear {
+  fill: var(--brand-800);
+}
+
+.leadBody {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-4);
+  padding: var(--space-8);
+}
+
+.leadTop {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-2);
+}
+
+.leadTitle {
+  margin: 0;
+  font-size: var(--text-2xl);
+  line-height: var(--leading-snug);
+}
+
+.leadLink,
+.cardLink {
+  color: var(--text-primary);
+  text-decoration: none;
+}
+
+.leadLink:hover,
+.cardLink:hover {
+  color: var(--text-brand);
+  text-decoration: underline;
+  text-underline-offset: 0.16em;
+}
+
+/* Make the whole card clickable without nesting interactive elements. */
+.leadLink::after,
+.cardLink::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+}
+
+.lead,
+.card {
+  position: relative;
+}
+
+.leadExcerpt {
+  margin: 0;
+  max-width: var(--measure-prose);
+  font-size: var(--text-md);
+  line-height: var(--leading-relaxed);
+  color: var(--text-secondary);
+}
+
+/* --- Grid ---------------------------------------------------------------- */
+
+.grid {
+  display: grid;
+  gap: var(--space-5);
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 300px), 1fr));
+}
+
+.gridItem {
+  display: flex;
+}
+
+.card {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: var(--space-3);
+  width: 100%;
+  padding: var(--space-6);
+  border: 1px solid var(--border-default);
+  border-radius: var(--radius-lg);
+  background-color: var(--surface-raised);
+  transition: border-color var(--duration-fast) var(--ease-out),
+    box-shadow var(--duration-normal) var(--ease-out),
+    transform var(--duration-normal) var(--ease-out);
+}
+
+.card:hover {
+  border-color: var(--brand-300);
+  box-shadow: var(--shadow-md);
+  transform: translateY(-3px);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .card:hover {
+    transform: none;
+  }
+}
+
+.cardTitle {
+  margin: 0;
+  font-size: var(--text-xl);
+  line-height: var(--leading-snug);
+}
+
+.cardExcerpt {
+  margin: 0;
+  font-size: var(--text-base);
+  line-height: var(--leading-relaxed);
+  color: var(--text-secondary);
+}
+
+.cardFooter {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--space-4);
+  width: 100%;
+  margin-top: auto;
+  padding-top: var(--space-5);
+}
+
+.cardArrow {
+  flex-shrink: 0;
+  color: var(--text-brand);
+  transition: transform var(--duration-fast) var(--ease-out);
+}
+
+.card:hover .cardArrow {
+  transform: translateX(3px);
+}
+
+/* --- Byline -------------------------------------------------------------- */
+
+.byline {
+  display: flex;
+  align-items: center;
+  gap: var(--space-3);
+  min-width: 0;
+}
+
+.bylineAvatar {
+  width: 36px;
+  height: 36px;
+  border-radius: var(--radius-sm);
+}
+
+.bylineLead .bylineAvatar {
+  width: 44px;
+  height: 44px;
+}
+
+.bylineText {
+  display: flex;
+  flex-direction: column;
+  min-width: 0;
+}
+
+.bylineName {
+  font-size: var(--text-sm);
+  font-weight: var(--weight-semibold);
+  color: var(--text-primary);
+  line-height: var(--leading-normal);
+}
+
+.bylineMeta {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: var(--space-2);
+  font-size: var(--text-xs);
+  color: var(--text-secondary);
+}
+
+/* --- CTA ----------------------------------------------------------------- */
+
+.cta {
+  max-width: 46rem;
+  margin-inline: auto;
+  text-align: center;
+}
+
+.ctaActions {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: var(--space-3);
+}
+
+/* --- Breakpoints --------------------------------------------------------- */
+
+@media (min-width: 48rem) {
+  .lead {
+    grid-template-columns: minmax(0, 5fr) minmax(0, 7fr);
+  }
+
+  .leadArt {
+    min-height: 100%;
+  }
+
+  .leadBody {
+    padding: var(--space-10);
+  }
+}

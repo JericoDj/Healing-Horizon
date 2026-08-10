@@ -1,0 +1,88 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="theme-color" content="#ffffff" />
+    <meta name="color-scheme" content="light" />
+
+    <title>Healing Horizon — Therapy that meets you where you are</title>
+    <meta
+      name="description"
+      content="A group therapy practice offering individual, couples, family and group counselling — in person in Portland and online across Oregon and Washington."
+    />
+
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <link rel="apple-touch-icon" href="/favicon.svg" />
+    <link rel="manifest" href="/site.webmanifest" />
+
+    <!-- Fonts. preconnect first so the DNS + TLS handshake overlaps parsing. -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Lora:wght@400;500;600&display=swap"
+      rel="stylesheet"
+    />
+
+    <!-- Structured data: helps the practice surface correctly in local search. -->
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "MedicalBusiness",
+        "additionalType": "https://schema.org/Psychiatric",
+        "name": "Healing Horizon",
+        "description": "Group therapy practice offering individual, couples, family and group counselling in Portland, Oregon and by telehealth across Oregon and Washington.",
+        "url": "https://www.healinghorizon.example",
+        "telephone": "+1-555-014-2200",
+        "email": "hello@healinghorizon.example",
+        "address": {
+          "@type": "PostalAddress",
+          "streetAddress": "1420 Alder Street, Suite 300",
+          "addressLocality": "Portland",
+          "addressRegion": "OR",
+          "postalCode": "97205",
+          "addressCountry": "US"
+        },
+        "areaServed": ["Oregon", "Washington"],
+        "openingHoursSpecification": [
+          {
+            "@type": "OpeningHoursSpecification",
+            "dayOfWeek": ["Monday", "Tuesday", "Wednesday", "Thursday"],
+            "opens": "08:00",
+            "closes": "19:00"
+          },
+          {
+            "@type": "OpeningHoursSpecification",
+            "dayOfWeek": "Friday",
+            "opens": "08:00",
+            "closes": "17:00"
+          },
+          {
+            "@type": "OpeningHoursSpecification",
+            "dayOfWeek": "Saturday",
+            "opens": "09:00",
+            "closes": "13:00"
+          }
+        ]
+      }
+    </script>
+  </head>
+  <body>
+    <div id="root"></div>
+    <noscript>
+      <div style="padding: 2rem; font-family: system-ui, sans-serif; line-height: 1.6">
+        <h1>Healing Horizon</h1>
+        <p>
+          This site needs JavaScript to run. To reach us, please call
+          <a href="tel:+15550142200">(555) 014-2200</a> or email
+          <a href="mailto:hello@healinghorizon.example">hello@healinghorizon.example</a>.
+        </p>
+        <p>
+          <strong>If you are in crisis:</strong> call or text 988 for the Suicide &amp; Crisis
+          Lifeline, or call 911 if you are in immediate danger.
+        </p>
+      </div>
+    </noscript>
+    <script type="module" src="/src/main.jsx"></script>
+  </body>
+</html>

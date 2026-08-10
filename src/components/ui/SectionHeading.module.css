@@ -1,0 +1,72 @@
+.wrap {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-3);
+  margin-bottom: var(--space-10);
+}
+
+.left {
+  align-items: flex-start;
+  text-align: left;
+}
+
+.center {
+  align-items: center;
+  text-align: center;
+  margin-inline: auto;
+  max-width: 46rem;
+}
+
+.eyebrow {
+  margin: 0;
+  font-size: var(--text-sm);
+  font-weight: var(--weight-semibold);
+  letter-spacing: var(--tracking-wide);
+  text-transform: uppercase;
+  color: var(--text-brand);
+}
+
+.title {
+  margin: 0;
+  max-width: 20ch;
+}
+
+.center .title {
+  max-width: 24ch;
+}
+
+.intro {
+  margin: 0;
+  max-width: var(--measure-prose);
+  font-size: var(--text-lg);
+  line-height: var(--leading-relaxed);
+  color: var(--text-secondary);
+}
+
+.center .intro {
+  max-width: 56ch;
+}
+
+.extra {
+  margin-top: var(--space-3);
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-3);
+}
+
+.center .extra {
+  justify-content: center;
+}
+
+/* Inverse sections recolour the eyebrow and intro for the dark surface. */
+:global(.section--inverse) .eyebrow {
+  color: var(--brand-300);
+}
+
+:global(.section--inverse) .title {
+  color: var(--text-on-inverse);
+}
+
+:global(.section--inverse) .intro {
+  color: var(--text-on-inverse-muted);
+}

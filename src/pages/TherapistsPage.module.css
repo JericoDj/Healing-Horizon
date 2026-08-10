@@ -1,0 +1,400 @@
+/* ==========================================================================
+   TherapistsPage — directory with a client-side filter.
+   ========================================================================== */
+
+/* --- Hero --------------------------------------------------------------- */
+
+.hero {
+  padding-bottom: var(--section-y-tight);
+}
+
+.heroInner {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-4);
+  max-width: var(--measure-prose);
+}
+
+.lead {
+  font-size: var(--text-lg);
+  line-height: var(--leading-relaxed);
+  color: var(--text-primary);
+}
+
+.leadSecondary {
+  font-size: var(--text-md);
+  line-height: var(--leading-relaxed);
+  color: var(--text-secondary);
+}
+
+.heroActions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-3);
+  margin-top: var(--space-4);
+}
+
+/* --- Filters ------------------------------------------------------------ */
+
+.filters {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-6);
+  padding: var(--space-5);
+  border: 1px solid var(--border-default);
+  border-radius: var(--radius-lg);
+  background-color: var(--surface-raised);
+  box-shadow: var(--shadow-sm);
+}
+
+@media (min-width: 48rem) {
+  .filters {
+    padding: var(--space-8);
+  }
+}
+
+.filterBlock {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-3);
+}
+
+.filterLabel {
+  margin: 0;
+  font-size: var(--text-sm);
+  font-weight: var(--weight-semibold);
+  letter-spacing: var(--tracking-wide);
+  text-transform: uppercase;
+  color: var(--text-brand);
+}
+
+.chips {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-2);
+}
+
+.chip {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-2);
+  min-height: 44px;
+  padding: var(--space-2) var(--space-4);
+  border: 1px solid var(--border-default);
+  border-radius: var(--radius-pill);
+  background-color: var(--surface-page);
+  color: var(--text-secondary);
+  font-size: var(--text-sm);
+  font-weight: var(--weight-medium);
+  line-height: var(--leading-normal);
+  text-align: left;
+  transition: background-color var(--duration-fast) var(--ease-out),
+    border-color var(--duration-fast) var(--ease-out),
+    color var(--duration-fast) var(--ease-out);
+}
+
+.chip:hover {
+  border-color: var(--brand-400);
+  background-color: var(--brand-50);
+  color: var(--text-brand);
+}
+
+.chip[aria-pressed='true'] {
+  background-color: var(--action-primary);
+  border-color: var(--action-primary);
+  color: var(--text-on-inverse);
+}
+
+.chip[aria-pressed='true']:hover {
+  background-color: var(--action-primary-hover);
+  border-color: var(--action-primary-hover);
+  color: var(--text-on-inverse);
+}
+
+/* --- Result bar --------------------------------------------------------- */
+
+.resultBar {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--space-3);
+  margin-top: var(--space-8);
+  margin-bottom: var(--space-6);
+}
+
+.count {
+  margin: 0;
+  font-size: var(--text-base);
+  font-weight: var(--weight-semibold);
+  color: var(--text-primary);
+}
+
+.clearButton {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-2);
+  min-height: 44px;
+  padding: var(--space-2) var(--space-3);
+  border-radius: var(--radius-sm);
+  color: var(--text-brand);
+  font-size: var(--text-sm);
+  font-weight: var(--weight-semibold);
+  text-decoration: underline;
+  text-underline-offset: 0.18em;
+}
+
+.clearButton:hover {
+  color: var(--brand-900);
+  background-color: var(--brand-50);
+}
+
+/* --- Empty state -------------------------------------------------------- */
+
+.empty {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-4);
+  align-items: flex-start;
+  max-width: var(--measure-prose);
+  background-color: var(--surface-raised);
+}
+
+.emptyTitle {
+  margin: 0;
+  font-size: var(--text-xl);
+}
+
+.emptyBody {
+  margin: 0;
+  color: var(--text-secondary);
+}
+
+.emptyActions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-3);
+  margin-top: var(--space-2);
+}
+
+/* --- Therapist grid ----------------------------------------------------- */
+
+.grid {
+  display: grid;
+  gap: var(--space-6);
+  margin: 0;
+  padding: 0;
+}
+
+@media (min-width: 48rem) {
+  .grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+.gridItem {
+  display: flex;
+}
+
+.person {
+  position: relative;
+  gap: var(--space-5);
+  width: 100%;
+}
+
+.personTop {
+  display: flex;
+  align-items: flex-start;
+  gap: var(--space-4);
+}
+
+.personMedia {
+  flex: 0 0 96px;
+}
+
+@media (min-width: 34rem) {
+  .personMedia {
+    flex-basis: 128px;
+  }
+}
+
+.personIdentity {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-1);
+  min-width: 0;
+}
+
+.personName {
+  margin: 0;
+  font-size: var(--text-xl);
+  line-height: var(--leading-snug);
+}
+
+/* The name carries the link; the pseudo-element makes the whole card
+   clickable without giving screen readers a link the length of a paragraph. */
+.personLink {
+  color: var(--text-primary);
+  text-decoration: none;
+}
+
+.personLink::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  border-radius: var(--radius-lg);
+}
+
+.personLink:hover {
+  color: var(--text-brand);
+  text-decoration: underline;
+}
+
+.personCredentials {
+  margin: 0;
+  font-size: var(--text-sm);
+  font-weight: var(--weight-semibold);
+  color: var(--text-brand);
+  line-height: var(--leading-normal);
+}
+
+.personRole {
+  margin: 0;
+  font-size: var(--text-sm);
+  color: var(--text-secondary);
+  line-height: var(--leading-normal);
+}
+
+.personStatus {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: var(--space-2) var(--space-4);
+}
+
+.availability {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-2);
+  font-size: var(--text-sm);
+  color: var(--text-secondary);
+}
+
+.personBio {
+  margin: 0;
+  color: var(--text-secondary);
+  font-size: var(--text-base);
+  line-height: var(--leading-relaxed);
+}
+
+.focusList {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-2);
+  margin: 0;
+}
+
+.personMeta {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-2);
+  margin: 0;
+  font-size: var(--text-sm);
+  color: var(--text-secondary);
+}
+
+.personMeta dt {
+  font-weight: var(--weight-semibold);
+  color: var(--text-primary);
+}
+
+.personMeta dd {
+  margin: 0;
+}
+
+.personCta {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-2);
+  margin: 0;
+  margin-top: auto;
+  padding-top: var(--space-2);
+  font-size: var(--text-sm);
+  font-weight: var(--weight-semibold);
+  color: var(--text-brand);
+}
+
+.person:hover .personCta {
+  gap: var(--space-3);
+}
+
+/* --- Matching steps ----------------------------------------------------- */
+
+.steps {
+  display: grid;
+  gap: var(--space-6);
+  margin: 0;
+  padding: 0;
+  counter-reset: step;
+}
+
+@media (min-width: 62rem) {
+  .steps {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: var(--space-8);
+  }
+}
+
+.step {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-3);
+  padding-top: var(--space-5);
+  border-top: 2px solid var(--border-brand);
+}
+
+.stepNumber {
+  display: grid;
+  place-items: center;
+  width: 40px;
+  height: 40px;
+  border-radius: var(--radius-pill);
+  background-color: var(--surface-sunken);
+  color: var(--text-brand);
+  font-family: var(--font-heading);
+  font-size: var(--text-lg);
+}
+
+.stepTitle {
+  margin: 0;
+  font-size: var(--text-xl);
+}
+
+.stepBody {
+  margin: 0;
+  color: var(--text-secondary);
+  line-height: var(--leading-relaxed);
+}
+
+.matchingActions {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: var(--space-4);
+  margin-top: var(--space-10);
+}
+
+.matchingNote {
+  margin: 0;
+  font-size: var(--text-base);
+  color: var(--text-secondary);
+}
+
+/* --- Closing CTA -------------------------------------------------------- */
+
+.ctaActions {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: var(--space-3);
+}

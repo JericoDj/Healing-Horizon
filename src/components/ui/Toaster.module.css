@@ -1,0 +1,114 @@
+.viewport {
+  position: fixed;
+  z-index: var(--z-toast);
+  bottom: var(--space-5);
+  right: var(--space-5);
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-3);
+  width: min(400px, calc(100vw - var(--space-8)));
+  pointer-events: none;
+}
+
+.toast {
+  pointer-events: auto;
+  display: flex;
+  align-items: flex-start;
+  gap: var(--space-3);
+  padding: var(--space-4);
+  border-radius: var(--radius-md);
+  border: 1px solid var(--border-default);
+  background-color: var(--surface-raised);
+  box-shadow: var(--shadow-xl);
+  animation: slideIn var(--duration-normal) var(--ease-entrance);
+}
+
+.icon {
+  flex-shrink: 0;
+  display: grid;
+  place-items: center;
+  width: 28px;
+  height: 28px;
+  border-radius: 50%;
+}
+
+.content {
+  flex: 1;
+  min-width: 0;
+}
+
+.title {
+  margin: 0;
+  font-size: var(--text-base);
+  font-weight: var(--weight-semibold);
+  color: var(--text-primary);
+  line-height: var(--leading-normal);
+}
+
+.description {
+  margin: var(--space-1) 0 0;
+  font-size: var(--text-sm);
+  color: var(--text-secondary);
+  line-height: var(--leading-normal);
+}
+
+.dismiss {
+  flex-shrink: 0;
+  display: grid;
+  place-items: center;
+  width: 28px;
+  height: 28px;
+  border-radius: var(--radius-sm);
+  color: var(--text-secondary);
+  transition: background-color var(--duration-fast) var(--ease-out),
+    color var(--duration-fast) var(--ease-out);
+}
+
+.dismiss:hover {
+  background-color: var(--ink-50);
+  color: var(--text-primary);
+}
+
+.success {
+  border-left: 3px solid var(--success-600);
+}
+.success .icon {
+  background-color: var(--status-success-bg);
+  color: var(--status-success-fg);
+}
+
+.danger {
+  border-left: 3px solid var(--danger-600);
+}
+.danger .icon {
+  background-color: var(--status-danger-bg);
+  color: var(--status-danger-fg);
+}
+
+.info {
+  border-left: 3px solid var(--brand-600);
+}
+.info .icon {
+  background-color: var(--brand-100);
+  color: var(--text-brand);
+}
+
+@keyframes slideIn {
+  from {
+    opacity: 0;
+    transform: translateY(12px) scale(0.98);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+@media (max-width: 34rem) {
+  .viewport {
+    left: var(--space-4);
+    right: var(--space-4);
+    bottom: var(--space-4);
+    width: auto;
+  }
+}

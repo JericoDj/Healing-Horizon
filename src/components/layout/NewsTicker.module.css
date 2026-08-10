@@ -1,0 +1,220 @@
+/* The strip is a thin dark band at the very top of the document. It anchors
+   the light header beneath it and reads as "practice notice", not "advert". */
+.ticker {
+  position: relative;
+  z-index: calc(var(--z-header) - 1);
+  background-color: var(--surface-inverse-deep);
+  color: var(--text-on-inverse);
+}
+
+.inner {
+  display: flex;
+  align-items: center;
+  gap: var(--space-3);
+  width: 100%;
+  max-width: calc(var(--container-max) * 1.25); /* Extended 25% wider for web (~1500px) */
+  margin-inline: auto;
+  padding-inline: var(--gutter);
+  min-height: 40px;
+}
+
+/* --- Moving region ------------------------------------------------------- */
+
+.viewport {
+  position: relative;
+  flex: 1;
+  min-width: 0;
+  overflow: hidden;
+  /* Fade the text out at both edges so items enter and leave rather than
+     appearing to be cut off by the container. */
+  -webkit-mask-image: linear-gradient(
+    to right,
+    transparent 0,
+    #000 var(--space-6),
+    #000 calc(100% - var(--space-6)),
+    transparent 100%
+  );
+  mask-image: linear-gradient(
+    to right,
+    transparent 0,
+    #000 var(--space-6),
+    #000 calc(100% - var(--space-6)),
+    transparent 100%
+  );
+}
+
+.track {
+  display: flex;
+  width: max-content;
+  animation: ticker-scroll var(--ticker-duration, 40s) linear infinite;
+}
+
+.trackPaused {
+  animation-play-state: paused;
+}
+
+/* Reduced motion: no animation, no duplicated set, just a scrollable row. */
+.trackStatic {
+  animation: none;
+  width: auto;
+  overflow-x: auto;
+  scrollbar-width: none;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.trackStatic::-webkit-scrollbar {
+  display: none;
+}
+
+.set {
+  display: flex;
+  align-items: center;
+  flex-shrink: 0;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.item {
+  position: relative;
+  display: flex;
+  align-items: center;
+  gap: var(--space-2);
+  padding-inline: var(--space-5);
+  font-size: var(--text-sm);
+  line-height: var(--leading-normal);
+  color: #ffffff;
+  white-space: nowrap;
+}
+
+.itemText {
+  color: #ffffff;
+  font-weight: var(--weight-medium, 500);
+}
+
+.iconOrange {
+  color: #ff9d42 !important;
+}
+
+.iconYellow {
+  color: #ffd166 !important;
+}
+
+.iconGreen {
+  color: #4cd964 !important;
+}
+
+/* A quiet separator between items */
+.item + .item::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 50%;
+  width: 4px;
+  height: 4px;
+  margin-left: calc(var(--space-5) * -1 - 2px);
+  border-radius: 50%;
+  background-color: rgba(255, 255, 255, 0.4);
+  transform: translateY(-50%);
+}
+
+.itemIcon {
+  flex-shrink: 0;
+}
+
+@keyframes ticker-scroll {
+  from {
+    transform: translate3d(0, 0, 0);
+  }
+  to {
+    /* Exactly one set width — the second copy lands where the first started,
+       which is what makes the loop seamless. */
+    transform: translate3d(-50%, 0, 0);
+  }
+}
+
+/* --- Controls ------------------------------------------------------------ */
+
+/* Transparent at rest so the bar reads as a clean strip of text. It fades in
+   when you hover the strip, and always when focused or actively paused — it
+   must never be unreachable, only unobtrusive. */
+.control {
+  position: relative;
+  flex-shrink: 0;
+  display: grid;
+  place-items: center;
+  width: 26px;
+  height: 26px;
+  border-radius: 50%;
+  border: 1px solid transparent;
+  color: var(--brand-200);
+  opacity: 0;
+  transition: opacity var(--duration-normal) var(--ease-out),
+    background-color var(--duration-fast) var(--ease-out),
+    color var(--duration-fast) var(--ease-out),
+    border-color var(--duration-fast) var(--ease-out);
+}
+
+/* Reveal on :focus, not :focus-visible — the button must become visible
+   whenever it holds focus by any route, not only when the browser decides a
+   ring is warranted. The ring itself stays :focus-visible below. */
+.ticker:hover .control,
+.control:focus,
+.controlActive {
+  opacity: 1;
+}
+
+.control:hover {
+  background-color: rgba(252, 252, 250, 0.14);
+  border-color: var(--border-inverse);
+  color: var(--white);
+}
+
+.control:focus-visible {
+  outline: var(--focus-ring-width) solid var(--brand-200);
+  outline-offset: 2px;
+}
+
+/* The 26px control is under the 44px touch minimum, so the hit area is
+   extended with a pseudo-element rather than by inflating the visual size. */
+.control::after {
+  content: '';
+  position: absolute;
+  inset: -9px;
+}
+
+/* Touch devices have no hover, so a control that only appears on hover would
+   be unreachable. Show it permanently there. */
+@media (hover: none) {
+  .control {
+    opacity: 1;
+  }
+}
+
+/* --- Small screens ------------------------------------------------------- */
+
+@media (max-width: 34rem) {
+  .inner {
+    min-height: 38px;
+    gap: var(--space-2);
+  }
+
+  .item {
+    padding-inline: var(--space-4);
+    font-size: var(--text-xs);
+  }
+
+  .item + .item::before {
+    margin-left: calc(var(--space-4) * -1 - 1.5px);
+  }
+}
+
+/* Belt and braces: even if the reduced-motion branch in the component were
+   bypassed, nothing here is allowed to move. */
+@media (prefers-reduced-motion: reduce) {
+  .track {
+    animation: none;
+  }
+}

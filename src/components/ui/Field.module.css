@@ -1,0 +1,286 @@
+.field,
+.checkboxField {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-2);
+}
+
+.label {
+  display: flex;
+  align-items: baseline;
+  gap: var(--space-2);
+  font-size: var(--text-sm);
+  font-weight: var(--weight-semibold);
+  color: var(--text-primary);
+  letter-spacing: var(--tracking-snug);
+}
+
+.required {
+  color: var(--status-danger-fg);
+  font-weight: var(--weight-bold);
+}
+
+.optional {
+  font-size: var(--text-xs);
+  font-weight: var(--weight-regular);
+  color: var(--text-secondary);
+  text-transform: lowercase;
+  letter-spacing: var(--tracking-normal);
+}
+
+.hint {
+  margin: 0;
+  font-size: var(--text-sm);
+  line-height: var(--leading-normal);
+  color: var(--text-secondary);
+}
+
+.control {
+  width: 100%;
+  min-height: 48px;
+  padding: var(--space-3) var(--space-4);
+  border: 1px solid var(--border-strong);
+  border-radius: var(--radius-sm);
+  background-color: var(--surface-raised);
+  color: var(--text-primary);
+  font-size: var(--text-base);
+  line-height: var(--leading-normal);
+  transition: border-color var(--duration-fast) var(--ease-out),
+    box-shadow var(--duration-fast) var(--ease-out),
+    background-color var(--duration-fast) var(--ease-out);
+}
+
+.control::placeholder {
+  color: var(--ink-400);
+}
+
+.control:hover:not(:disabled) {
+  border-color: var(--brand-700);
+}
+
+.control:focus {
+  outline: none;
+  border-color: var(--brand-800);
+  box-shadow: 0 0 0 3px var(--brand-200);
+}
+
+.control:focus-visible {
+  outline: var(--focus-ring-width) solid var(--focus-ring-color);
+  outline-offset: var(--focus-ring-offset);
+}
+
+.control:disabled {
+  background-color: var(--ink-50);
+  color: var(--text-muted);
+  cursor: not-allowed;
+}
+
+.textarea {
+  min-height: 140px;
+  resize: vertical;
+  line-height: var(--leading-relaxed);
+}
+
+.counter {
+  margin: 0;
+  align-self: flex-end;
+  font-size: var(--text-xs);
+  color: var(--text-secondary);
+  font-variant-numeric: tabular-nums;
+}
+
+.selectWrap {
+  position: relative;
+  display: flex;
+  align-items: center;
+}
+
+.select {
+  appearance: none;
+  padding-right: var(--space-10);
+  cursor: pointer;
+}
+
+.selectIcon {
+  position: absolute;
+  right: var(--space-4);
+  color: var(--text-brand);
+  pointer-events: none;
+}
+
+.error {
+  display: flex;
+  align-items: flex-start;
+  gap: var(--space-2);
+  margin: 0;
+  font-size: var(--text-sm);
+  font-weight: var(--weight-medium);
+  line-height: var(--leading-normal);
+  color: var(--status-danger-fg);
+}
+
+.hasError .control {
+  border-color: var(--status-danger-fg);
+  background-color: var(--status-danger-bg);
+}
+
+.hasError .control:focus {
+  box-shadow: 0 0 0 3px rgba(155, 44, 44, 0.16);
+}
+
+/* --- Checkbox ----------------------------------------------------------- */
+
+.checkboxRow {
+  display: flex;
+  align-items: flex-start;
+  gap: var(--space-3);
+}
+
+.checkbox {
+  flex-shrink: 0;
+  width: 22px;
+  height: 22px;
+  margin: 1px 0 0;
+  accent-color: var(--brand-800);
+  cursor: pointer;
+}
+
+.checkboxLabel {
+  font-size: var(--text-sm);
+  line-height: var(--leading-normal);
+  color: var(--text-secondary);
+  cursor: pointer;
+}
+
+/* --- Fieldset groups ---------------------------------------------------- */
+
+.fieldset {
+  border: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-3);
+}
+
+.legend {
+  padding: 0;
+  font-size: var(--text-sm);
+  font-weight: var(--weight-semibold);
+  color: var(--text-primary);
+  letter-spacing: var(--tracking-snug);
+}
+
+.optionGrid {
+  display: grid;
+  gap: var(--space-3);
+  grid-template-columns: 1fr;
+}
+
+@media (min-width: 34rem) {
+  .optionGrid[data-columns='2'],
+  .optionGrid[data-columns='3'] {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (min-width: 52rem) {
+  .optionGrid[data-columns='3'] {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+.optionCard {
+  position: relative;
+  display: flex;
+  align-items: flex-start;
+  gap: var(--space-3);
+  padding: var(--space-4);
+  border: 1px solid var(--border-default);
+  border-radius: var(--radius-md);
+  background-color: var(--surface-raised);
+  cursor: pointer;
+  transition: border-color var(--duration-fast) var(--ease-out),
+    background-color var(--duration-fast) var(--ease-out),
+    box-shadow var(--duration-fast) var(--ease-out);
+}
+
+.optionCard:hover {
+  border-color: var(--brand-400);
+  background-color: var(--brand-50);
+}
+
+/* The ring follows the hidden input's focus onto its visible label. */
+.optionCard:has(.visuallyHiddenInput:focus-visible) {
+  outline: var(--focus-ring-width) solid var(--focus-ring-color);
+  outline-offset: var(--focus-ring-offset);
+}
+
+.optionChecked {
+  border-color: var(--brand-800);
+  background-color: var(--brand-100);
+  box-shadow: inset 0 0 0 1px var(--brand-800);
+}
+
+.visuallyHiddenInput {
+  position: absolute;
+  opacity: 0;
+  width: 1px;
+  height: 1px;
+  margin: 0;
+  pointer-events: none;
+}
+
+.optionIndicator {
+  flex-shrink: 0;
+  display: grid;
+  place-items: center;
+  width: 20px;
+  height: 20px;
+  margin-top: 1px;
+  border: 1px solid var(--border-strong);
+  border-radius: 50%;
+  background-color: var(--surface-raised);
+  color: var(--white);
+  transition: background-color var(--duration-fast) var(--ease-out),
+    border-color var(--duration-fast) var(--ease-out);
+}
+
+.optionIndicatorSquare {
+  border-radius: var(--radius-xs);
+}
+
+.optionChecked .optionIndicator {
+  background-color: var(--brand-800);
+  border-color: var(--brand-800);
+}
+
+.optionText {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  min-width: 0;
+}
+
+.optionLabel {
+  font-size: var(--text-base);
+  font-weight: var(--weight-medium);
+  color: var(--text-primary);
+  line-height: var(--leading-normal);
+}
+
+.optionDetail {
+  font-size: var(--text-sm);
+  color: var(--text-secondary);
+  line-height: var(--leading-normal);
+}
+
+/* --- Honeypot ----------------------------------------------------------- */
+
+.honeypot {
+  position: absolute !important;
+  left: -9999px;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+}

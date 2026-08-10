@@ -1,0 +1,115 @@
+.alert {
+  display: flex;
+  align-items: flex-start;
+  gap: var(--space-3);
+  padding: var(--space-4) var(--space-5);
+  border-radius: var(--radius-md);
+  border: 1px solid transparent;
+  border-left-width: 3px;
+  font-size: var(--text-base);
+  line-height: var(--leading-normal);
+}
+
+.icon {
+  flex-shrink: 0;
+  margin-top: 2px;
+}
+
+.content {
+  flex: 1;
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-1);
+}
+
+.title {
+  margin: 0;
+  font-weight: var(--weight-semibold);
+  color: inherit;
+}
+
+.body {
+  color: inherit;
+}
+
+.body p {
+  margin: 0;
+}
+
+.body p + p {
+  margin-top: var(--space-2);
+}
+
+.body a {
+  color: inherit;
+  font-weight: var(--weight-semibold);
+  text-decoration: underline;
+}
+
+.action {
+  flex-shrink: 0;
+  align-self: center;
+}
+
+.info {
+  background-color: var(--brand-50);
+  border-color: var(--brand-200);
+  border-left-color: var(--brand-600);
+  color: var(--text-primary);
+}
+
+.brand {
+  background-color: var(--surface-accent);
+  border-color: var(--brand-300);
+  border-left-color: var(--brand-800);
+  color: var(--text-primary);
+}
+
+.success {
+  background-color: var(--status-success-bg);
+  border-color: color-mix(in srgb, var(--success-600) 24%, transparent);
+  border-left-color: var(--success-600);
+  color: var(--ink-900);
+}
+
+.warning {
+  background-color: var(--status-warning-bg);
+  border-color: color-mix(in srgb, var(--warning-600) 24%, transparent);
+  border-left-color: var(--warning-600);
+  color: var(--ink-900);
+}
+
+.danger {
+  background-color: var(--status-danger-bg);
+  border-color: color-mix(in srgb, var(--danger-600) 24%, transparent);
+  border-left-color: var(--danger-600);
+  color: var(--ink-900);
+}
+
+.danger .icon,
+.danger .title {
+  color: var(--status-danger-fg);
+}
+
+.warning .icon {
+  color: var(--status-warning-fg);
+}
+
+.success .icon {
+  color: var(--status-success-fg);
+}
+
+.info .icon,
+.brand .icon {
+  color: var(--text-brand);
+}
+
+@media (max-width: 34rem) {
+  .alert {
+    flex-wrap: wrap;
+  }
+  .action {
+    width: 100%;
+  }
+}

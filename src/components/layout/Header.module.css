@@ -1,0 +1,525 @@
+.header {
+  position: relative;
+  z-index: var(--z-header);
+  background-color: color-mix(in srgb, var(--surface-page) 88%, transparent);
+  backdrop-filter: saturate(180%) blur(14px);
+  -webkit-backdrop-filter: saturate(180%) blur(14px);
+  border-bottom: 1px solid rgba(0, 0, 0, 0.08);
+  transition: border-color var(--duration-normal) var(--ease-out),
+    box-shadow var(--duration-normal) var(--ease-out),
+    background-color var(--duration-normal) var(--ease-out);
+}
+
+.scrolled {
+  border-bottom-color: rgba(0, 0, 0, 0.12);
+  box-shadow: var(--shadow-sm);
+  background-color: color-mix(in srgb, var(--surface-page) 96%, transparent);
+}
+
+.inner {
+  display: flex;
+  align-items: center;
+  gap: var(--space-3);
+  min-height: var(--header-height);
+  transition: min-height var(--duration-normal) var(--ease-out);
+}
+
+/* --- Brand -------------------------------------------------------------- */
+
+.brand {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-right: auto;
+  flex-shrink: 0;
+  text-decoration: none;
+  color: var(--text-brand);
+  border-radius: var(--radius-sm);
+}
+
+.brand:hover {
+  text-decoration: none;
+}
+
+.logo {
+  flex-shrink: 0;
+  transition: transform var(--duration-slow) var(--ease-out);
+}
+
+.brand:hover .logo {
+  transform: rotate(-6deg);
+}
+
+.logoImg {
+  height: 80px;
+  width: auto;
+  object-fit: contain;
+  flex-shrink: 0;
+  transition: transform var(--duration-slow) var(--ease-out);
+}
+
+.brand:hover .logoImg {
+  transform: scale(1.05);
+}
+
+.brandTextImg {
+  height: 58px;
+  max-width: 400px;
+  width: auto;
+  object-fit: contain;
+  flex-shrink: 0;
+}
+
+@media (max-width: 48rem) {
+  .logoImg {
+    height: 60px;
+  }
+  .brandTextImg {
+    height: 42px;
+    max-width: 260px;
+  }
+}
+
+.brandText {
+  display: flex;
+  flex-direction: column;
+  line-height: 1.1;
+}
+
+/* The wordmark: "Healing" in brand purple, "Horizons" in the Support green,
+   set tight and side by side. Both stay on one line, always — a wordmark that
+   breaks across two lines reads as a layout failure, not as a brand. */
+.brandName {
+  display: flex;
+  align-items: baseline;
+  gap: 0.28em;
+  font-family: var(--font-heading);
+  font-size: 1.1rem;
+  font-weight: var(--weight-bold);
+  letter-spacing: -0.015em;
+  line-height: 1.05;
+  white-space: nowrap;
+}
+
+.brandNameTop {
+  color: var(--brand-800); /* 9.38:1 — AAA */
+}
+
+.brandNameBottom {
+  /* The text-safe green, not the bright pillar green: #2E9E48 is 3.44:1 and
+     would fail as type. See BRAND-GUIDE.md §4.3. */
+  color: var(--green-text); /* 6.33:1 — AA */
+}
+
+.brandTag {
+  font-size: 0.5625rem;
+  font-weight: var(--weight-semibold);
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--brand-700); /* 7.97:1 — AAA */
+  white-space: nowrap;
+}
+
+/* --- Desktop nav -------------------------------------------------------- */
+
+.desktopNav {
+  display: none;
+  /* Positioning context for .navIndicator. Without it the dot would anchor to
+     the sticky <header> instead, and its measured offsets would be wrong. */
+  position: relative;
+}
+
+/* No gap between items — the pills carry their own inline padding, so a gap on
+   top of that costs ~20px across six items and buys nothing visually. */
+.navList {
+  display: flex;
+  align-items: center;
+  /* Just enough that an active pill and a hovered neighbour never merge into
+     one blob, but far less than the pills' own inline padding. */
+  gap: 2px;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+/* Nav items are pills rather than underlined text. On a light canvas a tinted
+   pill reads as "this is where you are" far more quickly than a 2px rule, and
+   it gives the icons somewhere to sit.
+
+   Three states, each a step darker so the hierarchy survives a squint test:
+     rest    transparent
+     hover   Mist       (--brand-100)
+     active  Soft Blue  (--brand-200) + Deep Teal text, 6.19:1 — AA */
+.navLink {
+  position: relative;
+  z-index: 1;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: var(--space-2);
+  border-radius: var(--radius-pill);
+  font-size: var(--text-base);
+  font-weight: var(--weight-medium);
+  color: var(--text-primary);
+  text-decoration: none;
+  white-space: nowrap;
+  transition: color var(--duration-fast) var(--ease-out),
+    background-color var(--duration-fast) var(--ease-out);
+}
+
+.navIcon {
+  flex-shrink: 0;
+  color: var(--blue-500);
+  transition: color var(--duration-fast) var(--ease-out);
+}
+
+.navLink:not(.navLinkActive):hover {
+  background-color: rgba(27, 117, 188, 0.09);
+  color: var(--blue-500);
+  text-decoration: none;
+}
+
+.navLink:not(.navLinkActive):hover .navIcon {
+  color: var(--blue-500);
+}
+
+.navLinkHovered {
+  color: var(--blue-500);
+}
+
+.navLinkActive,
+.navLinkActive:hover {
+  background-color: transparent;
+  color: var(--blue-500);
+  font-weight: var(--weight-semibold);
+}
+
+.navLinkActive .navIcon,
+.navLinkActive:hover .navIcon {
+  color: var(--blue-500);
+}
+
+.navLinkSolid,
+.navLinkSolid:hover {
+  color: var(--white) !important;
+}
+
+.navLinkSolid .navIcon,
+.navLinkSolid:hover .navIcon {
+  color: var(--white) !important;
+}
+
+/* Shared sliding Empower Blue background pill indicator */
+.navIndicator {
+  position: absolute;
+  top: 0;
+  left: 0;
+  border-radius: var(--radius-pill);
+  background-color: var(--blue-500);
+  box-shadow: 0 2px 8px rgba(27, 117, 188, 0.25);
+  opacity: 0;
+  pointer-events: none;
+  z-index: 0;
+}
+
+.navIndicatorHover {
+  background-color: rgba(27, 117, 188, 0.12);
+  box-shadow: 0 2px 6px rgba(27, 117, 188, 0.08);
+}
+
+.activeDot {
+  position: absolute;
+  bottom: -11px;
+  left: -2.5px;
+  width: 5px;
+  height: 5px;
+  border-radius: 50%;
+  background-color: var(--green-500);
+  box-shadow: 0 0 6px rgba(46, 158, 72, 0.4);
+  opacity: 0;
+  pointer-events: none;
+  z-index: 1;
+}
+
+.activeDotVisible {
+  opacity: 1;
+}
+
+.navIndicatorVisible {
+  opacity: 1;
+}
+
+.navIndicatorAnimated {
+  transition: transform var(--duration-normal) var(--ease-out),
+    width var(--duration-normal) var(--ease-out),
+    height var(--duration-normal) var(--ease-out),
+    background-color var(--duration-normal) var(--ease-out),
+    box-shadow var(--duration-normal) var(--ease-out),
+    opacity var(--duration-fast) var(--ease-out);
+}
+
+/* --- Actions ------------------------------------------------------------ */
+
+.actions {
+  display: flex;
+  align-items: center;
+  gap: var(--space-2);
+  flex-shrink: 0;
+}
+
+.phone {
+  display: none;
+  align-items: center;
+  gap: var(--space-2);
+  padding: var(--space-2);
+  border-radius: var(--radius-pill);
+  font-size: var(--text-sm);
+  font-weight: var(--weight-semibold);
+  color: var(--text-brand);
+  text-decoration: none;
+  white-space: nowrap;
+  transition: background-color var(--duration-fast) var(--ease-out);
+}
+
+.phone:hover {
+  background-color: var(--brand-100);
+  text-decoration: none;
+}
+
+.cta {
+  display: none;
+}
+
+.menuButton {
+  display: grid;
+  place-items: center;
+  width: 44px;
+  height: 44px;
+  border-radius: var(--radius-sm);
+  color: var(--text-brand);
+  transition: background-color var(--duration-fast) var(--ease-out);
+}
+
+.menuButton:hover {
+  background-color: var(--brand-100);
+}
+
+/* --- Mobile side drawer ------------------------------------------------ */
+
+.drawer {
+  position: fixed;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  z-index: var(--z-drawer);
+  width: 320px;
+  max-width: 85vw;
+  height: 100vh;
+  height: 100dvh;
+  display: flex;
+  flex-direction: column;
+  background-color: var(--surface-page);
+  border-left: 1px solid var(--border-subtle);
+  box-shadow: -8px 0 32px rgba(35, 31, 32, 0.16);
+  transform: translateX(100%);
+  transition: transform var(--duration-normal) var(--ease-entrance);
+  overflow-y: auto;
+}
+
+.drawerOpen {
+  transform: translateX(0);
+}
+
+.drawer[hidden] {
+  display: flex;
+  pointer-events: none;
+}
+
+.drawerHeader {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: var(--space-4) var(--space-5);
+  border-bottom: 1px solid var(--border-subtle);
+}
+
+.drawerBrand {
+  display: flex;
+  align-items: center;
+  gap: var(--space-2);
+}
+
+.drawerLogoImg {
+  height: 36px;
+  width: auto;
+}
+
+.drawerBrandTextImg {
+  height: 24px;
+  width: auto;
+}
+
+.drawerCloseButton {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  border: 1px solid var(--border-default);
+  background-color: transparent;
+  color: var(--text-primary);
+  cursor: pointer;
+  transition: background-color var(--duration-fast) var(--ease-out);
+}
+
+.drawerCloseButton:hover {
+  background-color: var(--brand-100);
+}
+
+.drawerNav {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  padding: var(--space-5);
+}
+
+.drawerList {
+  list-style: none;
+  margin: 0 0 var(--space-6);
+  padding: 0;
+}
+
+.drawerLink {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--space-4);
+  margin-bottom: var(--space-2);
+  padding: var(--space-3) var(--space-4);
+  border-radius: var(--radius-lg);
+  font-size: var(--text-base);
+  font-weight: var(--weight-medium);
+  color: var(--text-primary);
+  text-decoration: none;
+  transition: background-color var(--duration-fast) var(--ease-out),
+    color var(--duration-fast) var(--ease-out);
+}
+
+.drawerLinkLabel {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-3);
+}
+
+.drawerIcon {
+  flex-shrink: 0;
+  color: var(--blue-500);
+}
+
+.drawerLink:hover {
+  background-color: rgba(27, 117, 188, 0.08);
+  color: var(--blue-500);
+  text-decoration: none;
+}
+
+.drawerLinkActive,
+.drawerLinkActive:hover {
+  background-color: var(--blue-500);
+  color: var(--white);
+  font-weight: var(--weight-semibold);
+}
+
+.drawerLinkActive .drawerIcon {
+  color: var(--white);
+}
+
+.drawerFooter {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-4);
+  align-items: center;
+  text-align: center;
+  margin-top: auto;
+  padding-top: var(--space-6);
+  border-top: 1px solid var(--border-subtle);
+}
+
+.drawerPhone {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-2);
+  font-size: var(--text-base);
+  font-weight: var(--weight-semibold);
+  color: var(--blue-500);
+  text-decoration: none;
+}
+
+.drawerCrisis {
+  margin: 0;
+  font-size: var(--text-xs);
+  color: var(--text-secondary);
+}
+
+.scrim {
+  position: fixed;
+  inset: 0;
+  z-index: calc(var(--z-drawer) - 1);
+  background-color: rgba(35, 31, 32, 0.48);
+  backdrop-filter: blur(4px);
+  -webkit-backdrop-filter: blur(4px);
+  border: none;
+  cursor: default;
+  animation: fadeIn var(--duration-fast) var(--ease-out);
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+/* --- Breakpoints -------------------------------------------------------- */
+
+@media (min-width: 30rem) {
+  .phone {
+    display: inline-flex;
+  }
+}
+
+/* 75rem, not 62rem.
+   Six icon-labelled nav pills, the wordmark, the phone number and the CTA
+   need ~1109px of content box between them. The original 62rem (992px) gave
+   them 912px, and what gave way was the wordmark — it broke onto two lines.
+   A breakpoint belongs at the width where the layout genuinely fits, not at a
+   round number inherited from a grid system. The drawer covers everything
+   below, which is a better answer than a cramped bar.
+
+   76rem rather than 75rem so a classic vertical scrollbar (~15px) cannot eat
+   the margin right at the switch-over point. If you add a seventh nav item or
+   lengthen a label, re-measure and raise this — there is ~11px of slack, which
+   is to say none. */
+@media (min-width: 76rem) {
+  .desktopNav {
+    display: block;
+    margin-right: auto;
+  }
+
+  .cta {
+    display: inline-flex;
+  }
+
+  .menuButton,
+  .drawer,
+  .scrim {
+    display: none;
+  }
+
+  .brand {
+    margin-right: var(--space-1);
+  }
+}

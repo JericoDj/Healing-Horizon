@@ -1,0 +1,10 @@
+/* HomePage — the page shell.
+   Section styling lives with each section; this file only holds what the
+   composition itself needs. */
+
+.page {
+  /* Decorative overlays in the hero sit close to the container edge. `clip`
+     contains any overshoot without creating a scroll container, so the sticky
+     header and the sticky FAQ column keep working. */
+  overflow-x: clip;
+}

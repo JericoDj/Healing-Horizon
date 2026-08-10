@@ -1,0 +1,121 @@
+.accordion {
+  display: flex;
+  flex-direction: column;
+  border-top: 1px solid var(--border-default);
+}
+
+.item {
+  border-bottom: 1px solid var(--border-default);
+  scroll-margin-top: calc(var(--header-height) + var(--space-6));
+  transition: background-color var(--duration-fast) var(--ease-out);
+}
+
+.itemOpen {
+  background-color: var(--brand-50);
+}
+
+.heading {
+  margin: 0;
+  font-family: var(--font-body);
+  font-size: inherit;
+  font-weight: inherit;
+  letter-spacing: normal;
+}
+
+.trigger {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--space-4);
+  padding: var(--space-5) var(--space-4) var(--space-5) 0;
+  text-align: left;
+  color: var(--text-primary);
+  transition: color var(--duration-fast) var(--ease-out);
+}
+
+.trigger:hover {
+  color: var(--text-brand);
+}
+
+.trigger:focus-visible {
+  outline: var(--focus-ring-width) solid var(--focus-ring-color);
+  outline-offset: -3px;
+  border-radius: var(--radius-sm);
+}
+
+.question {
+  font-family: var(--font-heading);
+  font-size: var(--text-xl);
+  font-weight: var(--weight-medium);
+  line-height: var(--leading-snug);
+  letter-spacing: var(--tracking-snug);
+}
+
+.indicator {
+  flex-shrink: 0;
+  display: grid;
+  place-items: center;
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  border: 1px solid var(--border-default);
+  background-color: var(--surface-raised);
+  color: var(--text-brand);
+  transition: transform var(--duration-normal) var(--ease-out),
+    background-color var(--duration-fast) var(--ease-out),
+    border-color var(--duration-fast) var(--ease-out);
+}
+
+.trigger:hover .indicator {
+  border-color: var(--brand-400);
+  background-color: var(--brand-100);
+}
+
+.itemOpen .indicator {
+  transform: rotate(180deg);
+  background-color: var(--brand-800);
+  border-color: var(--brand-800);
+  color: var(--white);
+}
+
+.panel[hidden] {
+  display: none;
+}
+
+.panelInner {
+  padding: 0 var(--space-12) var(--space-6) 0;
+  max-width: var(--measure-prose);
+  color: var(--text-secondary);
+  font-size: var(--text-md);
+  line-height: var(--leading-relaxed);
+  animation: fade var(--duration-normal) var(--ease-out);
+}
+
+.panelInner p {
+  margin: 0;
+}
+
+.panelInner p + p {
+  margin-top: var(--space-4);
+}
+
+@keyframes fade {
+  from {
+    opacity: 0;
+    transform: translateY(-4px);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+@media (max-width: 40rem) {
+  .question {
+    font-size: var(--text-lg);
+  }
+  .panelInner {
+    padding-right: var(--space-2);
+  }
+}

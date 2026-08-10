@@ -1,0 +1,31 @@
+/* FaqPreview — editorial two-column split: intro left, accordion right. */
+
+.layout {
+  display: grid;
+  gap: var(--space-10);
+  grid-template-columns: 1fr;
+  align-items: start;
+}
+
+.intro {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  min-width: 0;
+}
+
+.panel {
+  min-width: 0;
+}
+
+@media (min-width: 62rem) {
+  .layout {
+    grid-template-columns: minmax(0, 0.85fr) minmax(0, 1.15fr);
+    gap: var(--space-16);
+  }
+
+  .intro {
+    position: sticky;
+    top: calc(var(--header-height) + var(--space-10));
+  }
+}

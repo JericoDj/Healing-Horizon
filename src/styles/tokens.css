@@ -1,0 +1,267 @@
+/* ==========================================================================
+   Healing Horizons Behavioral Health Services — Design Tokens
+   Single source of truth for colour, type, space, radius, elevation, motion.
+   Every component consumes these variables. Never hard-code a hex value in a
+   component stylesheet — add a token here instead.
+   Contrast ratios in comments are measured against the surface named.
+   ========================================================================== */
+
+:root {
+  /* ---------------------------------------------------------------------
+     1. PALETTE — raw brand ramps (do not use directly in components;
+        use the semantic tokens in section 2)
+     --------------------------------------------------------------------- */
+
+  /* Purple ramp — brand core. Named by role, not hue: a token called
+     --teal-800 holding purple is how a design system starts to rot. */
+  --brand-50: #f7f3fb;
+  --brand-100: #f0ebf7; /* Lavender Mist  — supplied  */
+  --brand-200: #dfd2ee;
+  --brand-300: #c4aedf;
+  --brand-400: #a585ce;
+  --brand-500: #8b5fbf; /* Light Purple   — supplied  */
+  --brand-600: #7343a9; /*  6.76:1 on white — AA      */
+  --brand-700: #6a369e; /*  7.97:1 on white — AAA     */
+  --brand-800: #5c2d91; /* Brand Purple   — supplied, PRIMARY. 9.38:1 AAA */
+  --brand-900: #46216e; /* Deep Purple    — supplied. 12.33:1 AAA */
+  --brand-950: #34184f;
+
+  /* Supporting hues. Each has a text-safe variant, because the bright
+     versions of green, orange and teal FAIL contrast as text — see §4.3 of
+     BRAND-GUIDE.md. Only the *-text values may be used for coloured type. */
+  --blue-500: #1b75bc;      /* Empower.  4.86:1 — passes, only just */
+  --blue-text: #155e96;     /*           6.83:1 — AA                */
+  --green-500: #2e9e48;     /* Support.  3.44:1 — UI AND LARGE ONLY */
+  --green-text: #1b6e2e;    /*           6.33:1 — AA                */
+  --orange-500: #f58220;    /* Thrive.   2.59:1 — DECORATION ONLY   */
+  --orange-text: #a85410;   /*           5.33:1 — AA                */
+  --teal-500: #1e9aa8;      /*           3.36:1 — UI AND LARGE ONLY */
+  --teal-text: #14707a;     /*           5.79:1 — AA                */
+  --navy-700: #1b3a6b;      /* Anchor.  11.27:1 — AAA               */
+
+  /* The four pillars. Order and mapping are fixed: Heal, Empower, Support,
+     Thrive. Never swap a colour, never use one pillar on its own. */
+  --pillar-heal: var(--brand-800);
+  --pillar-empower: var(--blue-500);
+  --pillar-support: var(--green-500);
+  --pillar-thrive: var(--orange-500);
+
+  /* Ink ramp — neutrals, warmed slightly toward the teal to avoid grey drift */
+  --ink-50: #f6f4f5;
+  --ink-100: #ebe7e9;
+  --ink-200: #ddd8da;
+  --ink-300: #c0babc;
+  --ink-400: #9e9699; /*  2.89:1 — placeholder text ONLY   */
+  --ink-500: #7e7679; /*  4.42:1 — ≥18.66px or bold ONLY   */
+  --ink-600: #5f585a; /*  6.93:1 — secondary text, AA      */
+  --ink-700: #4e4749;
+  --ink-800: #3a3436;
+  --ink-900: #231f20; /* Ink — supplied. 16.30:1 AAA       */
+  --white: #ffffff;
+  --true-white: #ffffff;
+
+  /* Clay ramp — the one supporting accent. Warmth against all that teal.
+     Budget: no more than ~5% of any screen. Never for large fills. */
+  --accent-50: #fef4ec;
+  --accent-100: #fde4ce;
+  --accent-200: #fac79c;
+  --accent-500: var(--orange-500); /* fills and icons only  */
+  --accent-600: #a85410; /* white on this: 5.33:1 — AA     */
+  --accent-700: var(--orange-text); /* 5.33:1 on white — AA */
+
+  /* Status ramps — tuned to sit inside the palette, not shout over it */
+  --success-50: #edf6ef;
+  --success-600: #1b6e2e; /* 6.33:1 — AA. Matches the Support pillar hue */
+  --warning-50: #fbf3e4;
+  --warning-600: #8a5b12;
+  --danger-50: #fbeeee;
+  --danger-600: #9b2c2c;
+
+  /* ---------------------------------------------------------------------
+     2. SEMANTIC COLOUR — what components actually reference
+     --------------------------------------------------------------------- */
+
+  /* Surfaces, back to front */
+  --surface-page: var(--white); /* the default canvas            */
+  --surface-raised: var(--true-white); /* cards sitting on the canvas   */
+  --surface-sunken: var(--brand-100); /* Lavender Mist — alt sections  */
+  --surface-accent: #eaf0f2; /* Cool Mist — utility panels           */
+  --surface-inverse: var(--navy-700); /* Navy — footer, dark CTAs     */
+  --surface-inverse-deep: #142c52;
+  --surface-overlay: rgba(35, 31, 32, 0.52); /* modal scrim           */
+
+  /* Text — every pairing below is AA or better on its stated surface */
+  --text-primary: var(--ink-900); /* 16.30:1 on page   AAA */
+  --text-secondary: var(--ink-600); /*  6.93:1 on page   AA  */
+  --text-muted: var(--ink-500); /*  4.42:1 — ≥18.66px/bold ONLY */
+  --text-brand: var(--blue-500); /*  4.86:1 — Empower Blue */
+  --text-on-inverse: var(--white); /* 11.27:1 on Navy   AAA */
+  --text-on-inverse-muted: var(--brand-200); /* 7.83:1 on Navy AA */
+  /* The status ramps are tuned for light surfaces and go muddy on Deep Teal,
+     so error text there gets its own tint. 8.44:1 on Navy — AAA. */
+  --text-error-on-inverse: #ffd5d5;
+  --text-accent: var(--accent-700); /*  5.33:1 on page   AA  */
+
+  /* Borders and rules */
+  --border-subtle: var(--ink-100); /* hairlines inside quiet areas */
+  --border-default: var(--ink-200); /* card and section edges       */
+  --border-strong: #8a8085; /* 3.81:1 white / 3.26:1 lavender — 1.4.11 */
+  --border-brand: var(--blue-500);
+  --border-inverse: rgba(255, 255, 255, 0.24);
+
+  /* Interactive */
+  --action-primary: var(--blue-500);
+  --action-primary-hover: var(--blue-text);
+  --action-primary-active: #0f4a78;
+  --action-secondary: var(--success-50);
+  --action-secondary-hover: #d2e9d7;
+  --action-accent: var(--accent-600);
+  --action-accent-hover: var(--accent-700);
+  --action-disabled-bg: var(--ink-100);
+  --action-disabled-text: var(--ink-400);
+
+  /* Focus — one ring, everywhere, never removed */
+  --focus-ring-color: var(--brand-900);
+  --focus-ring-width: 3px;
+  --focus-ring-offset: 2px;
+
+  /* Status semantics */
+  --status-success-bg: var(--success-50);
+  --status-success-fg: var(--success-600);
+  --status-warning-bg: var(--warning-50);
+  --status-warning-fg: var(--warning-600);
+  --status-danger-bg: var(--danger-50);
+  --status-danger-fg: var(--danger-600);
+
+  /* ---------------------------------------------------------------------
+     3. TYPOGRAPHY
+     --------------------------------------------------------------------- */
+  --font-heading: 'Lora', 'Iowan Old Style', 'Palatino Linotype', Palatino,
+    Georgia, 'Times New Roman', serif;
+  --font-body: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto,
+    'Helvetica Neue', Arial, sans-serif;
+  --font-mono: ui-monospace, SFMono-Regular, 'SF Mono', Menlo, Consolas,
+    monospace;
+
+  /* Fluid type scale — 1.200 minor third at mobile, 1.250 at desktop.
+     clamp(min, preferred, max); preferred uses vw so it breathes. */
+  --text-xs: 0.75rem; /* 12px — legal fine print, captions        */
+  --text-sm: 0.875rem; /* 14px — meta, labels, badges              */
+  --text-base: 1rem; /* 16px — never smaller for body copy       */
+  --text-md: 1.0625rem; /* 17px — long-form body                    */
+  --text-lg: clamp(1.125rem, 0.35vw + 1.05rem, 1.25rem); /* 18→20  */
+  --text-xl: clamp(1.375rem, 0.6vw + 1.24rem, 1.625rem); /* 22→26  */
+  --text-2xl: clamp(1.625rem, 1vw + 1.4rem, 2.125rem); /* 26→34    */
+  --text-3xl: clamp(2rem, 1.8vw + 1.6rem, 2.75rem); /* 32→44       */
+  --text-4xl: clamp(2.375rem, 3vw + 1.7rem, 3.5rem); /* 38→56      */
+
+  --leading-tight: 1.15; /* display headings   */
+  --leading-snug: 1.3; /* section headings   */
+  --leading-normal: 1.5; /* UI text            */
+  --leading-relaxed: 1.7; /* body prose         */
+
+  --tracking-tight: -0.02em;
+  --tracking-snug: -0.01em;
+  --tracking-normal: 0;
+  --tracking-wide: 0.06em; /* eyebrows, small caps */
+
+  --weight-regular: 400;
+  --weight-medium: 500;
+  --weight-semibold: 600;
+  --weight-bold: 700;
+
+  --measure-prose: 68ch; /* max line length for body copy   */
+  --measure-narrow: 46ch; /* intros, pull quotes, card text  */
+
+  /* ---------------------------------------------------------------------
+     4. SPACE — 4px base grid. Use tokens, not arbitrary px.
+     --------------------------------------------------------------------- */
+  --space-0: 0;
+  --space-1: 0.25rem; /*  4 */
+  --space-2: 0.5rem; /*  8 */
+  --space-3: 0.75rem; /* 12 */
+  --space-4: 1rem; /* 16 */
+  --space-5: 1.25rem; /* 20 */
+  --space-6: 1.5rem; /* 24 */
+  --space-8: 2rem; /* 32 */
+  --space-10: 2.5rem; /* 40 */
+  --space-12: 3rem; /* 48 */
+  --space-16: 4rem; /* 64 */
+  --space-20: 5rem; /* 80 */
+  --space-24: 6rem; /* 96 */
+  --space-32: 8rem; /* 128 */
+
+  /* Section rhythm — the vertical beat of the page */
+  --section-y: clamp(3.5rem, 7vw, 7rem);
+  --section-y-tight: clamp(2.5rem, 4.5vw, 4rem);
+
+  /* ---------------------------------------------------------------------
+     5. LAYOUT
+     --------------------------------------------------------------------- */
+  --container-max: 1200px;
+  --container-narrow: 760px; /* legal + article pages */
+  --container-wide: 1360px;
+  --gutter: clamp(1.25rem, 4vw, 2.5rem);
+  /* Room for the 40px logo, the nav pills, and the active-state dot that sits
+     below them — with air above and below all three. */
+  --header-height: 84px;
+  --header-height-compact: 70px;
+
+  /* ---------------------------------------------------------------------
+     6. RADIUS
+     --------------------------------------------------------------------- */
+  --radius-xs: 4px;
+  --radius-sm: 8px;
+  --radius-md: 12px;
+  --radius-lg: 16px;
+  --radius-xl: 24px;
+  --radius-2xl: 32px;
+  --radius-pill: 999px;
+
+  /* ---------------------------------------------------------------------
+     7. ELEVATION — purple-tinted shadows. Grey shadows read as dirt on
+        a warm-white canvas; these stay in the family.
+     --------------------------------------------------------------------- */
+  --shadow-xs: 0 1px 2px rgba(35, 31, 32, 0.05);
+  --shadow-sm: 0 1px 3px rgba(35, 31, 32, 0.06), 0 1px 2px rgba(35, 31, 32, 0.04);
+  --shadow-md: 0 4px 12px rgba(92, 45, 145, 0.08), 0 1px 3px rgba(35, 31, 32, 0.05);
+  --shadow-lg: 0 12px 28px rgba(92, 45, 145, 0.11), 0 2px 6px rgba(35, 31, 32, 0.05);
+  --shadow-xl: 0 24px 56px rgba(92, 45, 145, 0.14), 0 4px 10px rgba(35, 31, 32, 0.06);
+  --shadow-focus: 0 0 0 var(--focus-ring-width) var(--focus-ring-color);
+
+  /* ---------------------------------------------------------------------
+     8. MOTION — calm, short, never bouncy. This is a therapy practice.
+     --------------------------------------------------------------------- */
+  --duration-instant: 90ms;
+  --duration-fast: 160ms;
+  --duration-normal: 240ms;
+  --duration-slow: 400ms;
+  --duration-deliberate: 700ms;
+  --ease-out: cubic-bezier(0.22, 0.61, 0.36, 1);
+  --ease-in-out: cubic-bezier(0.45, 0.05, 0.55, 0.95);
+  --ease-entrance: cubic-bezier(0.16, 1, 0.3, 1);
+
+  /* ---------------------------------------------------------------------
+     9. Z-INDEX — named stops only, no ad-hoc numbers
+     --------------------------------------------------------------------- */
+  --z-base: 0;
+  --z-raised: 10;
+  --z-sticky: 100;
+  --z-header: 200;
+  --z-drawer: 300;
+  --z-overlay: 400;
+  --z-modal: 500;
+  --z-toast: 600;
+  --z-skip-link: 700;
+}
+
+/* Users who ask for less motion get less motion. Non-negotiable. */
+@media (prefers-reduced-motion: reduce) {
+  :root {
+    --duration-instant: 1ms;
+    --duration-fast: 1ms;
+    --duration-normal: 1ms;
+    --duration-slow: 1ms;
+    --duration-deliberate: 1ms;
+  }
+}

@@ -1,0 +1,145 @@
+.container {
+  min-height: calc(100vh - var(--header-height, 84px) - 100px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: var(--space-12) var(--space-4);
+  background-color: var(--surface-page);
+  background-image:
+    radial-gradient(ellipse at 50% 0%, rgba(27, 117, 188, 0.10) 0%, transparent 65%),
+    linear-gradient(180deg, #f4f8fb 0%, var(--surface-page) 100%);
+}
+
+.card {
+  width: 100%;
+  max-width: 44rem;
+  margin: 0 auto;
+  padding: var(--space-10) var(--space-8);
+  border-radius: var(--radius-2xl, 24px);
+  background-color: var(--surface-raised, #ffffff);
+  border: 1px solid var(--border-subtle, rgba(27, 117, 188, 0.12));
+  box-shadow: 0 20px 48px rgba(35, 31, 32, 0.06);
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.brandHeader {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--space-3);
+  margin-bottom: var(--space-6);
+}
+
+.logoImg {
+  height: 64px;
+  width: auto;
+  object-fit: contain;
+}
+
+.brandTextImg {
+  height: 44px;
+  width: auto;
+  object-fit: contain;
+}
+
+.eyebrow {
+  margin: 0 0 var(--space-3);
+  font-size: var(--text-xs, 0.75rem);
+  font-weight: var(--weight-semibold, 600);
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--blue-500, #1b75bc);
+}
+
+.title {
+  margin: 0 0 var(--space-4);
+  font-size: clamp(1.85rem, 3.5vw, 2.75rem);
+  font-weight: var(--weight-semibold, 600);
+  color: var(--blue-500, #1b75bc);
+  line-height: var(--leading-tight, 1.15);
+  letter-spacing: -0.02em;
+}
+
+.pillars {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--space-2);
+  margin-bottom: var(--space-6);
+}
+
+.pillarBadge {
+  padding: 4px 12px;
+  border-radius: var(--radius-pill, 9999px);
+  font-size: var(--text-xs, 0.75rem);
+  font-weight: var(--weight-semibold, 600);
+  letter-spacing: 0.04em;
+  color: #ffffff;
+}
+
+.heal {
+  background-color: var(--brand-800, #5c2d91);
+}
+
+.empower {
+  background-color: var(--blue-500, #1b75bc);
+}
+
+.support {
+  background-color: var(--green-500, #2e9e48);
+}
+
+.thrive {
+  background-color: var(--orange-500, #f58220);
+}
+
+.description {
+  margin: 0 0 var(--space-8);
+  max-width: 36ch;
+  font-size: var(--text-lg, 1.125rem);
+  line-height: var(--leading-relaxed, 1.6);
+  color: var(--ink-600, #5f585a);
+}
+
+.notifyBox {
+  width: 100%;
+  max-width: 28rem;
+  margin-bottom: var(--space-8);
+}
+
+.notifyForm {
+  display: flex;
+  gap: var(--space-2);
+  width: 100%;
+}
+
+.emailInput {
+  flex: 1;
+}
+
+.actions {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+  gap: var(--space-3);
+  width: 100%;
+}
+
+@media (max-width: 34rem) {
+  .card {
+    padding: var(--space-6) var(--space-4);
+  }
+
+  .brandHeader {
+    flex-direction: column;
+    gap: var(--space-2);
+  }
+
+  .notifyForm {
+    flex-direction: column;
+  }
+}

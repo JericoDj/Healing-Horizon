@@ -1,0 +1,16 @@
+.stickyHeaderWrap {
+  position: sticky;
+  top: 0;
+  z-index: var(--z-header);
+}
+
+.main {
+  flex: 1;
+  display: block;
+}
+
+/* The shell manages focus for route changes; never show a ring on the
+   container itself, only on the things inside it. */
+.main:focus {
+  outline: none;
+}

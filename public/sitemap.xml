@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+  PLACEHOLDER SITEMAP. Regenerate against the real domain before launch, and
+  keep it in sync with src/routes/paths.js. Every <loc> below uses the
+  placeholder domain from src/data/site.js.
+-->
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+  <url><loc>https://www.healinghorizon.example/</loc><priority>1.0</priority><changefreq>monthly</changefreq></url>
+  <url><loc>https://www.healinghorizon.example/services</loc><priority>0.9</priority></url>
+  <url><loc>https://www.healinghorizon.example/services/individual-therapy</loc><priority>0.8</priority></url>
+  <url><loc>https://www.healinghorizon.example/services/couples-therapy</loc><priority>0.8</priority></url>
+  <url><loc>https://www.healinghorizon.example/services/teen-therapy</loc><priority>0.8</priority></url>
+  <url><loc>https://www.healinghorizon.example/services/family-therapy</loc><priority>0.8</priority></url>
+  <url><loc>https://www.healinghorizon.example/services/trauma-emdr</loc><priority>0.8</priority></url>
+  <url><loc>https://www.healinghorizon.example/services/group-therapy</loc><priority>0.8</priority></url>
+  <url><loc>https://www.healinghorizon.example/services/telehealth</loc><priority>0.8</priority></url>
+  <url><loc>https://www.healinghorizon.example/therapists</loc><priority>0.9</priority></url>
+  <url><loc>https://www.healinghorizon.example/therapists/maya-okafor</loc><priority>0.7</priority></url>
+  <url><loc>https://www.healinghorizon.example/therapists/daniel-reyes</loc><priority>0.7</priority></url>
+  <url><loc>https://www.healinghorizon.example/therapists/sarah-lindqvist</loc><priority>0.7</priority></url>
+  <url><loc>https://www.healinghorizon.example/therapists/james-whitfield</loc><priority>0.7</priority></url>
+  <url><loc>https://www.healinghorizon.example/therapists/priya-raman</loc><priority>0.7</priority></url>
+  <url><loc>https://www.healinghorizon.example/therapists/aaliyah-brooks</loc><priority>0.7</priority></url>
+  <url><loc>https://www.healinghorizon.example/about</loc><priority>0.7</priority></url>
+  <url><loc>https://www.healinghorizon.example/rates</loc><priority>0.8</priority></url>
+  <url><loc>https://www.healinghorizon.example/resources</loc><priority>0.7</priority></url>
+  <url><loc>https://www.healinghorizon.example/faq</loc><priority>0.7</priority></url>
+  <url><loc>https://www.healinghorizon.example/contact</loc><priority>0.9</priority></url>
+  <url><loc>https://www.healinghorizon.example/book</loc><priority>1.0</priority></url>
+  <url><loc>https://www.healinghorizon.example/privacy</loc><priority>0.3</priority></url>
+  <url><loc>https://www.healinghorizon.example/terms</loc><priority>0.3</priority></url>
+  <url><loc>https://www.healinghorizon.example/accessibility</loc><priority>0.3</priority></url>
+</urlset>

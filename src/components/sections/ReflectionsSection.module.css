@@ -1,0 +1,108 @@
+/* ReflectionsSection — Deep Teal quote treatment.
+   background-image, not background-color, so it layers over .section--inverse
+   regardless of stylesheet order. */
+
+.reflections {
+  position: relative;
+  overflow-x: clip;
+  background-image: radial-gradient(
+      80% 70% at 12% 0%,
+      var(--brand-800) 0%,
+      transparent 60%
+    ),
+    linear-gradient(165deg, var(--brand-900) 0%, var(--brand-950) 100%);
+}
+
+/* --- Disclosure --------------------------------------------------------- */
+
+.disclosure {
+  display: flex;
+  align-items: flex-start;
+  gap: var(--space-4);
+  max-width: var(--measure-prose);
+  margin: 0 auto var(--space-12);
+  padding: var(--space-5) var(--space-6);
+  border: 1px solid var(--border-inverse);
+  border-radius: var(--radius-lg);
+  background-color: var(--surface-inverse-deep);
+  font-size: var(--text-base);
+  line-height: var(--leading-relaxed);
+  color: var(--text-on-inverse-muted);
+}
+
+.disclosure strong {
+  color: var(--white);
+  font-weight: var(--weight-semibold);
+}
+
+.disclosure svg {
+  flex-shrink: 0;
+  margin-top: 3px;
+  color: var(--brand-300);
+}
+
+/* --- Quotes ------------------------------------------------------------- */
+
+.list {
+  display: grid;
+  gap: var(--space-10);
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  grid-template-columns: 1fr;
+}
+
+.item {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-3);
+  min-width: 0;
+}
+
+.mark {
+  color: var(--brand-600);
+}
+
+.context {
+  margin: 0;
+  font-size: var(--text-sm);
+  font-weight: var(--weight-semibold);
+  letter-spacing: var(--tracking-wide);
+  text-transform: uppercase;
+  color: var(--brand-300);
+}
+
+.quote {
+  margin: 0;
+}
+
+.quote p {
+  margin: 0;
+  font-family: var(--font-heading);
+  font-size: var(--text-xl);
+  font-weight: var(--weight-regular);
+  line-height: var(--leading-snug);
+  letter-spacing: var(--tracking-snug);
+  color: var(--text-on-inverse);
+  text-wrap: pretty;
+}
+
+/* --- Breakpoints -------------------------------------------------------- */
+
+@media (min-width: 48rem) {
+  .disclosure {
+    padding: var(--space-6) var(--space-8);
+  }
+}
+
+@media (min-width: 62rem) {
+  .list {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: var(--space-10);
+  }
+
+  .item + .item {
+    padding-left: var(--space-10);
+    border-left: 1px solid var(--border-inverse);
+  }
+}

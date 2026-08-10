@@ -1,0 +1,479 @@
+/* ==========================================================================
+   AboutPage — /about
+   ========================================================================== */
+
+/* --- Hero ---------------------------------------------------------------- */
+
+.hero {
+  padding-bottom: var(--section-y-tight);
+}
+
+.heroInner {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-4);
+  max-width: var(--measure-prose);
+}
+
+.lead {
+  font-size: var(--text-lg);
+  line-height: var(--leading-relaxed);
+  color: var(--text-secondary);
+}
+
+/* --- Story --------------------------------------------------------------- */
+
+/* Single column, top to bottom. The practice story is a piece of prose and
+   wants to be read as one — a right rail pulls the eye out of it every few
+   lines, and on a page whose job is "who runs this place" that is the wrong
+   trade. The facts follow underneath as a band instead. */
+.storyLayout {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-12);
+}
+
+.storyMain {
+  min-width: 0;
+}
+
+.storyProse {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-5);
+  max-width: var(--measure-prose);
+  color: var(--text-secondary);
+  font-size: var(--text-md);
+  line-height: var(--leading-relaxed);
+}
+
+.storyAside {
+  width: 100%;
+}
+
+/* A four-up band of facts rather than a stacked card. Read across, it is a
+   summary of the practice; the rules between cells do the separating that the
+   card's background used to. */
+.factList {
+  display: grid;
+  gap: 0;
+  margin: 0;
+  padding-top: var(--space-8);
+  border-top: 2px solid var(--brand-800);
+  grid-template-columns: 1fr;
+}
+
+.fact {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-2);
+  padding-block: var(--space-5);
+}
+
+.fact + .fact {
+  border-top: 1px solid var(--border-default);
+}
+
+@media (min-width: 34rem) {
+  .factList {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    column-gap: var(--space-8);
+  }
+
+  .fact {
+    padding-block: var(--space-4);
+  }
+
+  /* On a 2-up grid only the first row should be flush with the rule above. */
+  .fact + .fact {
+    border-top: none;
+  }
+
+  .fact:nth-child(n + 3) {
+    border-top: 1px solid var(--border-default);
+    padding-top: var(--space-6);
+    margin-top: var(--space-2);
+  }
+}
+
+@media (min-width: 62rem) {
+  .factList {
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    column-gap: var(--space-10);
+  }
+
+  .fact,
+  .fact:nth-child(n + 3) {
+    border-top: none;
+    padding-top: 0;
+    margin-top: 0;
+    padding-block: 0;
+  }
+}
+
+.factLabel {
+  font-size: var(--text-sm);
+  font-weight: var(--weight-semibold);
+  letter-spacing: var(--tracking-wide);
+  text-transform: uppercase;
+  color: var(--text-brand);
+}
+
+.factValue {
+  font-family: var(--font-heading);
+  font-size: var(--text-xl);
+  line-height: var(--leading-snug);
+  color: var(--text-primary);
+}
+
+/* --- Beliefs ------------------------------------------------------------- */
+
+.beliefGrid {
+  display: grid;
+  gap: var(--space-6);
+  grid-template-columns: 1fr;
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+@media (min-width: 48rem) {
+  .beliefGrid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+@media (min-width: 82rem) {
+  .beliefGrid {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+}
+
+.beliefItem {
+  display: flex;
+}
+
+.beliefCard {
+  width: 100%;
+  gap: var(--space-3);
+  align-items: flex-start;
+}
+
+.beliefIcon {
+  display: grid;
+  place-items: center;
+  width: var(--space-12);
+  height: var(--space-12);
+  border-radius: var(--radius-md);
+  background-color: var(--brand-100);
+  color: var(--text-brand);
+}
+
+.beliefTitle {
+  margin: 0;
+  font-size: var(--text-xl);
+  line-height: var(--leading-snug);
+  color: var(--text-primary);
+}
+
+.beliefBody {
+  color: var(--text-secondary);
+  font-size: var(--text-base);
+  line-height: var(--leading-relaxed);
+}
+
+/* --- How we operate ------------------------------------------------------ */
+
+.practiceGrid {
+  display: grid;
+  gap: var(--space-8);
+  grid-template-columns: 1fr;
+}
+
+@media (min-width: 62rem) {
+  .practiceGrid {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: var(--space-10);
+  }
+}
+
+.practiceBlock {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-3);
+}
+
+.practiceBlock p {
+  color: var(--text-secondary);
+  font-size: var(--text-base);
+  line-height: var(--leading-relaxed);
+}
+
+.practiceTitle {
+  margin: 0;
+  font-size: var(--text-xl);
+  line-height: var(--leading-snug);
+  color: var(--text-primary);
+}
+
+.traumaBlock {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-4);
+  margin-top: var(--space-12);
+  padding: var(--space-8);
+  border-radius: var(--radius-xl);
+  background-color: var(--surface-raised);
+  box-shadow: var(--shadow-sm);
+}
+
+.traumaIntro {
+  max-width: var(--measure-prose);
+  color: var(--text-secondary);
+  font-size: var(--text-base);
+  line-height: var(--leading-relaxed);
+}
+
+.checkList {
+  display: grid;
+  gap: var(--space-4);
+  grid-template-columns: 1fr;
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+@media (min-width: 48rem) {
+  .checkList {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    column-gap: var(--space-10);
+  }
+}
+
+.checkItem {
+  display: flex;
+  align-items: flex-start;
+  gap: var(--space-3);
+  color: var(--text-primary);
+  font-size: var(--text-base);
+  line-height: var(--leading-normal);
+}
+
+.checkMark {
+  display: grid;
+  place-items: center;
+  width: var(--space-6);
+  height: var(--space-6);
+  flex-shrink: 0;
+  margin-top: var(--space-1);
+  border-radius: var(--radius-pill);
+  background-color: var(--brand-100);
+  color: var(--text-brand);
+}
+
+/* --- The office ---------------------------------------------------------- */
+
+.officeGrid {
+  display: grid;
+  gap: var(--space-6);
+  grid-template-columns: 1fr;
+}
+
+@media (min-width: 48rem) {
+  .officeGrid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+@media (min-width: 62rem) {
+  .officeGrid {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+}
+
+.officeCard {
+  gap: var(--space-3);
+  align-items: flex-start;
+}
+
+.officeIcon {
+  display: grid;
+  place-items: center;
+  width: var(--space-12);
+  height: var(--space-12);
+  border-radius: var(--radius-md);
+  background-color: var(--surface-raised);
+  color: var(--text-brand);
+}
+
+.officeTitle {
+  margin: 0;
+  font-size: var(--text-lg);
+  line-height: var(--leading-snug);
+  color: var(--text-primary);
+}
+
+.address {
+  display: flex;
+  flex-direction: column;
+  font-style: normal;
+  color: var(--text-primary);
+  font-size: var(--text-base);
+  line-height: var(--leading-normal);
+}
+
+.officeList {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-3);
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  color: var(--text-secondary);
+  font-size: var(--text-base);
+  line-height: var(--leading-normal);
+}
+
+.officeList li {
+  position: relative;
+  padding-left: var(--space-5);
+}
+
+.officeList li::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 0.6em;
+  width: var(--space-2);
+  height: var(--space-2);
+  border-radius: var(--radius-pill);
+  background-color: var(--brand-600);
+}
+
+.officeBody,
+.officeNote {
+  color: var(--text-secondary);
+  font-size: var(--text-base);
+  line-height: var(--leading-relaxed);
+}
+
+.officeNote {
+  padding-top: var(--space-4);
+  border-top: 1px solid var(--border-default);
+  font-size: var(--text-sm);
+}
+
+/* --- Affiliations -------------------------------------------------------- */
+
+.affiliationsHeading {
+  font-size: var(--text-lg);
+  font-family: var(--font-body);
+  font-weight: var(--weight-semibold);
+  letter-spacing: var(--tracking-normal);
+  color: var(--text-primary);
+  margin-bottom: var(--space-5);
+}
+
+.affiliationList {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-3) var(--space-6);
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.affiliationItem {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-2);
+  color: var(--text-brand);
+  font-size: var(--text-base);
+  font-weight: var(--weight-medium);
+}
+
+/* --- Team preview -------------------------------------------------------- */
+
+.teamGrid {
+  display: grid;
+  gap: var(--space-4);
+  grid-template-columns: 1fr;
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+@media (min-width: 34rem) {
+  .teamGrid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+@media (min-width: 62rem) {
+  .teamGrid {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+}
+
+.teamItem {
+  display: flex;
+}
+
+.teamCard {
+  flex-direction: row;
+  align-items: center;
+  gap: var(--space-4);
+  width: 100%;
+}
+
+.teamText {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-1);
+  min-width: 0;
+}
+
+.teamName {
+  margin: 0;
+  font-size: var(--text-lg);
+  line-height: var(--leading-snug);
+  color: var(--text-primary);
+}
+
+.teamRole {
+  font-size: var(--text-sm);
+  font-weight: var(--weight-semibold);
+  color: var(--text-brand);
+}
+
+.teamCreds {
+  color: var(--text-secondary);
+  font-size: var(--text-sm);
+  line-height: var(--leading-normal);
+}
+
+.teamAction {
+  margin-top: var(--space-10);
+}
+
+/* --- Closing CTA --------------------------------------------------------- */
+
+.ctaInner {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-4);
+  max-width: var(--measure-prose);
+}
+
+.ctaCopy {
+  color: var(--text-on-inverse-muted);
+  font-size: var(--text-lg);
+  line-height: var(--leading-relaxed);
+}
+
+.ctaActions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-3);
+  margin-top: var(--space-2);
+}
