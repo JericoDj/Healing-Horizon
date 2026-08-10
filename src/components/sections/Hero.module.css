@@ -329,8 +329,17 @@
   .licence {
     right: var(--space-4);
   }
+}
+
+@media (min-width: 48rem) {
+  .grid {
+    display: grid;
+    grid-template-columns: minmax(0, 1.02fr) minmax(0, 0.98fr);
+    gap: var(--space-12);
+  }
 
   .availability {
+    display: flex;
     left: 0;
     bottom: var(--space-8);
   }
@@ -338,7 +347,6 @@
 
 @media (min-width: 62rem) {
   .grid {
-    grid-template-columns: minmax(0, 1.02fr) minmax(0, 0.98fr);
     gap: var(--space-16);
   }
 
@@ -353,7 +361,6 @@
   }
 
   .availability {
-    display: flex;
     left: calc(var(--space-8) * -1);
     bottom: var(--space-10);
   }
