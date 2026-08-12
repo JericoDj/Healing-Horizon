@@ -66,7 +66,7 @@ export function ServicesPage() {
   return (
     <>
       {/* ------------------------------------------------------------- hero -- */}
-      <section className={`section ${styles.hero}`} aria-labelledby="services-heading">
+      <section className={`section section--tight section--sunken ${styles.hero}`} aria-labelledby="services-heading">
         <div className="container">
           <div className={styles.heroInner}>
             <p className="eyebrow">Services</p>
@@ -228,7 +228,7 @@ export function ServicesPage() {
               tell you that too and suggest where to look next.
             </p>
             <div className={styles.ctaActions}>
-              <Button to={paths.book} variant="inverse" size="lg" iconRight="arrowRight">
+              <Button to={paths.book} variant="inverse" size="lg" iconRight="arrowRight" className={styles.bookCta}>
                 Book a consultation
               </Button>
               <Button to={paths.rates} variant="inverseOutline" size="lg">

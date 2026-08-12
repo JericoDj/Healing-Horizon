@@ -115,6 +115,55 @@
   /* The Support green is 4.04:1 on the crisis strip; this lifted tint reads
      unambiguously as green on a dark ground. 5.84:1 — AA. */
   --green-on-inverse: #3fbf5e;
+  /* Lighter green for icons on dark grounds. 6.12:1 on Navy — comfortably
+     past the 3:1 that non-text UI needs, and reads as "green" not "teal". */
+  --green-light: #4cd964;
+  /* Footer chip fill. Bright enough to read as "green," dark enough that
+     white bold 14px text (below the 18.66px large-text threshold, so it
+     needs the full 4.5:1) still clears it: 5.01:1 — AA. --green-light itself
+     only supports DARK text (white on it is 1.84:1 — fails outright). */
+  --green-chip: #1c8038;
+  /* Footer address icons — one colour per row (pin/phone/mail), each
+     verified >=3:1 (non-text UI) against the navy footer.
+     yellow 7.81:1 · orange 5.45:1 · green (--green-light) 6.12:1 */
+  --yellow-on-inverse: #ffd166;
+  --orange-on-inverse: #ff9d42;
+  /* Amber, not the raw --yellow-on-inverse (#ffd166) — that is 1.44:1 on
+     white and disappears. This is 4.58:1 — AA. Used for the alternating
+     affiliation-badge icons, which sit on a white/near-white card. */
+  --amber-on-light: #996e00;
+  /* Subscribe button fill. --orange-500 (#f58220) is 2.59:1 with white text
+     and fails outright; this is 4.95:1 — AA. */
+  /* Two-stop gradient at rest — richer than a flat fill, and gives the hover
+     state somewhere to go. Both stops individually pass white-text AA:
+     #c2460a 5.03:1 · #963f0a 6.97:1. */
+  --orange-button-start: #c2460a;
+  --orange-button-end: #963f0a;
+  /* Hover brightens rather than darkens — a hover that goes darker reads as
+     "disabled," not "you're pointing at this." This is the most saturated
+     orange that still clears 4.5:1 with white text; brighter true-oranges
+     (e.g. the pillar #f58220) fail outright. */
+  --orange-button-hover: #d2460a; /* 4.54:1 — AA */
+  /* Pale tint to pair with --orange-button on the affiliation badges —
+     matches the --warning-50/--success-50 tint pattern used elsewhere. */
+  --orange-50: #fdece0;
+  /* Light-yellow number badge (the "6" tile). A yellow LINE or glyph on white
+     cannot pass contrast at any lightness — every pale yellow we tried was
+     ~1.1-1.9:1, because yellow is inherently high-luminance. The fix is the
+     same one used for the affiliation badges: put the light yellow in a
+     BACKGROUND field, and set the digit in dark ink on top of it (15.09:1).
+     The border stays --amber-on-light (deeper) so the card edge is still
+     legible as a line; a border-only accent lightened to true pastel yellow
+     measured under 2:1 and effectively disappeared against the white page. */
+  --yellow-badge-bg: #fff6da;
+  /* Gold for the display number on the "6" tile. Reads yellow-gold while
+     clearing 3:1 (3.61:1) at the 38-56px display size those numbers use —
+     a genuinely pale yellow measures ~1.5:1 and is illegible on white at
+     any size, so this is as light as the hue can go and remain readable. */
+  --gold-display: #ad7f0a;
+  /* Vivid orange for the "Free" tile. Replaces --orange-500 (#f58220) there,
+     which was 2.59:1 and failed even the large-text threshold. 3.97:1. */
+  --orange-display: #d9560a;
   /* Eyebrow chip fill. White on this is 5.37:1 — AA. The brighter Support
      green would only manage 3.44:1, which fails for 14px label text. */
   --chip-green: #237a38;

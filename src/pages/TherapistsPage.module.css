@@ -6,6 +6,7 @@
 
 .hero {
   background: linear-gradient(180deg, var(--surface-hero) 0%, var(--surface-page) 100%);
+  border-bottom: 1px solid var(--border-default);
   padding-bottom: var(--section-y-tight);
 }
 

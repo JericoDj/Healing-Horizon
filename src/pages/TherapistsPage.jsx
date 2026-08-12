@@ -68,7 +68,7 @@ export function TherapistsPage() {
   return (
     <>
       {/* ---------------------------------------------------------------- Hero */}
-      <section className={`section ${styles.hero}`} aria-labelledby="therapists-heading">
+      <section className={`section section--tight section--sunken ${styles.hero}`} aria-labelledby="therapists-heading">
         <div className="container">
           <div className={styles.heroInner}>
             <p className="eyebrow">The team</p>

@@ -6,7 +6,7 @@
 
 .hero {
   background: linear-gradient(180deg, var(--surface-hero) 0%, var(--surface-page) 100%);
-  padding-bottom: var(--section-y-tight);
+  border-bottom: 1px solid var(--border-default);
 }
 
 .heroInner {
@@ -319,4 +319,36 @@
   flex-wrap: wrap;
   gap: var(--space-3);
   margin-top: var(--space-2);
+}
+
+.bookCta {
+  background: linear-gradient(135deg, #ffd166 0%, #f5b700 100%) !important;
+  color: #0c1a2e !important;
+  border-color: transparent !important;
+  font-weight: var(--weight-bold);
+  box-shadow: 0 4px 18px rgba(245, 183, 0, 0.4);
+}
+
+.bookCta:hover:not(:disabled) {
+  background: linear-gradient(135deg, #ffe082 0%, #ffca28 100%) !important;
+  color: #060e1a !important;
+  box-shadow: 0 6px 24px rgba(255, 209, 102, 0.6);
+}
+
+@media (max-width: 47.99rem) {
+  .ctaInner {
+    align-items: center;
+    text-align: center;
+    margin-inline: auto;
+  }
+
+  .ctaActions {
+    justify-content: center;
+    width: 100%;
+  }
+
+  .ctaActions > * {
+    width: 100%;
+    justify-content: center;
+  }
 }

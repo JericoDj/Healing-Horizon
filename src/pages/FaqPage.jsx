@@ -36,7 +36,7 @@ export function FaqPage() {
 
   return (
     <>
-      <section className={`section ${styles.hero}`} aria-labelledby="faq-heading">
+      <section className={`section section--tight section--sunken ${styles.hero}`} aria-labelledby="faq-heading">
         <div className="container">
           <p className="eyebrow">Questions</p>
           <h1 id="faq-heading" className={styles.title}>

@@ -48,10 +48,31 @@
   padding: var(--space-6);
   border-radius: var(--radius-xl);
   background-color: var(--surface-raised);
-  border: 1px solid var(--border-subtle);
+  /* Overridden per-card below so the border repeats the number's own colour
+     rather than a single neutral border for all four. */
+  border: 1.5px solid var(--item-accent, var(--border-subtle));
   box-shadow: 0 4px 16px rgba(35, 31, 32, 0.04);
   transition: transform var(--duration-fast) var(--ease-out),
-    box-shadow var(--duration-fast) var(--ease-out);
+    box-shadow var(--duration-fast) var(--ease-out),
+    border-color var(--duration-fast) var(--ease-out);
+}
+
+/* Each card's border is that card's own accent, set once via a custom
+   property so .item's hover/shadow rules do not need repeating per colour. */
+.itemHeal {
+  --item-accent: var(--gold-display);
+}
+
+.itemEmpower {
+  --item-accent: var(--blue-500);
+}
+
+.itemSupport {
+  --item-accent: var(--green-500);
+}
+
+.itemThrive {
+  --item-accent: var(--orange-display);
 }
 
 .item:hover {
@@ -69,8 +90,13 @@
   text-align: center;
 }
 
+/* Plain coloured numeral, matching the other three tiles — the badge-field
+   treatment made this one card look like a different component.
+   Gold rather than a pale yellow: yellow is inherently high-luminance, so a
+   truly light yellow numeral measures ~1.5:1 on white and is unreadable.
+   This is as light as the hue goes while clearing 3:1 at display size. */
 .valueHeal {
-  color: var(--brand-800);
+  color: var(--gold-display); /* 3.61:1 — passes for 38-56px display text */
 }
 
 .valueEmpower {
@@ -81,8 +107,10 @@
   color: var(--green-500);
 }
 
+/* Was --orange-500 (#f58220), which measured 2.59:1 — below even the 3:1
+   large-text floor. */
 .valueThrive {
-  color: var(--orange-500);
+  color: var(--orange-display); /* 3.97:1 */
 }
 
 .label {
@@ -103,55 +131,122 @@
   text-align: center;
 }
 
-/* --- Affiliations ------------------------------------------------------- */
+/* --- Affiliations ---------------------------------------------------------
+   A bordered panel with its own heading chip and a set of credential badges,
+   rather than the previous flat, dot-separated text row — memberships are a
+   credibility signal on a healthcare site and deserve to look like one. */
 
 .affiliations {
-  margin-top: var(--space-10);
-  padding-top: var(--space-8);
-  border-top: 1px solid var(--border-subtle);
+  margin-top: var(--space-12);
+  padding: var(--space-8) var(--space-6);
+  border: 1px solid var(--border-default);
+  border-radius: var(--radius-xl);
+  background: linear-gradient(180deg, var(--surface-hero) 0%, var(--surface-raised) 65%);
   text-align: center;
 }
 
 .affiliationsHeading {
-  margin: 0 0 var(--space-4);
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-2);
+  margin: 0 0 var(--space-6);
+  color: var(--blue-text); /* 6.83:1 on white / 6.05:1 on the hero tint — AA */
+}
+
+.affiliationsIcon {
+  flex-shrink: 0;
+}
+
+.affiliationsTitle {
+  margin: 0;
   font-family: var(--font-body);
   font-size: var(--text-sm);
-  font-weight: var(--weight-semibold);
+  font-weight: var(--weight-bold);
   letter-spacing: var(--tracking-wide);
   text-transform: uppercase;
-  color: var(--text-secondary);
-  text-align: center;
+  color: inherit;
 }
 
 .affiliationsList {
   display: flex;
   flex-wrap: wrap;
-  align-items: center;
+  align-items: stretch;
   justify-content: center;
-  gap: var(--space-3) var(--space-6);
+  gap: var(--space-3);
   list-style: none;
   margin: 0;
   padding: 0;
 }
 
+/* Each membership is a tinted, coloured badge — background tint, matching
+   border and icon — cycling amber -> green -> orange, set once per badge via
+   custom properties so the colour reads from the whole shape at a glance
+   rather than from a 15px icon glyph alone (the earlier version coloured
+   only the icon, and the three hues were too close together to tell apart
+   at that size). Text stays --text-primary throughout — only the icon needs
+   the 3:1 non-text-UI contrast; the tint itself is pale enough that ink text
+   clears AAA against every one of the three tints (14+:1, checked). */
+/* ONE accent, not three. The alternating amber/green/orange cycle made five
+   short labels look like a rainbow of unrelated tags — the colours carried no
+   meaning (a membership is not "amber" or "green"), so they were decoration
+   competing with the four coloured metric tiles directly above. A single blue,
+   matching this section's heading, reads as one coherent credential set.
+   Character comes from the icon disc and the card treatment instead. */
 .affiliation {
   position: relative;
-  font-size: var(--text-base);
-  font-weight: var(--weight-medium);
-  color: var(--text-secondary);
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-3);
+  padding: var(--space-2) var(--space-5) var(--space-2) var(--space-2);
+  border: 1px solid var(--border-default);
+  border-radius: var(--radius-pill);
+  background-color: var(--surface-raised);
+  font-size: var(--text-sm);
+  font-weight: var(--weight-semibold);
+  color: var(--text-primary);
+  box-shadow: 0 1px 3px rgba(35, 31, 32, 0.06);
+  transition: box-shadow var(--duration-fast) var(--ease-out),
+    transform var(--duration-fast) var(--ease-out),
+    border-color var(--duration-fast) var(--ease-out);
 }
 
-.affiliation + .affiliation::before {
-  content: '';
-  position: absolute;
-  left: calc(var(--space-3) * -1);
-  top: 50%;
-  width: 4px;
-  height: 4px;
-  margin-top: -2px;
-  border-radius: 50%;
-  background-color: var(--brand-400);
+/* Hover lifts and picks up the blue accent — no violet anywhere. */
+.affiliation:hover {
+  border-color: var(--blue-500);
+  box-shadow: 0 8px 20px rgba(27, 117, 188, 0.22);
+  transform: translateY(-3px);
 }
+
+.affiliation:hover .affiliationIconWrap {
+  transform: scale(1.08);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .affiliation:hover,
+  .affiliation:hover .affiliationIconWrap {
+    transform: none;
+  }
+}
+
+/* Solid disc rather than a bare glyph — a small block of full-strength
+   colour is what makes the badge read at a glance. White on --blue-text is
+   6.83:1, well past the 3:1 a non-text icon needs. */
+.affiliationIconWrap {
+  flex-shrink: 0;
+  display: grid;
+  place-items: center;
+  width: 24px;
+  height: 24px;
+  border-radius: 50%;
+  background-color: var(--blue-text);
+  box-shadow: 0 1px 2px rgba(21, 94, 150, 0.3);
+  transition: transform var(--duration-fast) var(--ease-out);
+}
+
+.affiliationIcon {
+  color: var(--white);
+}
+
 
 /* --- Breakpoints -------------------------------------------------------- */
 

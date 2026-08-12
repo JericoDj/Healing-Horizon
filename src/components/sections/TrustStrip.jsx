@@ -1,4 +1,5 @@
 import { affiliations, trustSignals } from '../../data/testimonials';
+import Icon from '../ui/Icon';
 import styles from './TrustStrip.module.css';
 
 /**
@@ -33,9 +34,18 @@ export function TrustStrip() {
               styles.valueSupport,
               styles.valueThrive,
             ][index % 4];
+            // The card border repeats its own number's colour, so each tile
+            // reads as one coloured unit rather than a coloured number sitting
+            // inside an unrelated neutral box.
+            const borderClass = [
+              styles.itemHeal,
+              styles.itemEmpower,
+              styles.itemSupport,
+              styles.itemThrive,
+            ][index % 4];
 
             return (
-              <li key={signal.id} className={styles.item}>
+              <li key={signal.id} className={`${styles.item} ${borderClass}`}>
                 <p className={`${styles.value} ${pillarClass}`}>{signal.value}</p>
                 <p className={styles.label}>{signal.label}</p>
                 <p className={styles.detail}>{signal.detail}</p>
@@ -44,14 +54,29 @@ export function TrustStrip() {
           })}
         </ul>
 
+        {/* A bordered panel rather than a plain text row underneath the cards
+            above — memberships are a credibility signal, and a flat list of
+            dot-separated text reads as an afterthought. Each name gets its
+            own bordered chip with a shield mark, so the block reads as a set
+            of credentials rather than a caption. */}
         <div className={styles.affiliations}>
-          <h3 className={styles.affiliationsHeading}>
-            Affiliations and professional memberships
-          </h3>
+          <div className={styles.affiliationsHeading}>
+            <Icon name="shieldCheck" size={18} className={styles.affiliationsIcon} />
+            <h3 className={styles.affiliationsTitle}>
+              Affiliations &amp; professional memberships
+            </h3>
+          </div>
           <ul className={styles.affiliationsList}>
             {affiliations.map((name) => (
               <li key={name} className={styles.affiliation}>
-                {name}
+                {/* A solid-colour icon disc, not a flat tinted glyph — the
+                    earlier version put all its colour into a 15px icon on a
+                    pale tint, which read as "a plain white pill with a
+                    slightly-off-white edge" from a normal viewing distance. */}
+                <span className={styles.affiliationIconWrap}>
+                  <Icon name="shieldCheck" size={13} className={styles.affiliationIcon} />
+                </span>
+                <span>{name}</span>
               </li>
             ))}
           </ul>

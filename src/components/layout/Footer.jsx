@@ -32,24 +32,36 @@ export function Footer() {
           <p className={styles.blurb}>{site.description}</p>
 
           <address className={styles.address}>
+            {/* Street / suite / city on their own lines — the previous
+                "line1, line2" run-on wrapped mid-phrase in this column.
+                Each row's text is wrapped so the two-column grid in
+                .addressLink places it deterministically. */}
             <a href={site.address.mapUrl} target="_blank" rel="noreferrer noopener" className={styles.addressLink}>
               <Icon name="mapPin" size={17} />
               <span>
-                {site.address.line1}, {site.address.line2}
-                <br />
-                {site.address.city}, {site.address.state} {site.address.postalCode}
+                <span className={styles.addressSingle}>
+                  {site.address.line1}, {site.address.line2}, {site.address.city}, {site.address.state} {site.address.postalCode}
+                </span>
+                <span className={styles.addressMulti}>
+                  {site.address.line1}
+                  <br />
+                  {site.address.line2}
+                  <br />
+                  {site.address.city}, {site.address.state} {site.address.postalCode}
+                </span>
               </span>
             </a>
             <a href={site.contact.phoneHref} className={styles.addressLink}>
               <Icon name="phone" size={17} />
-              {site.contact.phone}
+              <span>{site.contact.phone}</span>
             </a>
             <a href={`mailto:${site.contact.email}`} className={styles.addressLink}>
               <Icon name="mail" size={17} />
-              {site.contact.email}
+              <span>{site.contact.email}</span>
             </a>
           </address>
 
+          {/* Social media links commented out per request
           <ul className={styles.social}>
             {site.social.map((item) => (
               <li key={item.label}>
@@ -60,6 +72,7 @@ export function Footer() {
               </li>
             ))}
           </ul>
+          */}
         </div>
 
         <nav className={styles.sitemap} aria-label="Footer">
@@ -208,7 +221,13 @@ function NewsletterForm() {
               aria-invalid={error ? 'true' : undefined}
               aria-describedby={error ? 'footer-newsletter-error' : undefined}
             />
-            <Button type="submit" variant="inverse" size="sm" loading={isSubmitting}>
+            <Button
+              type="submit"
+              variant="inverse"
+              loading={isSubmitting}
+              iconRight="arrowRight"
+              className={styles.subscribeButton}
+            >
               Subscribe
             </Button>
           </div>

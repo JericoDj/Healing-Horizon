@@ -28,6 +28,7 @@
 
 .brand {
   display: flex;
+  flex-direction: row;
   align-items: center;
   gap: 10px;
   margin-right: auto;
@@ -50,10 +51,6 @@
   transform: rotate(-6deg);
 }
 
-/* Sized to the bar, not to the asset. The lockup gets ~205px of the 1120px
-   content box; the nav (610) and actions (254) take the rest. At 80px the
-   logo also left 2px of breathing room in an 84px bar, which read as cramped.
-   If you enlarge these, re-measure — the header overflows at ~210px. */
 .logoImg {
   height: 60px;
   width: auto;

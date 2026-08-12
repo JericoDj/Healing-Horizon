@@ -71,7 +71,7 @@ export function AboutPage() {
   return (
     <>
       {/* ------------------------------------------------------------- hero -- */}
-      <section className={`section ${styles.hero}`} aria-labelledby="about-heading">
+      <section className={`section section--tight section--sunken ${styles.hero}`} aria-labelledby="about-heading">
         <div className="container">
           <div className={styles.heroInner}>
             <p className="eyebrow">About the practice</p>

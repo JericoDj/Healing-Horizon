@@ -85,7 +85,7 @@ export function ServiceDetailPage() {
   return (
     <>
       {/* ------------------------------------------------------------- hero -- */}
-      <section className={`section ${styles.hero}`} aria-labelledby="service-heading">
+      <section className={`section section--tight section--sunken ${styles.hero}`} aria-labelledby="service-heading">
         <div className="container">
           <Breadcrumbs
             items={[

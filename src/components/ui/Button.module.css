@@ -114,12 +114,13 @@
 /* Softened white at rest, pure white on hover — so hovering brightens rather
    than tinting. Purple label is 10.71:1 at rest, 12.33:1 on hover. */
 .inverse {
-  --btn-bg: rgba(255, 255, 255, 0.92);
-  --btn-fg: var(--brand-900);
+  --btn-bg: rgba(255, 255, 255, 0.96);
+  --btn-fg: var(--navy-900, #0c1a2e);
   --btn-shadow: var(--shadow-md);
 }
 .inverse:hover:not(:disabled) {
   --btn-bg: var(--white);
+  --btn-fg: var(--navy-950, #060e1a);
 }
 
 .inverseOutline {

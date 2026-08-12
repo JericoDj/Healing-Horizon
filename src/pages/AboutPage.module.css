@@ -6,6 +6,7 @@
 
 .hero {
   background: linear-gradient(180deg, var(--surface-hero) 0%, var(--surface-page) 100%);
+  border-bottom: 1px solid var(--border-default);
   padding-bottom: var(--section-y-tight);
 }
 
@@ -477,4 +478,22 @@
   flex-wrap: wrap;
   gap: var(--space-3);
   margin-top: var(--space-2);
+}
+
+@media (max-width: 47.99rem) {
+  .ctaInner {
+    align-items: center;
+    text-align: center;
+    margin-inline: auto;
+  }
+
+  .ctaActions {
+    justify-content: center;
+    width: 100%;
+  }
+
+  .ctaActions > * {
+    width: 100%;
+    justify-content: center;
+  }
 }

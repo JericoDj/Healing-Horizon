@@ -149,7 +149,7 @@
   height: 26px;
   border-radius: 50%;
   border: 1px solid transparent;
-  color: var(--brand-200);
+  color: var(--text-on-inverse-muted);
   opacity: 0;
   transition: opacity var(--duration-normal) var(--ease-out),
     background-color var(--duration-fast) var(--ease-out),
@@ -173,7 +173,7 @@
 }
 
 .control:focus-visible {
-  outline: var(--focus-ring-width) solid var(--brand-200);
+  outline: var(--focus-ring-width) solid var(--text-on-inverse-muted);
   outline-offset: 2px;
 }
 

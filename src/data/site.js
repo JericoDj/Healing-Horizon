@@ -57,7 +57,8 @@ export const site = {
   social: [
     { label: 'Instagram', href: 'https://instagram.com/', handle: '@healinghorizon' },
     { label: 'LinkedIn', href: 'https://linkedin.com/', handle: 'Healing Horizon' },
-    { label: 'Psychology Today', href: 'https://www.psychologytoday.com/', handle: 'Practice profile' },
+    // Commented out — no live Psychology Today profile to link to yet.
+    // Re-add once the practice profile exists: { label: 'Psychology Today', href: 'https://www.psychologytoday.com/', handle: 'Practice profile' },
   ],
 
   credentials: [
@@ -75,7 +76,7 @@ export const site = {
  */
 export const crisisResources = [
   {
-    label: '988 Suicide & Crisis Lifeline',
+    label: 'Suicide & Crisis Lifeline',
     detail: 'Call or text 988 — free, confidential, 24/7',
     href: 'tel:988',
     action: 'Call or text 988',

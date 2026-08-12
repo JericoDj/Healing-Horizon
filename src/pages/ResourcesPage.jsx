@@ -42,7 +42,7 @@ export function ResourcesPage() {
 
   return (
     <>
-      <section className={`section ${styles.hero}`} aria-labelledby="resources-heading">
+      <section className={`section section--tight section--sunken ${styles.hero}`} aria-labelledby="resources-heading">
         <div className="container">
           <p className="eyebrow">Resources</p>
           <h1 id="resources-heading" className={styles.title}>

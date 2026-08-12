@@ -37,7 +37,7 @@ export function RatesPage() {
 
   return (
     <>
-      <section className={`section ${styles.hero}`} aria-labelledby="rates-heading">
+      <section className={`section section--tight section--sunken ${styles.hero}`} aria-labelledby="rates-heading">
         <div className="container">
           <p className="eyebrow">Rates &amp; insurance</p>
           <h1 id="rates-heading" className={styles.title}>

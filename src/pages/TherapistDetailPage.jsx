@@ -107,7 +107,7 @@ export function TherapistDetailPage() {
   return (
     <>
       {/* ---------------------------------------------------------------- Hero */}
-      <section className={`section ${styles.hero}`} aria-labelledby="therapist-heading">
+      <section className={`section section--tight section--sunken ${styles.hero}`} aria-labelledby="therapist-heading">
         <div className="container">
           <Breadcrumbs
             items={[

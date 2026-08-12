@@ -29,7 +29,7 @@ export function ClosingCta() {
           />
 
           <div className={styles.actions}>
-            <Button to={paths.book} variant="inverse" size="lg" iconRight="arrowRight">
+            <Button to={paths.book} variant="inverse" size="lg" iconRight="arrowRight" className={styles.bookCta}>
               Book a free consultation
             </Button>
             <Button
