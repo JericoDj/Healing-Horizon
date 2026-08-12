@@ -1,9 +1,7 @@
 /* --- Hero ---------------------------------------------------------------- */
 
 .hero {
-  background:
-    radial-gradient(76% 108% at 84% 0%, var(--brand-100) 0%, transparent 62%),
-    var(--surface-page);
+  background: linear-gradient(180deg, var(--surface-hero) 0%, var(--surface-page) 100%);
 }
 
 .title {

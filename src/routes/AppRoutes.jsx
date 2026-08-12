@@ -41,7 +41,7 @@ export function AppRoutes() {
           path={paths.about}
           element={
             <Suspense fallback={<RouteFallback />}>
-              <ComingSoonPage sectionName="About Us" />
+              <AboutPage />
             </Suspense>
           }
         />
@@ -51,7 +51,7 @@ export function AppRoutes() {
             index
             element={
               <Suspense fallback={<RouteFallback />}>
-                <ComingSoonPage sectionName="Services" />
+                <ServicesPage />
               </Suspense>
             }
           />
@@ -59,7 +59,7 @@ export function AppRoutes() {
             path=":slug"
             element={
               <Suspense fallback={<RouteFallback />}>
-                <ComingSoonPage sectionName="Service Details" />
+                <ServiceDetailPage />
               </Suspense>
             }
           />
@@ -70,7 +70,7 @@ export function AppRoutes() {
             index
             element={
               <Suspense fallback={<RouteFallback />}>
-                <ComingSoonPage sectionName="Therapists" />
+                <TherapistsPage />
               </Suspense>
             }
           />
@@ -78,7 +78,7 @@ export function AppRoutes() {
             path=":slug"
             element={
               <Suspense fallback={<RouteFallback />}>
-                <ComingSoonPage sectionName="Therapist Profile" />
+                <TherapistDetailPage />
               </Suspense>
             }
           />
@@ -98,7 +98,7 @@ export function AppRoutes() {
             index
             element={
               <Suspense fallback={<RouteFallback />}>
-                <ComingSoonPage sectionName="Resources" />
+                <ResourcesPage />
               </Suspense>
             }
           />
@@ -106,7 +106,7 @@ export function AppRoutes() {
             path=":slug"
             element={
               <Suspense fallback={<RouteFallback />}>
-                <ComingSoonPage sectionName="Resource Article" />
+                <ResourceDetailPage />
               </Suspense>
             }
           />
@@ -116,7 +116,7 @@ export function AppRoutes() {
           path={paths.faq}
           element={
             <Suspense fallback={<RouteFallback />}>
-              <ComingSoonPage sectionName="FAQ" />
+              <FaqPage />
             </Suspense>
           }
         />
@@ -125,7 +125,7 @@ export function AppRoutes() {
           path={paths.contact}
           element={
             <Suspense fallback={<RouteFallback />}>
-              <ComingSoonPage sectionName="Contact" />
+              <ContactPage />
             </Suspense>
           }
         />

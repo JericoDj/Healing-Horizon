@@ -31,8 +31,12 @@
     transform var(--duration-fast) var(--ease-out);
 }
 
+/* Buttons render as <a> when given `to`/`href`, and the global `a:hover` rule
+   (specificity 0,1,1) outranks `.button` (0,1,0) — which flipped inverse
+   buttons to the dark link colour on hover. This selector is (0,2,0). */
 .button:hover {
   text-decoration: none;
+  color: var(--btn-fg);
 }
 
 .button:active:not(:disabled) {
@@ -107,13 +111,15 @@
   --btn-shadow: var(--shadow-md);
 }
 
+/* Softened white at rest, pure white on hover — so hovering brightens rather
+   than tinting. Purple label is 10.71:1 at rest, 12.33:1 on hover. */
 .inverse {
-  --btn-bg: var(--white);
+  --btn-bg: rgba(255, 255, 255, 0.92);
   --btn-fg: var(--brand-900);
   --btn-shadow: var(--shadow-md);
 }
 .inverse:hover:not(:disabled) {
-  --btn-bg: var(--brand-100);
+  --btn-bg: var(--white);
 }
 
 .inverseOutline {
@@ -121,6 +127,12 @@
   --btn-fg: var(--white);
   --btn-border: var(--border-inverse);
 }
+/* Label stays white in every state, including hover. */
+.inverseOutline,
+.inverseOutline:hover:not(:disabled) {
+  --btn-fg: var(--white);
+}
+
 .inverseOutline:hover:not(:disabled) {
   --btn-bg: rgba(252, 252, 250, 0.12);
   --btn-border: rgba(252, 252, 250, 0.5);

@@ -37,6 +37,7 @@
   --orange-text: #a85410;   /*           5.33:1 — AA                */
   --teal-500: #1e9aa8;      /*           3.36:1 — UI AND LARGE ONLY */
   --teal-text: #14707a;     /*           5.79:1 — AA                */
+
   --navy-700: #1b3a6b;      /* Anchor.  11.27:1 — AAA               */
 
   /* The four pillars. Order and mapping are fixed: Heal, Empower, Support,
@@ -84,7 +85,15 @@
   /* Surfaces, back to front */
   --surface-page: var(--white); /* the default canvas            */
   --surface-raised: var(--true-white); /* cards sitting on the canvas   */
-  --surface-sunken: var(--brand-100); /* Lavender Mist — alt sections  */
+  /* Alternating sections are a light GREEN, not the lavender brand tint.
+     Lavender at this lightness reads as pink next to warm ink, which is the
+     wrong note for a behavioral health service. Green is the Support pillar
+     hue and sits comfortably beside the blue hero wash above it.
+     ink 14.81:1 · secondary 6.30:1 · purple 8.52:1 · borders 3.46:1 */
+  --surface-sunken: #eef6f0;
+  /* First section of every page — a washed Empower Blue that fades into the
+     canvas. ink 14.42:1 · secondary 6.13:1 · purple 8.30:1 · borders 3.37:1 */
+  --surface-hero: #eaf2fa;
   --surface-accent: #eaf0f2; /* Cool Mist — utility panels           */
   --surface-inverse: var(--navy-700); /* Navy — footer, dark CTAs     */
   --surface-inverse-deep: #142c52;
@@ -96,7 +105,19 @@
   --text-muted: var(--ink-500); /*  4.42:1 — ≥18.66px/bold ONLY */
   --text-brand: var(--blue-500); /*  4.86:1 — Empower Blue */
   --text-on-inverse: var(--white); /* 11.27:1 on Navy   AAA */
-  --text-on-inverse-muted: var(--brand-200); /* 7.83:1 on Navy AA */
+  /* Softened WHITE, not the lavender brand tint. Lavender on navy reads as
+     violet/pink, which is the wrong note on a dark CTA. Alpha rather than a
+     solid so it sits correctly on both --surface-inverse and the deeper
+     crisis strip. 8.16:1 on Navy — AAA. */
+  --text-on-inverse-muted: rgba(255, 255, 255, 0.82);
+  /* Headings and labels on dark surfaces — was --brand-300 (pinkish). */
+  --text-on-inverse-heading: #cfdbe9; /* 8.03:1 on Navy — AAA */
+  /* The Support green is 4.04:1 on the crisis strip; this lifted tint reads
+     unambiguously as green on a dark ground. 5.84:1 — AA. */
+  --green-on-inverse: #3fbf5e;
+  /* Eyebrow chip fill. White on this is 5.37:1 — AA. The brighter Support
+     green would only manage 3.44:1, which fails for 14px label text. */
+  --chip-green: #237a38;
   /* The status ramps are tuned for light surfaces and go muddy on Deep Teal,
      so error text there gets its own tint. 8.44:1 on Navy — AAA. */
   --text-error-on-inverse: #ffd5d5;

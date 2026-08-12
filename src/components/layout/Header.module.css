@@ -50,8 +50,12 @@
   transform: rotate(-6deg);
 }
 
+/* Sized to the bar, not to the asset. The lockup gets ~205px of the 1120px
+   content box; the nav (610) and actions (254) take the rest. At 80px the
+   logo also left 2px of breathing room in an 84px bar, which read as cramped.
+   If you enlarge these, re-measure — the header overflows at ~210px. */
 .logoImg {
-  height: 80px;
+  height: 60px;
   width: auto;
   object-fit: contain;
   flex-shrink: 0;
@@ -63,8 +67,8 @@
 }
 
 .brandTextImg {
-  height: 58px;
-  max-width: 400px;
+  height: 48px;
+  max-width: 200px;
   width: auto;
   object-fit: contain;
   flex-shrink: 0;
@@ -72,11 +76,11 @@
 
 @media (max-width: 48rem) {
   .logoImg {
-    height: 60px;
+    height: 46px;
   }
   .brandTextImg {
-    height: 42px;
-    max-width: 260px;
+    height: 36px;
+    max-width: 160px;
   }
 }
 
@@ -146,10 +150,21 @@
    pill reads as "this is where you are" far more quickly than a 2px rule, and
    it gives the icons somewhere to sit.
 
-   Three states, each a step darker so the hierarchy survives a squint test:
-     rest    transparent
-     hover   Mist       (--brand-100)
-     active  Soft Blue  (--brand-200) + Deep Teal text, 6.19:1 — AA */
+   These run on the blue-green half of the palette, not purple. Purple is the
+   action colour — buttons, links, the CTA — and using it for wayfinding too
+   made "where I am" and "what I can press" the same signal.
+
+   A single pill (.navIndicator) slides between items and does the colouring;
+   the links themselves only carry text colour.
+
+     rest    no pill                  ink text,        16.30:1 — AAA
+     hover   9% Empower Blue pill     blue-text,        6.08:1 — AA
+     active  solid Empower Blue pill  white text,       4.86:1 — AA
+             + Support Green dot beneath,               3.44:1 — non-text UI
+
+   The hover text is --blue-text (#155e96), NOT --blue-500. Blue-500 on the
+   composited hover pill (#eaf3f9) measures 4.33:1, which is under the 4.5
+   floor for 16px text. */
 .navLink {
   position: relative;
   z-index: 1;
@@ -175,7 +190,7 @@
 
 .navLink:not(.navLinkActive):hover {
   background-color: rgba(27, 117, 188, 0.09);
-  color: var(--blue-500);
+  color: var(--blue-text); /* 6.08:1 on the composited pill — AA */
   text-decoration: none;
 }
 
@@ -184,7 +199,7 @@
 }
 
 .navLinkHovered {
-  color: var(--blue-500);
+  color: var(--blue-text);
 }
 
 .navLinkActive,
@@ -322,17 +337,37 @@
   border-left: 1px solid var(--border-subtle);
   box-shadow: -8px 0 32px rgba(35, 31, 32, 0.16);
   transform: translateX(100%);
-  transition: transform var(--duration-normal) var(--ease-entrance);
   overflow-y: auto;
+  /* `display` is transitioned discretely so the panel can be display:none when
+     closed (see .drawer[hidden]) and still slide on the way in and out. */
+  transition: transform var(--duration-normal) var(--ease-entrance),
+    display var(--duration-normal) allow-discrete;
 }
 
 .drawerOpen {
   transform: translateX(0);
 }
 
+/* The closed drawer must be display:none, not merely translated off-screen.
+   Overriding [hidden] with display:flex parked a 320px fixed panel just past
+   the right edge of the viewport, which:
+     · added 320px of horizontal scroll to EVERY page — a fixed element is not
+       clipped by an ancestor's overflow, so no amount of overflow:hidden or
+       overflow:clip on body/html removed it; and
+     · left all 10 of its links and buttons in the tab order, so a keyboard
+       user could tab into an invisible menu.
+   `transition-behavior: allow-discrete` above plus @starting-style below keeps
+   the slide animation. Where those are unsupported the drawer simply snaps,
+   which is a fair trade for not breaking the page. */
 .drawer[hidden] {
-  display: flex;
+  display: none;
   pointer-events: none;
+}
+
+@starting-style {
+  .drawerOpen {
+    transform: translateX(100%);
+  }
 }
 
 .drawerHeader {

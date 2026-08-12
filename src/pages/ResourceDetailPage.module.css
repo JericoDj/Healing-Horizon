@@ -1,10 +1,8 @@
 /* --- Header -------------------------------------------------------------- */
 
 .header {
+  background: linear-gradient(180deg, var(--surface-hero) 0%, var(--surface-page) 100%);
   padding-top: var(--space-8);
-  background:
-    linear-gradient(180deg, var(--brand-50) 0%, transparent 100%),
-    var(--surface-page);
 }
 
 .title {

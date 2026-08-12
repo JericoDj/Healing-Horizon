@@ -30,6 +30,7 @@
 /* --- Hero --------------------------------------------------------------- */
 
 .hero {
+  background: linear-gradient(180deg, var(--surface-hero) 0%, var(--surface-page) 100%);
   padding-top: var(--space-6);
   padding-bottom: var(--section-y-tight);
 }

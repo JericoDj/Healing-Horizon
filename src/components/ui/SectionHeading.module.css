@@ -59,9 +59,25 @@
 }
 
 /* Inverse sections recolour the eyebrow and intro for the dark surface. */
+/* On dark sections the eyebrow becomes a filled green chip rather than tinted
+   text — white on --chip-green is 5.37:1 (AA), where the old lavender was both
+   pinkish and low-contrast. Rectangular, not a pill, so it reads as a label. */
 :global(.section--inverse) .eyebrow {
-  color: var(--brand-300);
+  align-self: flex-start;
+  width: fit-content;
+  padding: var(--space-1) var(--space-3);
+  border-radius: var(--radius-xs);
+  border: 1px solid rgba(255, 255, 255, 0.18);
+  background-color: var(--chip-green);
+  color: var(--white);
 }
+
+/* Centred variants centre the chip too. */
+:global(.section--inverse) .center .eyebrow,
+.center :global(.section--inverse) .eyebrow {
+  align-self: center;
+}
+
 
 :global(.section--inverse) .title {
   color: var(--text-on-inverse);
