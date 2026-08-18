@@ -10,6 +10,37 @@ import styles from './TrustStrip.module.css';
  * heading is visually hidden because the numbers are the content; the outline
  * still needs a rung between the page <h1> and the cards below.
  */
+const whyChoosePillars = [
+  {
+    id: 'licensed-therapists',
+    value: '6',
+    title: 'Licensed & Experienced Mental Health Therapists',
+    subtitle: 'Board-Certified Maryland Clinicians (LCPC, LCSW-C, LCMFT)',
+    detail: 'Every therapist at Healing Horizons is independently licensed in Maryland with extensive experience in individual, couples, and family therapy.',
+  },
+  {
+    id: 'personalized-therapy',
+    value: '100%',
+    title: 'Personalized Therapy for Your Mental Health Needs',
+    subtitle: 'Customized Evidence-Based Treatment Plans',
+    detail: 'Tailored clinical care integrating CBT, DBT, EMDR, Gottman Method, and IFS to match your personal mental health goals.',
+  },
+  {
+    id: 'convenient-care',
+    value: 'MD',
+    title: 'Convenient Therapy in Dunkirk and Across Maryland',
+    subtitle: 'In-Person Office in Dunkirk & Telehealth Statewide',
+    detail: 'Flexible scheduling with evening and Saturday hours, accessible in-person in Dunkirk and online via secure telehealth.',
+  },
+  {
+    id: 'responsive-intake',
+    value: '1 Day',
+    title: 'Accessible & Responsive Mental Health Support',
+    subtitle: 'Quick Intake & Free 15-Minute Consultation',
+    detail: 'Speak with our intake coordinator within one business day with zero cost or obligation to find the right therapeutic fit.',
+  },
+];
+
 export function TrustStrip() {
   return (
     <section
@@ -19,7 +50,7 @@ export function TrustStrip() {
       <div className="container">
         <header className={styles.header}>
           <h2 id="trust-heading" className={styles.title}>
-            Why Choose Healing Horizons
+            Why Choose Our Mental Health Therapists in Maryland?
           </h2>
           <p className={styles.subtitle}>
             Verifiable metrics, licensed clinicians, and responsive care built for Dunkirk and families across Maryland.
@@ -27,16 +58,14 @@ export function TrustStrip() {
         </header>
 
         <ul className={styles.list}>
-          {trustSignals.map((signal, index) => {
+          {whyChoosePillars.map((signal, index) => {
             const pillarClass = [
               styles.valueHeal,
               styles.valueEmpower,
               styles.valueSupport,
               styles.valueThrive,
             ][index % 4];
-            // The card border repeats its own number's colour, so each tile
-            // reads as one coloured unit rather than a coloured number sitting
-            // inside an unrelated neutral box.
+
             const borderClass = [
               styles.itemHeal,
               styles.itemEmpower,
@@ -47,32 +76,33 @@ export function TrustStrip() {
             return (
               <li key={signal.id} className={`${styles.item} ${borderClass}`}>
                 <p className={`${styles.value} ${pillarClass}`}>{signal.value}</p>
-                <p className={styles.label}>{signal.label}</p>
+                <h3 className={styles.itemTitle}>{signal.title}</h3>
+                <h4 className={styles.itemSubtitle}>{signal.subtitle}</h4>
                 <p className={styles.detail}>{signal.detail}</p>
               </li>
             );
           })}
         </ul>
 
-        {/* A bordered panel rather than a plain text row underneath the cards
-            above — memberships are a credibility signal, and a flat list of
-            dot-separated text reads as an afterthought. Each name gets its
-            own bordered chip with a shield mark, so the block reads as a set
-            of credentials rather than a caption. */}
         <div className={styles.affiliations}>
-          <div className={styles.affiliationsHeading}>
-            <Icon name="shieldCheck" size={18} className={styles.affiliationsIcon} />
-            <h3 className={styles.affiliationsTitle}>
-              Affiliations &amp; professional memberships
-            </h3>
+          <div className={styles.affiliationsHeader}>
+            <div className={styles.affiliationsHeading}>
+              <Icon name="shieldCheck" size={20} className={styles.affiliationsIcon} />
+              <h4 className={styles.affiliationsTitle}>
+                Affiliations &amp; Professional Memberships in Maryland
+              </h4>
+            </div>
+            <h5 className={styles.affiliationsSubtitle}>
+              Clinical Standards &amp; Practice Accreditations
+            </h5>
+            <h6 className={styles.affiliationsCompliance}>
+              Maryland Department of Health &amp; National Clinical Board Compliance
+            </h6>
           </div>
+
           <ul className={styles.affiliationsList}>
             {affiliations.map((name) => (
               <li key={name} className={styles.affiliation}>
-                {/* A solid-colour icon disc, not a flat tinted glyph — the
-                    earlier version put all its colour into a 15px icon on a
-                    pale tint, which read as "a plain white pill with a
-                    slightly-off-white edge" from a normal viewing distance. */}
                 <span className={styles.affiliationIconWrap}>
                   <Icon name="shieldCheck" size={13} className={styles.affiliationIcon} />
                 </span>

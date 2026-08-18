@@ -23,15 +23,15 @@ import styles from './HomePage.module.css';
 export function HomePage() {
   usePageMeta({
     description:
-      'Individual, couples, teen and trauma therapy in Dunkirk, plus telehealth across Maryland. Start with a free 15-minute call.',
+      'Caring, licensed mental health therapy for individuals and families in Dunkirk and across Maryland. Start with a free 15-minute consultation.',
   });
 
   return (
     <div className={styles.page}>
       <Hero />
+      <ServicesPreview />
       <TrustStrip />
       {/* 
-      <ServicesPreview />
       <HowItWorks />
       <TeamPreview />
       <ReflectionsSection />

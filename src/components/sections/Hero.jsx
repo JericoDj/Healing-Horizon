@@ -29,11 +29,11 @@ export function Hero() {
             </p>
 
             <h1 id="hero-heading" className={styles.title}>
-              {site.tagline}
+              Mental Health Therapy in Dunkirk, Maryland
             </h1>
 
             <p className={styles.intro}>
-              Licensed, compassionate mental health care in Dunkirk and across Maryland. Begin with a free 15-minute consultation.
+              Caring, licensed mental health therapy for individuals and families in Dunkirk and across Maryland. Start with a free 15-minute consultation.
             </p>
 
             <div className={styles.actions}>

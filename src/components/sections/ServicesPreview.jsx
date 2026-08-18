@@ -10,6 +10,25 @@ import styles from './ServicesPreview.module.css';
  * an affordance rather than a second target. The meta row answers the two
  * questions people actually ask first: is this for me, and how long is it.
  */
+const serviceHeadings = {
+  'individual-therapy': {
+    title: 'Individual Mental Health Therapy',
+    subheading: 'Evidence-Based Care for Anxiety, Depression & Stress',
+  },
+  'couples-therapy': {
+    title: 'Couples & Marriage Counseling',
+    subheading: 'Relationship Strengthening, Communication & Repair',
+  },
+  'teen-therapy': {
+    title: 'Teen & Adolescent Therapy',
+    subheading: 'Support for Ages 12–17 & Family Consultation',
+  },
+  'trauma-emdr': {
+    title: 'Trauma Therapy & EMDR Processing',
+    subheading: 'Specialized Somatic & Trauma-Informed Clinical Care',
+  },
+};
+
 export function ServicesPreview() {
   return (
     <section
@@ -19,25 +38,32 @@ export function ServicesPreview() {
       <div className="container">
         <SectionHeading
           id="services-heading"
-          eyebrow="How we work"
-          title="Find the kind of therapy you are looking for"
-          intro="Four of the areas we see most. Each one lists who it is for, how long a session runs and what the first few weeks look like, so you can decide before you speak to anyone."
+          eyebrow="Specialized Care"
+          title="Mental Health Services in Dunkirk, MD"
+          intro="Comprehensive, compassionate psychotherapy and evidence-based mental health counseling in Dunkirk, MD and across Calvert County."
         />
 
         <ul className={styles.grid}>
-          {featuredServices.map((service) => (
-            <li key={service.slug} className={styles.cell}>
-              <Card
-                to={paths.service(service.slug)}
-                padding="md"
-                className={styles.card}
-              >
-                <span className={styles.icon} aria-hidden="true">
-                  <Icon name={service.icon} size={24} />
-                </span>
+          {featuredServices.map((service) => {
+            const headingInfo = serviceHeadings[service.slug] || {
+              title: service.name,
+              subheading: service.forWho,
+            };
 
-                <h3 className={styles.name}>{service.name}</h3>
-                <p className={styles.summary}>{service.summary}</p>
+            return (
+              <li key={service.slug} className={styles.cell}>
+                <Card
+                  to={paths.service(service.slug)}
+                  padding="md"
+                  className={styles.card}
+                >
+                  <span className={styles.icon} aria-hidden="true">
+                    <Icon name={service.icon} size={24} />
+                  </span>
+
+                  <h3 className={styles.name}>{headingInfo.title}</h3>
+                  <h4 className={styles.subheading}>{headingInfo.subheading}</h4>
+                  <p className={styles.summary}>{service.summary}</p>
 
                 <dl className={styles.meta}>
                   <div className={styles.metaRow}>
@@ -55,8 +81,9 @@ export function ServicesPreview() {
                   <Icon name="arrowRight" size={16} />
                 </span>
               </Card>
-            </li>
-          ))}
+              </li>
+            );
+          })}
         </ul>
 
         <div className={styles.footer}>
