@@ -78,7 +78,9 @@ export function Footer() {
         <nav className={styles.sitemap} aria-label="Footer">
           {footerNav.map((group) => (
             <div key={group.heading} className={styles.navGroup}>
-              <h2 className={styles.navHeading}>{group.heading}</h2>
+              <p className={styles.navHeading} role="heading" aria-level="3">
+                {group.heading}
+              </p>
               <ul className={styles.navList}>
                 {group.links.map((link) => (
                   <li key={link.to}>
@@ -132,9 +134,9 @@ function CrisisStrip() {
         <div className={styles.crisisIntro}>
           <Icon name="heartHand" size={22} />
           <div>
-            <h2 id="footer-crisis-heading" className={styles.crisisHeading}>
+            <p id="footer-crisis-heading" className={styles.crisisHeading} role="heading" aria-level="3">
               If you are in crisis right now
-            </h2>
+            </p>
             <p className={styles.crisisNote}>
               We are not an emergency service and do not monitor messages after hours. These lines
               are free, confidential and answered 24/7.
@@ -189,7 +191,9 @@ function NewsletterForm() {
 
   return (
     <div className={styles.newsletter}>
-      <h2 className={styles.navHeading}>Practice notes</h2>
+      <p className={styles.navHeading} role="heading" aria-level="3">
+        Practice notes
+      </p>
       <p className={styles.newsletterBlurb}>
         One short email a month: new groups, openings, and something worth reading. No clinical
         advice, no selling.

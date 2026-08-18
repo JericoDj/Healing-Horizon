@@ -19,7 +19,7 @@ export function TrustStrip() {
       <div className="container">
         <header className={styles.header}>
           <h2 id="trust-heading" className={styles.title}>
-            Why Choose Healing Horizon
+            Why Choose Healing Horizons
           </h2>
           <p className={styles.subtitle}>
             Verifiable metrics, licensed clinicians, and responsive care built for Dunkirk and families across Maryland.

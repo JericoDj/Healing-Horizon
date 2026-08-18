@@ -106,7 +106,7 @@ export const crisisResources = [
  * `components/ui/Icon.jsx`.
  */
 export const primaryNav = [
-  { label: 'Services', to: '/services', icon: 'heartHand' },
+  // { label: 'Services', to: '/services', icon: 'heartHand' },
   { label: 'Therapists', to: '/therapists', icon: 'group' },
   { label: 'About', to: '/about', icon: 'leaf' },
   { label: 'Resources', to: '/resources', icon: 'book' },

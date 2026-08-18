@@ -120,9 +120,12 @@ export function Header() {
   return (
     <header className={`${styles.header} ${hasScrolled ? styles.scrolled : ''}`}>
       <div className={`container ${styles.inner}`}>
-        <Link to={paths.home} className={styles.brand} aria-label={`${site.name} — home`}>
+        <Link to={paths.home} className={styles.brand} aria-label={`${site.name} Maryland — home`}>
           <img src={logoImg} alt="" className={styles.logoImg} />
-          <img src={logoTextImg} alt={site.name} className={styles.brandTextImg} />
+          <div className={styles.brandTextWrapper}>
+            <img src={logoTextImg} alt={`${site.name} Maryland`} className={styles.brandTextImg} />
+            <span className={styles.brandPill}>Maryland</span>
+          </div>
         </Link>
 
         <nav
@@ -226,7 +229,10 @@ export function Header() {
         <div className={styles.drawerHeader}>
           <div className={styles.drawerBrand}>
             <img src={logoImg} alt="" className={styles.drawerLogoImg} />
-            <img src={logoTextImg} alt={site.name} className={styles.drawerBrandTextImg} />
+            <div className={styles.brandTextWrapper}>
+              <img src={logoTextImg} alt={`${site.name} Maryland`} className={styles.drawerBrandTextImg} />
+              <span className={styles.brandPill}>Maryland</span>
+            </div>
           </div>
           <button
             type="button"

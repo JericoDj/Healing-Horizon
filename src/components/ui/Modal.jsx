@@ -89,9 +89,9 @@ export function Modal({
       <div className={styles.panel}>
         <header className={styles.header}>
           <div className={styles.headerText}>
-            <h2 id={headingId} className={styles.title}>
+            <p id={headingId} className={styles.title} role="heading" aria-level="2">
               {title}
-            </h2>
+            </p>
             {description ? (
               <p id={descriptionId} className={styles.description}>
                 {description}
