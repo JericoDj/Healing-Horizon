@@ -1,4 +1,4 @@
-import { Button, Card, Icon, SectionHeading } from '../ui';
+import { Card, Icon, SectionHeading } from '../ui';
 import { featuredServices } from '../../data/services';
 import paths from '../../routes/paths';
 import styles from './ServicesPreview.module.css';
@@ -11,21 +11,21 @@ import styles from './ServicesPreview.module.css';
  * questions people actually ask first: is this for me, and how long is it.
  */
 const serviceHeadings = {
-  'individual-therapy': {
-    title: 'Individual Mental Health Therapy',
-    subheading: 'Evidence-Based Care for Anxiety, Depression & Stress',
+  'daily-living-skills': {
+    title: 'Daily Living & Life Skills',
+    subheading: 'Independent Living & Self-Sufficiency',
   },
-  'couples-therapy': {
-    title: 'Couples & Marriage Counseling',
-    subheading: 'Relationship Strengthening, Communication & Repair',
+  'symptom-management': {
+    title: 'Symptom Self-Management',
+    subheading: 'Emotional Regulation & Relapse Prevention',
   },
-  'teen-therapy': {
-    title: 'Teen & Adolescent Therapy',
-    subheading: 'Support for Ages 12–17 & Family Consultation',
+  'community-coordination': {
+    title: 'Community Resource Linkage',
+    subheading: 'Care Coordination & Resource Navigation',
   },
-  'trauma-emdr': {
-    title: 'Trauma Therapy & EMDR Processing',
-    subheading: 'Specialized Somatic & Trauma-Informed Clinical Care',
+  'vocational-educational': {
+    title: 'Educational & Vocational Support',
+    subheading: 'Job Readiness, GED & Career Development',
   },
 };
 
@@ -38,9 +38,9 @@ export function ServicesPreview() {
       <div className="container">
         <SectionHeading
           id="services-heading"
-          eyebrow="Specialized Care"
-          title="Mental Health Services in Dunkirk, MD"
-          intro="Comprehensive, compassionate psychotherapy and evidence-based mental health counseling in Dunkirk, MD and across Calvert County."
+          eyebrow="Core PRP Services"
+          title="Psychiatric Rehabilitation Services Across Maryland"
+          intro="Person-centered, structured rehabilitation interventions designed to build functional skills, independence, and long-term community wellness."
         />
 
         <ul className={styles.grid}>
@@ -71,8 +71,8 @@ export function ServicesPreview() {
                     <dd className={styles.metaValue}>{service.forWho}</dd>
                   </div>
                   <div className={styles.metaRow}>
-                    <dt className={styles.metaTerm}>Session</dt>
-                    <dd className={styles.metaValue}>{service.duration}</dd>
+                    <dt className={styles.metaTerm}>Setting</dt>
+                    <dd className={styles.metaValue}>{service.format}</dd>
                   </div>
                 </dl>
 
@@ -87,12 +87,12 @@ export function ServicesPreview() {
         </ul>
 
         <div className={styles.footer}>
-          <Button to={paths.services} variant="secondary" iconRight="arrowRight">
-            See all services
-          </Button>
+          {/* "See all services" removed by request. It also pointed at /services,
+              which is currently commented out of primaryNav in data/site.js —
+              so the nav no longer offers that route either. Restore both
+              together if the Services index comes back. */}
           <p className={styles.footerNote}>
-            Not sure which fits? Our intake coordinator will help you work it out on the
-            consultation call.
+            Need assistance with an intake or referral? Our intake team is available to help guide participants, families, and referring providers through the process.
           </p>
         </div>
       </div>

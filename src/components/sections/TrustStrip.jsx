@@ -28,9 +28,9 @@ const whyChoosePillars = [
   {
     id: 'convenient-care',
     value: 'MD',
-    title: 'Convenient Therapy in Dunkirk and Across Maryland',
-    subtitle: 'In-Person Office in Dunkirk & Telehealth Statewide',
-    detail: 'Flexible scheduling with evening and Saturday hours, accessible in-person in Dunkirk and online via secure telehealth.',
+    title: 'Convenient Therapy Across Maryland',
+    subtitle: 'In-Person and Telehealth Statewide',
+    detail: 'Flexible scheduling with evening and Saturday hours, accessible in person and online via secure telehealth.',
   },
   {
     id: 'responsive-intake',
@@ -53,7 +53,7 @@ export function TrustStrip() {
             Why Choose Our Mental Health Therapists in Maryland?
           </h2>
           <p className={styles.subtitle}>
-            Verifiable metrics, licensed clinicians, and responsive care built for Dunkirk and families across Maryland.
+            Verifiable metrics, licensed clinicians, and responsive care built for families across Maryland.
           </p>
         </header>
 

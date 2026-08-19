@@ -23,7 +23,7 @@ import styles from './HomePage.module.css';
 export function HomePage() {
   usePageMeta({
     description:
-      'Caring, licensed mental health therapy for individuals and families in Dunkirk and across Maryland. Start with a free 15-minute consultation.',
+      'Community-based Psychiatric Rehabilitation Program (PRP) in Maryland. Empowering adults and youth with independent living skills, wellness management, and care coordination.',
   });
 
   return (

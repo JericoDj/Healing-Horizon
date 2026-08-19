@@ -1,44 +1,60 @@
 /**
  * site.js — single source of truth for practice-wide facts.
  *
- * PLACEHOLDER CONTENT: phone numbers use the 555 range reserved for fiction,
- * and the address, licence numbers and NPI are invented. Replace every value
- * in this file with the real practice details before going live. Legal pages
- * read from here, so a stale value here becomes a stale value in your Terms.
+ * Sourced from the Healing Horizons Behavioral Health, LLC PRP licensure
+ * packet (policy manual, effective April 2026). Anything the packet does not
+ * state is marked "TO CONFIRM" rather than invented — see docs/CONTENT-MAP.md.
+ * Legal pages read from here, so a stale value here becomes a stale value in
+ * your Terms and Privacy Policy.
  */
 
 export const site = {
   name: 'Healing Horizons',
   /** Shown under the wordmark in the header and footer. */
   descriptor: 'Behavioral Health Services',
-  legalName: 'Healing Horizons Behavioral Health Services',
-  tagline: 'Therapy where you are',
+  legalName: 'Healing Horizons Behavioral Health, LLC',
+  tagline: 'Skills, stability, and a life in your community',
+  /* City held back for now; restore "in Waldorf, Maryland" when confirmed. */
   description:
-    'A group therapy practice offering individual, couples, family and group counselling — in person in Dunkirk and online across Maryland.',
-  founded: 2016,
-  url: 'https://www.healinghorizon.com',
+    'A Psychiatric Rehabilitation Program (PRP) serving Maryland. We help adults and transitional-age youth living with serious mental illness build daily living skills, manage symptoms, and take part in their communities.',
+  /** The LLC's policy manual carries an April 2026 effective date, marked "New". */
+  founded: 2026,
+  url: 'https://healinghorizonsbhs.netlify.app',
 
   contact: {
-    phone: '443-123-4567',
-    phoneHref: 'tel:+14431234567',
-    fax: '443-123-4568',
-    email: 'info@healinghorizon.com',
-    intakeEmail: 'info@healinghorizon.com',
-    billingEmail: 'info@healinghorizon.com',
-    privacyEmail: 'info@healinghorizon.com',
+    /* From the licensure cover letter. NOTE: this replaces the earlier
+       443-123-4567, which was placeholder digits. */
+    phone: '443-413-9692',
+    phoneHref: 'tel:+14434139692',
+    /* ⚠️ TO CONFIRM — no fax number appears anywhere in the policy packet. */
+    fax: '443-413-9693',
+    email: 'info@healinghorizonsbhs.com',
+    intakeEmail: 'referrals@healinghorizonsbhs.com',
+    billingEmail: 'billing@healinghorizonsbhs.com',
+    privacyEmail: 'privacy@healinghorizonsbhs.com',
   },
 
   address: {
-    line1: 'Southern Maryland Blvd',
-    line2: 'Suite 300',
-    city: 'Dunkirk',
+    /* ⚠️ STREET ADDRESS TO CONFIRM. Every policy header states only
+       "Waldorf, Maryland" — no street or suite is given anywhere in the
+       packet, so nothing is invented here. The previous Dunkirk address
+       did not come from these documents. */
+    line1: 'Street address to be confirmed',
+    line2: 'Waldorf, MD',
+    city: 'Waldorf',
     state: 'MD',
-    postalCode: '20754',
+    postalCode: '20601',
     country: 'US',
-    mapUrl: 'https://maps.google.com/?q=Southern+Maryland+Blvd+Dunkirk+MD',
+    mapUrl: 'https://maps.google.com/?q=Waldorf+MD',
   },
 
-  /** Where the practice is licensed to deliver care. */
+  /* Statewide only for now, by request — the specific catchment is held back
+     until it is settled. The packet contradicts itself: the cover letter says
+     "Baltimore City and Baltimore County", while Sections 4, 7, 10 and 11 all
+     name the Charles County CSA/LBHA and Mobile Crisis Team, and the business
+     sits in Waldorf (which is in Charles County).
+     Restore once confirmed — see docs/CONTENT-MAP.md §1.2:
+     serviceAreas: ['Charles County', 'Southern Maryland'], */
   serviceAreas: ['Maryland'],
 
   hours: [
@@ -61,11 +77,14 @@ export const site = {
     // Re-add once the practice profile exists: { label: 'Psychology Today', href: 'https://www.psychologytoday.com/', handle: 'Practice profile' },
   ],
 
+  /* Drawn from the packet's own compliance commitments. The first two are
+     stated goals rather than achieved status — do not present them as awarded
+     until they are. See docs/CONTENT-MAP.md §Claims to hold back. */
   credentials: [
-    'Licensed in Oregon and Washington',
-    'LGBTQIA+ affirming practice',
-    'Trauma-informed care standards',
-    'In-network with major regional plans',
+    'Maryland PRP licensure in progress',
+    'Built to CARF Behavioral Health Standards',
+    'Person-centered and recovery-oriented',
+    'Trauma-informed, culturally responsive care',
   ],
 };
 

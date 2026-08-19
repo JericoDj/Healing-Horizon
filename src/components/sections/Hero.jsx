@@ -22,32 +22,35 @@ export function Hero() {
       <div className="container">
         <div className={styles.grid}>
           <div className={styles.copy}>
+            {/* Statewide only for now. The street address is still marked
+                "to be confirmed" in site.js, so printing address.line1 here
+                would read "Street address to be confirmed, Waldorf".
+                Restore when the address is settled:
+                {site.address.line1}, {site.address.city} <dot> ... */}
             <p className={styles.eyebrow}>
-              {site.address.line1}, {site.address.city}
-              <span className={styles.eyebrowDot} aria-hidden="true" />
-              {site.serviceAreas.join(' & ')}
+              Psychiatric Rehabilitation Program (PRP) · {site.serviceAreas.join(' & ')}
             </p>
 
             <h1 id="hero-heading" className={styles.title}>
-              Mental Health Therapy in Dunkirk, Maryland
+              Empowering Independence, Recovery & Community Living
             </h1>
 
             <p className={styles.intro}>
-              Caring, licensed mental health therapy for individuals and families in Dunkirk and across Maryland. Start with a free 15-minute consultation.
+              Person-centered, community-based Psychiatric Rehabilitation Program (PRP) services across Maryland. Supporting adults and transitional-age youth to build essential life skills, manage wellness, and thrive.
             </p>
 
             <div className={styles.actions}>
               <Button type="button" size="lg" iconRight="arrowRight" onClick={openBooking}>
-                Book a free consultation
+                Make a referral / Get started
               </Button>
               <Button to={paths.services} size="lg" variant="outline">
-                Explore our services
+                Explore PRP services
               </Button>
             </div>
 
             <p className={styles.reassure}>
-              <Icon name="clock" size={18} />
-              <span>A 15-minute call. No cost, no obligation.</span>
+              <Icon name="shieldCheck" size={18} />
+              <span>Maryland Medicaid & BHA Authorized · In-Home & Community-Based</span>
             </p>
           </div>
 
@@ -56,14 +59,13 @@ export function Hero() {
 
             <p className={styles.licence}>
               <Icon name="shieldCheck" size={18} />
-              <span>Licensed in {site.serviceAreas.join(' & ')}</span>
+              <span>CARF-Aligned · Licensed in {site.serviceAreas.join(' & ')}</span>
             </p>
 
             <div className={styles.availability}>
-              <StatusBadge available>Accepting new clients</StatusBadge>
+              <StatusBadge available>Accepting new referrals</StatusBadge>
               <p className={styles.availabilityText}>
-                {acceptingCount} of our {team.length} therapists are taking new clients, with
-                evening and Saturday hours.
+                Accepting new participants & referrals for adults and youth across Maryland with flexible scheduling.
               </p>
             </div>
           </div>

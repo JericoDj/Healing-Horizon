@@ -19,29 +19,29 @@
 
 export const announcements = [
   {
-    id: 'dbt-group',
+    id: 'referrals',
     icon: 'group',
-    text: 'New DBT skills group starts 14 September — three places left',
+    text: 'Accepting new participant referrals for adults & transitional-age youth',
+  },
+  {
+    id: 'medicaid',
+    icon: 'shieldCheck',
+    text: 'Maryland Medicaid & Behavioral Health Administration (BHA) authorized',
+  },
+  {
+    id: 'community-delivery',
+    icon: 'home',
+    text: 'Community-based & in-home rehabilitation services across Maryland',
+  },
+  {
+    id: 'carf',
+    icon: 'sparkle',
+    text: 'Built to CARF Behavioral Health Standards with person-centered care',
   },
   {
     id: 'availability',
     icon: 'calendar',
-    text: 'Evening and Saturday appointments available',
-  },
-  {
-    id: 'insurance',
-    icon: 'shieldCheck',
-    text: 'Now in network with Regence, PacificSource and Providence',
-  },
-  {
-    id: 'accepting',
-    icon: 'person',
-    text: 'Five of our six therapists are taking new clients',
-  },
-  {
-    id: 'telehealth',
-    icon: 'video',
-    text: 'Telehealth available across Maryland',
+    text: 'Flexible scheduling & responsive intake coordination',
   },
 ];
 
