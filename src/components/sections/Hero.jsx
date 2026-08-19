@@ -48,7 +48,7 @@ export function Hero() {
                 Get Started With Psychiatric Rehabilitation
               </Button>
               <Button to={paths.programs} size="lg" variant="outline">
-                Explore Maryland PRP Services
+                Explore Maryland PRP Programs
               </Button>
             </div>
 
