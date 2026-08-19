@@ -188,7 +188,15 @@
 
 .group {
   scroll-margin-top: calc(var(--header-height) + var(--space-8));
+  animation: pageSettle var(--duration-deliberate) var(--ease-entrance) both;
 }
+
+.group:nth-child(1) { animation-delay: 80ms; }
+.group:nth-child(2) { animation-delay: 160ms; }
+.group:nth-child(3) { animation-delay: 240ms; }
+.group:nth-child(4) { animation-delay: 320ms; }
+.group:nth-child(5) { animation-delay: 400ms; }
+.group:nth-child(6) { animation-delay: 480ms; }
 
 .groupHeading {
   margin: 0 0 var(--space-4);
@@ -209,6 +217,7 @@
   display: flex;
   flex-direction: column;
   gap: var(--space-2);
+  animation: pageSettle var(--duration-deliberate) var(--ease-entrance) both;
 }
 
 .empty {
@@ -262,7 +271,12 @@
   border-radius: var(--radius-lg);
   background-color: var(--surface-raised);
   box-shadow: var(--shadow-sm);
+  animation: pageSettle var(--duration-deliberate) var(--ease-entrance) both;
 }
+
+.contactGrid > li:nth-child(1) .contactCard { animation-delay: 80ms; }
+.contactGrid > li:nth-child(2) .contactCard { animation-delay: 160ms; }
+.contactGrid > li:nth-child(3) .contactCard { animation-delay: 240ms; }
 
 .contactIcon {
   display: grid;

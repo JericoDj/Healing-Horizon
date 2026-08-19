@@ -75,11 +75,11 @@ export const trustSignals = [
 
 /** Professional affiliations shown as a quiet logo/credential row. */
 export const affiliations = [
-  'American Psychological Association',
-  'Maryland Board of Professional Counselors',
-  'EMDR International Association',
-  'The Gottman Institute',
-  'National Association of Social Workers',
+  'CARF International Standards Aligned',
+  'Maryland Behavioral Health Administration (BHA)',
+  'Maryland Medicaid Authorized Provider',
+  'Local Behavioral Health Authorities (LBHAs/CSAs)',
+  'National Association of Social Workers (NASW)',
 ];
 
 export default reflections;

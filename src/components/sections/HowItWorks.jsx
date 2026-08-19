@@ -17,9 +17,9 @@ export function HowItWorks() {
         <SectionHeading
           id="how-heading"
           align="center"
-          eyebrow="Getting started"
-          title="Three steps, and only the first one is on you"
-          intro="Most people put off the first message for months. Here is exactly what happens after you send it, so there is nothing left to imagine."
+          eyebrow="Our Process"
+          title="How Our Psychiatric Rehabilitation Program Works"
+          intro="A structured, collaborative pathway designed to ensure participants receive prompt authorizations and personalized, community-based support."
         />
 
         <ol className={styles.steps}>
@@ -27,14 +27,9 @@ export function HowItWorks() {
             <span className={styles.num} aria-hidden="true">
               1
             </span>
-            <h3 className={styles.stepTitle}>Reach out</h3>
+            <h3 className={styles.stepTitle}>Referral &amp; Initial Assessment</h3>
             <p className={styles.stepBody}>
-              Use the contact form or call{' '}
-              <a className={styles.phone} href={site.contact.phoneHref}>
-                {site.contact.phone}
-              </a>
-              . A sentence or two about what is going on is plenty — you do not need to explain
-              yourself in writing. Our intake coordinator replies {site.responseTime}.
+              Submit a referral from your behavioral health provider, hospital, or CSA, or contact us directly. Our intake coordinator will verify eligibility and guide you through authorization.
             </p>
           </li>
 
@@ -42,11 +37,9 @@ export function HowItWorks() {
             <span className={styles.num} aria-hidden="true">
               2
             </span>
-            <h3 className={styles.stepTitle}>A free 15-minute call</h3>
+            <h3 className={styles.stepTitle}>Personalized Rehabilitation Plan</h3>
             <p className={styles.stepBody}>
-              You talk to a person, not a form. We ask what you are looking for and suggest the
-              therapist whose training fits. If this practice is not the right place for you, we
-              say so and point you somewhere better.
+              Collaborate with our rehabilitation specialists to build an Individualized Rehabilitation Plan (IRP) centered on your personal recovery and independence goals.
             </p>
           </li>
 
@@ -54,22 +47,29 @@ export function HowItWorks() {
             <span className={styles.num} aria-hidden="true">
               3
             </span>
-            <h3 className={styles.stepTitle}>Your first session</h3>
+            <h3 className={styles.stepTitle}>Community-Based Support</h3>
             <p className={styles.stepBody}>
-              Mostly listening. Your therapist asks what brought you in, what has helped before
-              and what you would like to be different. You set the pace, and you can decline any
-              question.
+              Work one-on-one with your rehabilitation specialist in real-life settings—at home, work, school, or community centers—practicing daily living and wellness skills.
+            </p>
+          </li>
+
+          <li className={styles.step}>
+            <span className={styles.num} aria-hidden="true">
+              4
+            </span>
+            <h3 className={styles.stepTitle}>Ongoing Progress &amp; Care Coordination</h3>
+            <p className={styles.stepBody}>
+              Participate in regular progress reviews, quarterly IRP updates, and ongoing coordination with your primary therapist, doctors, and community support systems.
             </p>
           </li>
         </ol>
 
         <div className={styles.cta}>
           <Button to={paths.book} size="lg" iconRight="arrowRight">
-            Book a free consultation
+            Get Started With Psychiatric Rehabilitation
           </Button>
           <p className={styles.ctaNote}>
-            Rather write than talk? <Link to={paths.contact}>Send a message instead</Link> — the
-            same person reads both.
+            Have questions about referrals or authorizations? <Link to={paths.contact}>Contact our intake team</Link>.
           </p>
         </div>
       </div>

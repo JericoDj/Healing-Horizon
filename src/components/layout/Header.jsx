@@ -200,9 +200,6 @@ export function Header() {
             <span className={styles.phoneNumber}>{site.contact.phone}</span>
           </a>
 
-          {/* "Book a call", not "Book a consultation" — six icon pills, the
-              wordmark and the phone number all share this bar, and the shorter
-              label is both ~55px cheaper and a smaller-sounding commitment. */}
           <Button type="button" size="sm" className={styles.cta} onClick={openBooking}>
             Book a call
           </Button>

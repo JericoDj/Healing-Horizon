@@ -125,50 +125,48 @@ export const crisisResources = [
  * `components/ui/Icon.jsx`.
  */
 export const primaryNav = [
-  // { label: 'Services', to: '/services', icon: 'heartHand' },
-  { label: 'Therapists', to: '/therapists', icon: 'group' },
-  { label: 'About', to: '/about', icon: 'leaf' },
-  { label: 'Resources', to: '/resources', icon: 'book' },
+  { label: 'Programs', to: '/programs', icon: 'leaf' },
+  { label: 'Explore', to: '/explore', icon: 'compass' },
+  { label: 'About', to: '/about', icon: 'sparkle' },
   { label: 'FAQ', to: '/faq', icon: 'info' },
   { label: 'Contact', to: '/contact', icon: 'mail' },
 ];
 
 export const footerNav = [
   {
-    heading: 'Care',
+    heading: 'Programs',
     links: [
-      { label: 'All services', to: '/services' },
-      { label: 'Individual therapy', to: '/services/individual-therapy' },
-      { label: 'Couples therapy', to: '/services/couples-therapy' },
-      { label: 'Teen & adolescent', to: '/services/teen-therapy' },
-      { label: 'Group programs', to: '/services/group-therapy' },
+      { label: 'All Programs', to: '/programs' },
+      { label: 'Daily Living Skills', to: '/programs/daily-living-skills' },
+      { label: 'Symptom Management', to: '/programs/symptom-management' },
+      { label: 'Community Coordination', to: '/programs/community-coordination' },
     ],
   },
   {
-    heading: 'Practice',
+    heading: 'Explore',
     links: [
-      { label: 'About us', to: '/about' },
-      { label: 'Our therapists', to: '/therapists' },
-      { label: 'Rates & insurance', to: '/rates' },
-      { label: 'Resources', to: '/resources' },
-      { label: 'FAQ', to: '/faq' },
+      { label: 'Explore PRP Services', to: '/explore' },
+      { label: 'Explore by Topic Hub', to: '/explore#topics' },
+      { label: 'Educational Articles', to: '/explore#articles' },
+      { label: 'Maryland Resources', to: '/explore#maryland-resources' },
     ],
   },
   {
-    heading: 'Get started',
+    heading: 'About',
     links: [
-      { label: 'Book a consultation', to: '/book' },
-      { label: 'Contact us', to: '/contact' },
-      { label: 'New client paperwork', to: '/contact#intake' },
+      { label: 'About Healing Horizons', to: '/about' },
+      { label: 'Our Mission & Approach', to: '/about#mission' },
+      { label: 'Maryland Service Areas', to: '/about#service-areas' },
+      { label: 'Why Choose Us', to: '/about#why-choose' },
     ],
   },
   {
-    heading: 'Legal',
+    heading: 'FAQ',
     links: [
-      { label: 'Privacy Policy', to: '/privacy' },
-      { label: 'Terms of Service', to: '/terms' },
-      { label: 'Accessibility', to: '/accessibility' },
-      { label: 'Notice of Privacy Practices', to: '/privacy#hipaa' },
+      { label: 'Frequently Asked Questions', to: '/faq' },
+      { label: 'Getting Started & Referrals', to: '/faq#getting-started' },
+      { label: 'PRP Services & In-Home Care', to: '/faq#prp-services' },
+      { label: 'Maryland Medicaid Coverage', to: '/faq#medicaid-coverage' },
     ],
   },
 ];

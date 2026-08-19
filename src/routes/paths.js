@@ -10,16 +10,22 @@ export const paths = {
   home: '/',
   about: '/about',
 
-  services: '/services',
-  service: (slug = ':slug') => `/services/${slug}`,
+  programs: '/programs',
+  program: (slug = ':slug') => `/programs/${slug}`,
+
+  explore: '/explore',
+  exploreArticle: (slug = ':slug') => `/explore/${slug}`,
+
+  // Compatibility aliases
+  services: '/programs',
+  service: (slug = ':slug') => `/programs/${slug}`,
+  resources: '/explore',
+  resource: (slug = ':slug') => `/explore/${slug}`,
 
   therapists: '/therapists',
   therapist: (slug = ':slug') => `/therapists/${slug}`,
 
   rates: '/rates',
-
-  resources: '/resources',
-  resource: (slug = ':slug') => `/resources/${slug}`,
 
   faq: '/faq',
   contact: '/contact',

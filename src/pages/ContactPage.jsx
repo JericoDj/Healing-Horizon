@@ -15,6 +15,7 @@ import {
   Textarea,
 } from '../components/ui';
 import { useContactForm } from '../context/ContactContext';
+import { useUI } from '../context/UIContext';
 import { allFaqs } from '../data/faqs';
 import { crisisResources, site } from '../data/site';
 import { therapistOptions } from '../data/team';
@@ -25,23 +26,22 @@ import { formatPhone } from '../utils/validators';
 import styles from './ContactPage.module.css';
 
 /** The four questions people actually ask before they write to us. */
-const CONTACT_FAQ_IDS = ['first-step', 'choose-therapist', 'website-data', 'emergency'];
+const CONTACT_FAQ_IDS = ['what-is-prp', 'how-to-start', 'medicaid-covers-prp', 'who-is-eligible'];
 const contactFaqs = CONTACT_FAQ_IDS.map((id) => allFaqs.find((faq) => faq.id === id)).filter(
   Boolean,
 );
 
 /**
- * ContactPage — the enquiry form, the practice's details, and the things a
- * person needs to know before they type anything into a box on the internet.
- *
- * Everything below the crisis block is driven by useContactForm(); the page
- * itself holds no form state.
+ * ContactPage — the enquiry form, practice details, new participant paperwork,
+ * and FAQs for Maryland Psychiatric Rehabilitation.
  */
 function ContactPageInner() {
+  const { openBooking } = useUI();
+
   usePageMeta({
-    title: 'Contact us',
+    title: 'Contact Our Psychiatric Rehabilitation Team | Healing Horizons',
     description:
-      'Send the practice a message and we will reply within one business day. Not for emergencies — if you are in crisis, call or text 988.',
+      'Have questions about PRP services, referrals, Medicaid coverage, or getting started? Our Maryland intake team is here to help.',
   });
 
   const {
@@ -69,22 +69,23 @@ function ContactPageInner() {
 
   return (
     <>
+      {/* ------------------------------------------------------------- 1. Hero */}
       <section
         className={`section section--tight section--sunken ${styles.hero}`}
         aria-labelledby="contact-heading"
       >
         <div className="container">
           <div className={styles.heroInner}>
-            <p className="eyebrow">Contact</p>
-            <h1 id="contact-heading">Contact us</h1>
+            <p className="eyebrow">CONTACT HEALING HORIZONS · MARYLAND</p>
+            <h1 id="contact-heading">Contact Our Psychiatric Rehabilitation Team</h1>
             <p className={styles.lede}>
-              Tell us a little about what you are looking for and we will point you to the right
-              person. You do not need to have it figured out first — a sentence is enough.
+              Have questions about PRP services, referrals, Medicaid coverage, or getting started?
+              Our Maryland intake team is here to help.
             </p>
             <p className={styles.promise}>
               <Icon name="clock" size={18} />
               <span>
-                Our intake coordinator replies <strong>{site.responseTime}</strong>. If you would
+                Our intake coordinator typically replies within one business day. If you would
                 rather talk, call{' '}
                 <a href={site.contact.phoneHref}>{site.contact.phone}</a>.
               </span>
@@ -93,9 +94,18 @@ function ContactPageInner() {
         </div>
       </section>
 
-      <section className={`section ${styles.formSection}`} aria-labelledby="contact-form-heading">
-        <div className={`container ${styles.layout}`}>
-          <div className={styles.main}>
+      {/* ----------------------------------------------- 2 & 3. Form & Details */}
+      <section className={`section section--sunken ${styles.formSection}`} aria-labelledby="contact-section-heading">
+        <div className="container">
+          <SectionHeading
+            id="contact-section-heading"
+            eyebrow="Get In Touch"
+            title="Contact Our Intake Team &amp; Office"
+            intro="Have questions about PRP services, referrals, Maryland Medicaid, or getting started? Send our intake team a message or reach our Maryland office directly."
+          />
+
+          <div className={styles.layout}>
+            <div className={styles.main}>
             <Alert
               tone="danger"
               title="This form is not for emergencies"
@@ -106,10 +116,6 @@ function ContactPageInner() {
                 weekends or on holidays. If you are in danger or thinking about ending your life,
                 use one of these instead — they are free, confidential and answered 24/7.
               </p>
-              {/* One tappable card per line, action first. The previous version
-                  set the action as an inline pill with the description running
-                  around it, which wrapped badly and repeated itself — every row
-                  read "Call or text 988 … Call or text 988". */}
               <ul className={styles.crisisList}>
                 {crisisResources.map((resource) => (
                   <li key={resource.label}>
@@ -125,9 +131,9 @@ function ContactPageInner() {
             <Alert tone="info" title="Please keep clinical details out of this form">
               <p>
                 This form is encrypted in transit, but treat it the way you would treat ordinary
-                email. Please do not include diagnoses, medication, symptoms or history. Your name,
-                a way to reach you, and one sentence about what you are looking for is plenty — the
-                rest belongs in a conversation.
+                email. Please do not include detailed psychiatric history. Your name, a way to reach
+                you, and a brief description of what you are looking for is plenty — clinical
+                assessments take place during the intake process.
               </p>
             </Alert>
 
@@ -140,12 +146,12 @@ function ContactPageInner() {
                   id="contact-form-heading"
                 >
                   <Icon name="check" size={26} className={styles.confirmationIcon} />
-                  Your message is with us
+                  Your message is with our intake team
                 </h2>
 
                 <p className={styles.confirmationLede}>
-                  Thank you for writing. We know that sending this is not always an easy thing to
-                  do.
+                  Thank you for reaching out. A Maryland intake coordinator will review your inquiry
+                  shortly.
                 </p>
 
                 <p className={styles.reference}>
@@ -156,44 +162,44 @@ function ContactPageInner() {
                 <h3 className={styles.confirmationSubheading}>What happens next</h3>
                 <ol className={styles.nextSteps}>
                   <li>
-                    Our intake coordinator reads your message and replies {site.responseTime},
-                    using the method you chose.
+                    Our intake coordinator reviews your message and replies within one business day,
+                    using the method you preferred.
                   </li>
                   <li>
-                    If you are looking to start therapy, she will offer you a free 15-minute phone
-                    consultation. That call is not a therapy session and there is no obligation.
+                    We will answer your questions regarding Maryland Medicaid authorization,
+                    rehabilitation goals, and program components.
                   </li>
                   <li>
-                    If we are not the right fit, we will say so and give you two or three other
-                    places to try.
+                    If you are ready to proceed, we will coordinate your clinical referral and
+                    schedule your initial assessment.
                   </li>
                 </ol>
 
                 <p className={styles.confirmationFooter}>
-                  If anything changes, or you would rather talk sooner, call{' '}
+                  If you need immediate assistance or would rather speak with someone now, call{' '}
                   <a href={site.contact.phoneHref}>{site.contact.phone}</a> during office hours.
                 </p>
 
                 <div className={styles.confirmationActions}>
-                  <Button to={paths.book} variant="primary" iconRight="arrowRight">
-                    Book a free consultation
+                  <Button type="button" variant="primary" iconRight="arrowRight" onClick={openBooking}>
+                    Book a Free Consultation
                   </Button>
-                  <Button to={paths.resources} variant="outline">
-                    Read while you wait
+                  <Button to={paths.explore} variant="outline">
+                    Explore PRP Resources
                   </Button>
                 </div>
               </Card>
             ) : (
               <form className={styles.form} onSubmit={handleSubmit} noValidate>
                 <h2 id="contact-form-heading" className={styles.formHeading}>
-                  Send us a message
+                  Contact Our Intake Team
                 </h2>
 
                 {formError ? (
                   <Alert live tone="danger" title="We could not send your message">
                     <p>{formError}</p>
                     <p>
-                      You can try again, or call us on{' '}
+                      You can try again, or call us directly at{' '}
                       <a href={site.contact.phoneHref}>{site.contact.phone}</a>.
                     </p>
                   </Alert>
@@ -251,8 +257,6 @@ function ContactPageInner() {
                     value={values.phone}
                     onChange={handleChange}
                     onBlur={(event) => {
-                      // Tidy the number once they leave the field. Doing this on
-                      // every keystroke fights the caret; on blur it just works.
                       setValue('phone', formatPhone(event.target.value));
                       handleBlur(event);
                     }}
@@ -283,9 +287,9 @@ function ContactPageInner() {
                 />
 
                 <Select
-                  label="Is there a therapist you would like to see?"
+                  label="Is there a specialist you would like to work with?"
                   name="preferredTherapist"
-                  hint="No preference is a perfectly good answer — our coordinator matches most people."
+                  hint="No preference is a perfectly good answer — our coordinator matches most participants."
                   options={therapistOptions}
                   value={values.preferredTherapist}
                   onChange={handleChange}
@@ -299,7 +303,7 @@ function ContactPageInner() {
                   required
                   rows={6}
                   maxLength={2000}
-                  hint="A sentence or two. No clinical detail, please — we will cover that on the phone."
+                  hint="A sentence or two about your needs or referral. No confidential clinical details, please."
                   value={values.message}
                   onChange={handleChange}
                   onBlur={handleBlur}
@@ -307,7 +311,7 @@ function ContactPageInner() {
                 />
 
                 <Checkbox
-                  label="I understand this form is not monitored after hours, is not for emergencies, and should not be used to send clinical information."
+                  label="I understand this form is not monitored after hours, is not for emergencies, and should not be used to send confidential medical records."
                   name="consent"
                   checked={values.consent}
                   onChange={handleChange}
@@ -322,7 +326,7 @@ function ContactPageInner() {
                     Send message
                   </Button>
                   <p className={styles.submitNote}>
-                    Sending this does not create a therapist–client relationship. See our{' '}
+                    Sending this inquiry does not establish an active rehabilitation enrollment. See our{' '}
                     <Link to={paths.privacy}>Privacy Policy</Link> and{' '}
                     <Link to={paths.terms}>Terms of Service</Link>.
                   </p>
@@ -333,32 +337,33 @@ function ContactPageInner() {
 
           <aside className={styles.aside} aria-labelledby="contact-details-heading">
             <h2 id="contact-details-heading" className={styles.asideHeading}>
-              Practice details
+              Healing Horizons Contact Information
             </h2>
 
             <Card tone="sunken" padding="md" className={styles.detailCard}>
               <h3 className={styles.detailHeading}>
                 <Icon name="mapPin" size={19} />
-                Our office
+                Our Maryland Office
               </h3>
               <address className={styles.address}>
                 <a href={site.address.mapUrl} target="_blank" rel="noreferrer noopener">
-                  {site.address.line1}, {site.address.line2}
+                  {site.address.line1}
                   <br />
                   {site.address.city}, {site.address.state} {site.address.postalCode}
                   <Icon name="external" size={14} className={styles.externalIcon} />
                 </a>
               </address>
               <p className={styles.detailNote}>
-                Step-free from the street, with an elevator to the third floor. Metered street
-                parking and a garage on the same block.
+                Administrative office in Waldorf, MD. Rehabilitation services are delivered across
+                Charles County, Prince George’s County, and surrounding Maryland communities in-home
+                and on-site.
               </p>
             </Card>
 
             <Card tone="sunken" padding="md" className={styles.detailCard}>
               <h3 className={styles.detailHeading}>
                 <Icon name="phone" size={19} />
-                By phone
+                By Phone
               </h3>
               <p className={styles.detailBig}>
                 <a href={site.contact.phoneHref}>{site.contact.phone}</a>
@@ -372,36 +377,36 @@ function ContactPageInner() {
             <Card tone="sunken" padding="md" className={styles.detailCard}>
               <h3 className={styles.detailHeading}>
                 <Icon name="mail" size={19} />
-                By email
+                By Email
               </h3>
               <ul className={styles.emailList}>
+                <li>
+                  <span className={styles.emailLabel}>Intake &amp; Referrals</span>
+                  <a href={`mailto:${site.contact.intakeEmail}`}>{site.contact.intakeEmail}</a>
+                </li>
                 <li>
                   <span className={styles.emailLabel}>General</span>
                   <a href={`mailto:${site.contact.email}`}>{site.contact.email}</a>
                 </li>
                 <li>
-                  <span className={styles.emailLabel}>New clients</span>
-                  <a href={`mailto:${site.contact.intakeEmail}`}>{site.contact.intakeEmail}</a>
-                </li>
-                <li>
-                  <span className={styles.emailLabel}>Billing</span>
+                  <span className={styles.emailLabel}>Billing &amp; Medicaid</span>
                   <a href={`mailto:${site.contact.billingEmail}`}>{site.contact.billingEmail}</a>
                 </li>
                 <li>
-                  <span className={styles.emailLabel}>Privacy</span>
+                  <span className={styles.emailLabel}>Privacy / Compliance</span>
                   <a href={`mailto:${site.contact.privacyEmail}`}>{site.contact.privacyEmail}</a>
                 </li>
               </ul>
               <p className={styles.detailNote}>
-                Email is not a secure channel for health information. Please keep clinical detail
-                out of it.
+                Email is not a secure channel for health records. Please submit referrals through our
+                secure intake portal.
               </p>
             </Card>
 
             <Card tone="sunken" padding="md" className={styles.detailCard}>
               <h3 className={styles.detailHeading}>
                 <Icon name="clock" size={19} />
-                Office hours
+                Office Hours
               </h3>
               <dl className={styles.hours}>
                 {site.hours.map((entry) => (
@@ -412,77 +417,72 @@ function ContactPageInner() {
                 ))}
               </dl>
               <p className={styles.detailNote}>
-                Sessions run outside these hours by arrangement with your therapist. The front desk
-                does not.
+                Community rehabilitation sessions are scheduled flexibly to accommodate participant
+                work, school, and family routines.
               </p>
             </Card>
 
             <Card tone="accent" padding="md" className={styles.detailCard}>
               <h3 className={styles.detailHeading}>
-                <Icon name="heartHand" size={19} />
-                After you send
+                <Icon name="shieldCheck" size={19} />
+                What You Should Know
               </h3>
               <ul className={styles.expectList}>
-                <li>You get an on-screen reference straight away. Keep it if you like.</li>
-                <li>A real person reads your message — not an autoresponder.</li>
-                <li>We reply {site.responseTime}, in the way you asked us to.</li>
-                <li>Nothing is booked, and nothing is charged, until you say so.</li>
+                <li>You receive an on-screen reference number immediately upon submission.</li>
+                <li>A dedicated Maryland intake specialist reads and replies to your message.</li>
+                <li>We reply {site.responseTime}, through your preferred communication method.</li>
+                <li>Services are 100% covered by Maryland Medicaid for eligible participants.</li>
               </ul>
             </Card>
           </aside>
+          </div>
         </div>
       </section>
 
+      {/* --------------------------------- 4. New Participant Paperwork */}
       <section
-        className={`section section--sunken ${styles.intake}`}
+        className={`section ${styles.intake}`}
         id="intake"
         aria-labelledby="intake-heading"
       >
         <div className="container">
           <SectionHeading
-            eyebrow="New clients"
+            eyebrow="Participant Onboarding"
             id="intake-heading"
-            title="New client paperwork"
-            intro="Once you and a therapist have agreed to start, we send a short set of forms. Here is what to expect, so none of it arrives as a surprise."
+            title="New Participant Information &amp; Paperwork"
+            intro="Once you've agreed to start services, we'll help you complete the information needed for your psychiatric rehabilitation program."
           />
 
           <div className={styles.intakeGrid}>
             <Card tone="raised" padding="md">
-              <h3 className={styles.intakeCardHeading}>What you receive</h3>
+              <h3 className={styles.intakeCardHeading}>What You'll Receive</h3>
               <ul className={styles.intakeList}>
-                <li>An intake questionnaire — history, current concerns, what you want from therapy.</li>
-                <li>Consent to treatment, and our practice policies in full.</li>
+                <li>Initial Functional Assessment packet — personal strengths, daily living goals, and support priorities.</li>
+                <li>Participant Rights &amp; Responsibilities, consent for services, and program orientation guidelines.</li>
                 <li>
                   Our{' '}
-                  <Link to={`${paths.privacy}#hipaa`}>Notice of Privacy Practices</Link>, which sets
-                  out how your clinical record is handled under HIPAA.
+                  <Link to={`${paths.privacy}#hipaa`}>Notice of Privacy Practices</Link>, detailing how health information is protected under HIPAA.
                 </li>
-                <li>
-                  A Good Faith Estimate, if you are uninsured or choosing not to use insurance.
-                </li>
-                <li>Card-on-file authorisation, and your insurance details if you are using them.</li>
+                <li>Consent for Release of Information to coordinate directly with your outpatient therapist and doctor.</li>
+                <li>Maryland Medicaid eligibility verification documentation.</li>
               </ul>
             </Card>
 
             <Card tone="raised" padding="md">
-              <h3 className={styles.intakeCardHeading}>How it works</h3>
+              <h3 className={styles.intakeCardHeading}>How It Works</h3>
               <ul className={styles.intakeList}>
                 <li>
-                  Everything arrives through our secure client portal, never as an email
-                  attachment.
+                  Forms are completed electronically through our secure portal, or assisted in-person by your intake coordinator.
                 </li>
-                <li>It takes most people about fifteen minutes.</li>
+                <li>Takes approximately 15 to 20 minutes to complete with guidance.</li>
                 <li>
-                  Please complete it at least 24 hours before your first session so your therapist
-                  can read it beforehand.
+                  Completed prior to your first community session so your rehabilitation specialist can tailor your initial plan.
                 </li>
                 <li>
-                  Questions you would rather answer in person can be left blank. Say so, and your
-                  therapist will pick them up in the room.
+                  Questions about any section can be answered directly with your intake coordinator on the phone or in person.
                 </li>
                 <li>
-                  Need large print, plain language, or a paper copy? Ask, and we will send it that
-                  way. See our{' '}
+                  Need large print, plain language, or language interpretation? Let us know — see our{' '}
                   <Link to={paths.accessibility}>accessibility statement</Link>.
                 </li>
               </ul>
@@ -491,33 +491,35 @@ function ContactPageInner() {
         </div>
       </section>
 
-      <section className={`section ${styles.faqSection}`} aria-labelledby="contact-faq-heading">
+      {/* -------------------------------------------------------- 5. FAQs */}
+      <section className={`section section--tight section--accent ${styles.faqSection}`} aria-labelledby="contact-faq-heading">
         <div className="container">
           <div className={styles.faqInner}>
             <SectionHeading
-              eyebrow="Before you write"
+              eyebrow="Quick Answers"
               id="contact-faq-heading"
-              title="Questions people ask first"
-              intro="If one of these answers it, you do not need to send anything at all."
+              title="Frequently Asked Questions About Psychiatric Rehabilitation"
+              intro="Have a question about PRP services, referrals, Medicaid coverage, or getting started? Find answers to common questions before contacting our team."
             />
             <Accordion items={contactFaqs} defaultOpenId={contactFaqs[0]?.id} />
             <p className={styles.faqMore}>
-              <Link to={paths.faq}>Read all frequently asked questions</Link>
+              <Link to={paths.faq}>Read All Psychiatric Rehabilitation FAQs →</Link>
             </p>
           </div>
         </div>
       </section>
 
+      {/* -------------------------------------------------- 6. Bottom CTA */}
       <section className={`section section--inverse ${styles.cta}`} aria-labelledby="contact-cta-heading">
         <div className="container">
           <div className={styles.ctaInner}>
-            <h2 id="contact-cta-heading">Would a short call be easier?</h2>
+            <h2 id="contact-cta-heading">Have Questions About Psychiatric Rehabilitation?</h2>
             <p className={styles.ctaText}>
-              Fifteen minutes, by phone, at no cost. It is not a therapy session and it does not
-              commit you to anything.
+              A short call with our intake team can help you understand your options, referral process,
+              and next steps.
             </p>
-            <Button to={paths.book} variant="accent" size="lg" iconRight="arrowRight">
-              Book a free consultation
+            <Button type="button" variant="accent" size="lg" iconRight="arrowRight" onClick={openBooking}>
+              Book a Free Consultation
             </Button>
           </div>
         </div>

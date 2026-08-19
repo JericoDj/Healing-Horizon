@@ -13,31 +13,31 @@ import styles from './TrustStrip.module.css';
 const whyChoosePillars = [
   {
     id: 'licensed-therapists',
-    value: '6',
-    title: 'Licensed & Experienced Mental Health Therapists',
-    subtitle: 'Board-Certified Maryland Clinicians (LCPC, LCSW-C, LCMFT)',
-    detail: 'Every therapist at Healing Horizons is independently licensed in Maryland with extensive experience in individual, couples, and family therapy.',
+    value: '6+',
+    title: 'Licensed & Experienced Mental Health Professionals',
+    subtitle: 'Qualified Behavioral Health Specialists & Coordinators',
+    detail: 'Our rehabilitation team works in close collaboration with licensed Maryland clinicians to deliver individualized, recovery-oriented care.',
   },
   {
     id: 'personalized-therapy',
     value: '100%',
-    title: 'Personalized Therapy for Your Mental Health Needs',
-    subtitle: 'Customized Evidence-Based Treatment Plans',
-    detail: 'Tailored clinical care integrating CBT, DBT, EMDR, Gottman Method, and IFS to match your personal mental health goals.',
+    title: 'Personalized Psychiatric Rehabilitation',
+    subtitle: 'Custom Individualized Rehabilitation Plans (IRP)',
+    detail: 'Tailored rehabilitation goals focusing on daily living skills, emotional regulation, and community integration suited to each participant.',
   },
   {
     id: 'convenient-care',
     value: 'MD',
-    title: 'Convenient Therapy Across Maryland',
-    subtitle: 'In-Person and Telehealth Statewide',
-    detail: 'Flexible scheduling with evening and Saturday hours, accessible in person and online via secure telehealth.',
+    title: 'Community-Based Support Across Maryland',
+    subtitle: 'In-Home and Real-World Support',
+    detail: 'Services delivered where skills are needed most—in homes, community centers, schools, and workplaces across Maryland.',
   },
   {
     id: 'responsive-intake',
     value: '1 Day',
-    title: 'Accessible & Responsive Mental Health Support',
-    subtitle: 'Quick Intake & Free 15-Minute Consultation',
-    detail: 'Speak with our intake coordinator within one business day with zero cost or obligation to find the right therapeutic fit.',
+    title: 'Responsive Mental Health & Intake Services',
+    subtitle: 'Rapid Intake & Referral Coordination',
+    detail: 'Prompt intake coordination within one business day to assist participants, families, and referring providers with authorization.',
   },
 ];
 
@@ -50,10 +50,10 @@ export function TrustStrip() {
       <div className="container">
         <header className={styles.header}>
           <h2 id="trust-heading" className={styles.title}>
-            Why Choose Our Mental Health Therapists in Maryland?
+            Why Families Choose Our Psychiatric Rehabilitation Program in Maryland
           </h2>
           <p className={styles.subtitle}>
-            Verifiable metrics, licensed clinicians, and responsive care built for families across Maryland.
+            Person-centered rehabilitation, CARF-aligned standards, and responsive community care built for individuals and families across Maryland.
           </p>
         </header>
 
@@ -89,14 +89,14 @@ export function TrustStrip() {
             <div className={styles.affiliationsHeading}>
               <Icon name="shieldCheck" size={20} className={styles.affiliationsIcon} />
               <h4 className={styles.affiliationsTitle}>
-                Affiliations &amp; Professional Memberships in Maryland
+                Accreditation Standards &amp; Maryland Regulatory Compliance
               </h4>
             </div>
             <h5 className={styles.affiliationsSubtitle}>
-              Clinical Standards &amp; Practice Accreditations
+              Quality Rehabilitation Standards &amp; Licensing Compliance
             </h5>
             <h6 className={styles.affiliationsCompliance}>
-              Maryland Department of Health &amp; National Clinical Board Compliance
+              Maryland Department of Health &amp; Behavioral Health Administration (BHA) Standards
             </h6>
           </div>
 

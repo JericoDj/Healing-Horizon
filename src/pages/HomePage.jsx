@@ -22,8 +22,9 @@ import styles from './HomePage.module.css';
  */
 export function HomePage() {
   usePageMeta({
+    title: 'Psychiatric Rehabilitation Services in Maryland',
     description:
-      'Community-based Psychiatric Rehabilitation Program (PRP) in Maryland. Empowering adults and youth with independent living skills, wellness management, and care coordination.',
+      'Healing Horizons provides person-centered psychiatric rehabilitation services across Maryland. Our PRP program helps adults and transitional-age youth build independent living skills, manage mental health symptoms, strengthen daily functioning, and connect with community resources.',
   });
 
   return (

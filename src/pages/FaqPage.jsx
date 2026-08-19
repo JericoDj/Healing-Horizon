@@ -4,21 +4,20 @@ import { Accordion, Badge, Button, Icon, SectionHeading } from '../components/ui
 import { allFaqs, faqGroups } from '../data/faqs';
 import { site } from '../data/site';
 import { usePageMeta } from '../hooks/usePageMeta';
+import { useUI } from '../context/UIContext';
 import paths from '../routes/paths';
 import styles from './FaqPage.module.css';
 
 /**
  * FaqPage — grouped questions, with a search that flattens them.
- *
- * Two modes on purpose. Browsing wants structure (four themed groups with a
- * jump nav); searching wants a flat ranked list. Trying to serve both with one
- * layout produces a page that is bad at both.
  */
 export function FaqPage() {
+  const { openBooking } = useUI();
+
   usePageMeta({
-    title: 'Frequently asked questions',
+    title: 'Frequently Asked Questions About Psychiatric Rehabilitation | Healing Horizons',
     description:
-      'Getting started, cost and insurance, confidentiality, and how sessions work at Healing Horizon — answered plainly.',
+      'PRP services, Maryland Medicaid, referrals, eligibility, in-home support, and getting started.',
   });
 
   const [query, setQuery] = useState('');
@@ -38,14 +37,12 @@ export function FaqPage() {
     <>
       <section className={`section section--tight section--sunken ${styles.hero}`} aria-labelledby="faq-heading">
         <div className="container">
-          <p className="eyebrow">Questions</p>
-          <h1 id="faq-heading" className={styles.title}>
-            The things people ask before they call
+          <p className="eyebrow">FREQUENTLY ASKED QUESTIONS</p>
+          <h1 id="faq-heading" className={styles.title} style={{ maxWidth: '24ch' }}>
+            Frequently Asked Questions About Psychiatric Rehabilitation
           </h1>
           <p className={styles.lede}>
-            Cost, confidentiality, how long it takes, what actually happens in a first session.
-            If your question is not here, ask us — nobody has ever asked us something they
-            should have been embarrassed about.
+            PRP services, Maryland Medicaid, referrals, eligibility, in-home support, and getting started.
           </p>
 
           <div className={styles.searchWrap}>
@@ -58,7 +55,7 @@ export function FaqPage() {
                 id="faq-search"
                 type="search"
                 className={styles.searchInput}
-                placeholder="insurance, confidentiality, first session…"
+                placeholder="Medicaid, referral, in-home services, eligibility…"
                 value={query}
                 onChange={(event) => setQuery(event.target.value)}
                 autoComplete="off"
@@ -79,17 +76,20 @@ export function FaqPage() {
           <p className={styles.resultCount} aria-live="polite">
             {isSearching
               ? `${results.length} ${results.length === 1 ? 'question matches' : 'questions match'} “${trimmed}”.`
-              : `${allFaqs.length} questions across ${faqGroups.length} topics.`}
+              : `${allFaqs.length} questions across ${faqGroups.length} categories.`}
           </p>
         </div>
       </section>
 
-      {/* ---------------------------------------------------------------- */}
+      {/* ------------------------------------------------ 2. FAQ Questions */}
       <section className="section section--sunken" aria-labelledby="faq-content-heading">
         <div className="container">
-          <h2 id="faq-content-heading" className="visually-hidden">
-            {isSearching ? 'Search results' : 'All questions by topic'}
-          </h2>
+          <SectionHeading
+            id="faq-content-heading"
+            eyebrow="Browse Questions"
+            title="Psychiatric Rehabilitation FAQs by Topic"
+            intro="Find detailed answers about Maryland PRP services, Medicaid coverage, eligibility requirements, referral pathways, and getting started."
+          />
 
           {isSearching ? (
             <SearchResults results={results} query={trimmed} onClear={() => setQuery('')} />
@@ -117,9 +117,9 @@ export function FaqPage() {
                     className={styles.group}
                     aria-labelledby={`${group.id}-heading`}
                   >
-                    <h3 id={`${group.id}-heading`} className={styles.groupHeading}>
+                    <h2 id={`${group.id}-heading`} className={styles.groupHeading}>
                       {group.heading}
-                    </h3>
+                    </h2>
                     <Accordion items={group.items} allowMultiple />
                   </section>
                 ))}
@@ -133,9 +133,9 @@ export function FaqPage() {
       <section className="section" aria-labelledby="faq-ask-heading">
         <div className="container">
           <SectionHeading
-            eyebrow="Still wondering"
-            title="Ask us the thing you did not find here"
-            intro="Our intake coordinator answers these all day and is not fazed by any of them. Call, email, or send a short message — whichever feels easiest."
+            eyebrow="Direct Assistance"
+            title="Ask us the question you did not find here"
+            intro="Our intake specialists are available to guide you through Maryland Medicaid eligibility, clinical referrals, and individualized program options."
             id="faq-ask-heading"
           />
 
@@ -144,10 +144,9 @@ export function FaqPage() {
               <span className={styles.contactIcon}>
                 <Icon name="phone" size={22} />
               </span>
-              <h3 className={styles.contactTitle}>Call the practice</h3>
+              <h3 className={styles.contactTitle}>Call Our Intake Team</h3>
               <p className={styles.contactBody}>
-                Weekdays from 8am. If we are with clients, leave a message and we call back the
-                same day.
+                Weekdays from 8am to 6pm. We answer questions about Medicaid and referrals directly.
               </p>
               <a href={site.contact.phoneHref} className={styles.contactAction}>
                 {site.contact.phone}
@@ -158,10 +157,9 @@ export function FaqPage() {
               <span className={styles.contactIcon}>
                 <Icon name="mail" size={22} />
               </span>
-              <h3 className={styles.contactTitle}>Email us</h3>
+              <h3 className={styles.contactTitle}>Email Intake</h3>
               <p className={styles.contactBody}>
-                Good for questions about insurance and scheduling. Please keep clinical detail out
-                of email.
+                Ideal for general questions and referral inquiries across Maryland.
               </p>
               <a href={`mailto:${site.contact.intakeEmail}`} className={styles.contactAction}>
                 {site.contact.intakeEmail}
@@ -172,10 +170,9 @@ export function FaqPage() {
               <span className={styles.contactIcon}>
                 <Icon name="heartHand" size={22} />
               </span>
-              <h3 className={styles.contactTitle}>Send a message</h3>
+              <h3 className={styles.contactTitle}>Send a Message</h3>
               <p className={styles.contactBody}>
-                A short form. We reply {site.responseTime}, and you choose how you would like to
-                be contacted.
+                Submit an inquiry or referral through our secure contact form. We reply {site.responseTime}.
               </p>
               <Link to={paths.contact} className={styles.contactAction}>
                 Contact form
@@ -190,24 +187,23 @@ export function FaqPage() {
         <div className="container">
           <div className={styles.cta}>
             <h2 id="faq-cta-heading" className={styles.ctaHeading}>
-              The fastest way to get your questions answered
+              Still Have Questions About Psychiatric Rehabilitation?
             </h2>
             <p className={styles.ctaBody}>
-              Fifteen minutes on the phone with a person who can answer all of it at once —
-              cost, fit, availability. Free, and nothing is booked at the end of it unless you
-              want it to be.
+              Whether you are an individual seeking independence, a family member, or a provider
+              submitting a referral, our Maryland intake specialists are here to guide you.
             </p>
             <div className={styles.ctaActions}>
-              <Button to={paths.book} variant="inverse" size="lg" iconRight="arrowRight">
-                Book a free consultation
+              <Button to={paths.contact} variant="inverse" size="lg" iconRight="arrowRight">
+                Talk With Our Intake Team
               </Button>
               <Button
-                href={site.contact.phoneHref}
+                type="button"
                 variant="inverseOutline"
                 size="lg"
-                iconLeft="phone"
+                onClick={openBooking}
               >
-                {site.contact.phone}
+                Book a Free Consultation
               </Button>
             </div>
           </div>

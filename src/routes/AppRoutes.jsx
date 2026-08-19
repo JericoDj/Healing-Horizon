@@ -1,5 +1,6 @@
+
 import { Suspense, lazy } from 'react';
-import { Navigate, Route, Routes } from 'react-router-dom';
+import { Navigate, Route, Routes, useParams } from 'react-router-dom';
 import Layout from '../components/layout/Layout';
 import RouteFallback from '../components/layout/RouteFallback';
 import HomePage from '../pages/HomePage';
@@ -7,22 +8,17 @@ import paths from './paths';
 
 /**
  * AppRoutes — the route table.
- *
- * The home page is eager because it is the most-requested entry point and
- * should paint without a second network round trip. Everything else is
- * code-split, so a visitor who only reads the privacy policy never downloads
- * the booking form.
  */
 
 const ComingSoonPage = lazy(() => import('../pages/ComingSoonPage'));
 const AboutPage = lazy(() => import('../pages/AboutPage'));
-const ServicesPage = lazy(() => import('../pages/ServicesPage'));
-const ServiceDetailPage = lazy(() => import('../pages/ServiceDetailPage'));
+const ProgramsPage = lazy(() => import('../pages/ProgramsPage'));
+const ProgramDetailPage = lazy(() => import('../pages/ProgramDetailPage'));
 const TherapistsPage = lazy(() => import('../pages/TherapistsPage'));
 const TherapistDetailPage = lazy(() => import('../pages/TherapistDetailPage'));
 const RatesPage = lazy(() => import('../pages/RatesPage'));
-const ResourcesPage = lazy(() => import('../pages/ResourcesPage'));
-const ResourceDetailPage = lazy(() => import('../pages/ResourceDetailPage'));
+const ExplorePage = lazy(() => import('../pages/ExplorePage'));
+const ExploreDetailPage = lazy(() => import('../pages/ExploreDetailPage'));
 const FaqPage = lazy(() => import('../pages/FaqPage'));
 const ContactPage = lazy(() => import('../pages/ContactPage'));
 const BookingPage = lazy(() => import('../pages/BookingPage'));
@@ -30,6 +26,16 @@ const PrivacyPage = lazy(() => import('../pages/legal/PrivacyPage'));
 const TermsPage = lazy(() => import('../pages/legal/TermsPage'));
 const AccessibilityPage = lazy(() => import('../pages/legal/AccessibilityPage'));
 const NotFoundPage = lazy(() => import('../pages/NotFoundPage'));
+
+function LegacyServiceRedirect() {
+  const { slug } = useParams();
+  return <Navigate to={paths.program(slug)} replace />;
+}
+
+function LegacyResourceRedirect() {
+  const { slug } = useParams();
+  return <Navigate to={paths.exploreArticle(slug)} replace />;
+}
 
 export function AppRoutes() {
   return (
@@ -46,12 +52,12 @@ export function AppRoutes() {
           }
         />
 
-        <Route path={paths.services}>
+        <Route path={paths.programs}>
           <Route
             index
             element={
               <Suspense fallback={<RouteFallback />}>
-                <ServicesPage />
+                <ProgramsPage />
               </Suspense>
             }
           />
@@ -59,7 +65,7 @@ export function AppRoutes() {
             path=":slug"
             element={
               <Suspense fallback={<RouteFallback />}>
-                <ServiceDetailPage />
+                <ProgramDetailPage />
               </Suspense>
             }
           />
@@ -93,12 +99,12 @@ export function AppRoutes() {
           }
         />
 
-        <Route path={paths.resources}>
+        <Route path={paths.explore}>
           <Route
             index
             element={
               <Suspense fallback={<RouteFallback />}>
-                <ResourcesPage />
+                <ExplorePage />
               </Suspense>
             }
           />
@@ -106,7 +112,7 @@ export function AppRoutes() {
             path=":slug"
             element={
               <Suspense fallback={<RouteFallback />}>
-                <ResourceDetailPage />
+                <ExploreDetailPage />
               </Suspense>
             }
           />
@@ -165,9 +171,13 @@ export function AppRoutes() {
         />
 
         {/* Legacy / convenience redirects */}
+        <Route path="/services" element={<Navigate to={paths.programs} replace />} />
+        <Route path="/services/:slug" element={<LegacyServiceRedirect />} />
+        <Route path="/resources" element={<Navigate to={paths.explore} replace />} />
+        <Route path="/resources/:slug" element={<LegacyResourceRedirect />} />
         <Route path="/team" element={<Navigate to={paths.therapists} replace />} />
         <Route path="/pricing" element={<Navigate to={paths.rates} replace />} />
-        <Route path="/blog" element={<Navigate to={paths.resources} replace />} />
+        <Route path="/blog" element={<Navigate to={paths.explore} replace />} />
         <Route path="/appointment" element={<Navigate to={paths.book} replace />} />
 
         {/* Catch-all fallback for invalid routes: redirect to Home Page */}

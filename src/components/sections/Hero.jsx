@@ -18,7 +18,7 @@ export function Hero() {
   const acceptingCount = team.filter((member) => member.acceptingClients).length;
 
   return (
-    <section className={`section ${styles.hero}`} aria-labelledby="hero-heading">
+    <section className={`section section--tight ${styles.hero}`} aria-labelledby="hero-heading">
       <div className="container">
         <div className={styles.grid}>
           <div className={styles.copy}>
@@ -28,29 +28,33 @@ export function Hero() {
                 Restore when the address is settled:
                 {site.address.line1}, {site.address.city} <dot> ... */}
             <p className={styles.eyebrow}>
-              Psychiatric Rehabilitation Program (PRP) · {site.serviceAreas.join(' & ')}
+              PSYCHIATRIC REHABILITATION PROGRAM (PRP) · {site.serviceAreas.join(' & ').toUpperCase()}
             </p>
 
             <h1 id="hero-heading" className={styles.title}>
-              Empowering Independence, Recovery & Community Living
+              Psychiatric Rehabilitation <span className={styles.titleBreak}>Services in Maryland</span>
             </h1>
 
+            <p className={styles.subtitle} style={{ fontSize: '1.25rem', fontWeight: 600, color: 'var(--color-primary-dark, #1B365D)', marginTop: '-0.5rem', marginBottom: '1rem' }}>
+              Empowering Independence, Recovery &amp; Community Living
+            </p>
+
             <p className={styles.intro}>
-              Person-centered, community-based Psychiatric Rehabilitation Program (PRP) services across Maryland. Supporting adults and transitional-age youth to build essential life skills, manage wellness, and thrive.
+              Maryland Medicaid-covered psychiatric rehabilitation services with person-centered, community-based care.
             </p>
 
             <div className={styles.actions}>
               <Button type="button" size="lg" iconRight="arrowRight" onClick={openBooking}>
-                Make a referral / Get started
+                Get Started With Psychiatric Rehabilitation
               </Button>
-              <Button to={paths.services} size="lg" variant="outline">
-                Explore PRP services
+              <Button to={paths.programs} size="lg" variant="outline">
+                Explore Maryland PRP Services
               </Button>
             </div>
 
             <p className={styles.reassure}>
               <Icon name="shieldCheck" size={18} />
-              <span>Maryland Medicaid & BHA Authorized · In-Home & Community-Based</span>
+              <span>Maryland Medicaid &amp; BHA Authorized · Community &amp; In-Home Delivery</span>
             </p>
           </div>
 

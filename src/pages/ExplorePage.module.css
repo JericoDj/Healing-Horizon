@@ -207,7 +207,15 @@
 
 .gridItem {
   display: flex;
+  animation: pageSettle var(--duration-deliberate) var(--ease-entrance) both;
 }
+
+.gridItem:nth-child(1) { animation-delay: 80ms; }
+.gridItem:nth-child(2) { animation-delay: 160ms; }
+.gridItem:nth-child(3) { animation-delay: 240ms; }
+.gridItem:nth-child(4) { animation-delay: 320ms; }
+.gridItem:nth-child(5) { animation-delay: 400ms; }
+.gridItem:nth-child(6) { animation-delay: 480ms; }
 
 .card {
   display: flex;
@@ -345,7 +353,6 @@
 /* --- Explore Navigation Hub --------------------------------------------- */
 
 .exploreHub {
-  background-color: var(--surface-page);
   border-bottom: 1px solid var(--border-subtle);
 }
 
@@ -374,7 +381,6 @@
   height: 100%;
   display: flex;
   flex-direction: column;
-  justify-content: space-between;
   gap: var(--space-4);
   padding: var(--space-6);
   border-radius: var(--radius-md);
@@ -382,10 +388,17 @@
   background-color: var(--surface-raised);
   box-shadow: var(--shadow-sm);
   text-decoration: none;
+  color: inherit;
+  animation: pageSettle var(--duration-deliberate) var(--ease-entrance) both;
   transition: transform var(--duration-fast) var(--ease-out),
     box-shadow var(--duration-fast) var(--ease-out),
     border-color var(--duration-fast) var(--ease-out);
 }
+
+.exploreGrid > li:nth-child(1) .hubCard { animation-delay: 80ms; }
+.exploreGrid > li:nth-child(2) .hubCard { animation-delay: 160ms; }
+.exploreGrid > li:nth-child(3) .hubCard { animation-delay: 240ms; }
+.exploreGrid > li:nth-child(4) .hubCard { animation-delay: 320ms; }
 
 .hubCard:hover {
   transform: translateY(-3px);
@@ -439,7 +452,6 @@
 /* --- Maryland Section ---------------------------------------------------- */
 
 .marylandSection {
-  background-color: var(--surface-page);
   border-top: 1px solid var(--border-default);
 }
 

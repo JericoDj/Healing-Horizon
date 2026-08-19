@@ -21,12 +21,13 @@ import {
 } from '../utils/validators';
 
 export const CONTACT_REASONS = [
-  { value: 'new-client', label: 'I am looking to start therapy' },
-  { value: 'existing-client', label: 'I am a current client' },
-  { value: 'insurance', label: 'Question about rates or insurance' },
-  { value: 'referral', label: 'I am referring someone' },
-  { value: 'group', label: 'Interested in a group program' },
-  { value: 'other', label: 'Something else' },
+  { value: 'prp-services', label: 'Psychiatric Rehabilitation Services' },
+  { value: 'referral', label: 'Make a Referral' },
+  { value: 'medicaid-coverage', label: 'Maryland Medicaid & Coverage' },
+  { value: 'programs-question', label: 'Questions About Programs' },
+  { value: 'new-participant', label: 'New Participant Information' },
+  { value: 'existing-participant', label: 'Existing Participant' },
+  { value: 'general', label: 'General Question' },
 ];
 
 export const CONTACT_METHODS = [
@@ -40,7 +41,7 @@ export const initialContactValues = {
   lastName: '',
   email: '',
   phone: '',
-  reason: 'new-client',
+  reason: 'prp-services',
   preferredContact: 'email',
   preferredTherapist: '',
   message: '',

@@ -278,8 +278,8 @@ function BookingPageInner() {
                 </p>
 
                 <div className={styles.confirmationActions}>
-                  <Button to={paths.resources} variant="primary" iconRight="arrowRight">
-                    Read while you wait
+                  <Button to={paths.explore} variant="primary" iconRight="arrowRight">
+                    Explore PRP resources
                   </Button>
                   <Button type="button" variant="outline" onClick={restart}>
                     Send another request

@@ -1,133 +1,186 @@
 /**
- * faqs.js — grouped questions for the /faq page and the home-page excerpt.
- * PLACEHOLDER: rates, policies and insurance names are illustrative.
- * Have your billing lead and (ideally) a healthcare attorney review before launch.
+ * faqs.js — grouped questions for the /faq page and site-wide search.
+ * Sourced directly for Maryland Psychiatric Rehabilitation Program (PRP).
  */
 
 export const faqGroups = [
   {
     id: 'getting-started',
-    heading: 'Getting started',
+    heading: 'Getting Started',
     items: [
       {
-        id: 'first-step',
-        question: 'What is the first step?',
+        id: 'what-is-prp',
+        question: 'What is a Psychiatric Rehabilitation Program (PRP)?',
         answer:
-          'Send us a message through the contact form or call the practice. Our intake coordinator replies within one business day and offers you a free 15-minute phone consultation. That call is not therapy — it is a short conversation to hear what you are looking for and to match you with the right therapist.',
+          'A Psychiatric Rehabilitation Program (PRP) is an accredited, person-centered program authorized under Maryland Behavioral Health Administration (BHA) regulations. PRP helps adults and transitional-age youth living with mental health conditions develop practical daily living skills, emotional self-management tools, social connections, and community independence.',
       },
       {
-        id: 'choose-therapist',
-        question: 'Can I choose my therapist?',
+        id: 'how-to-start',
+        question: 'How do I get started with psychiatric rehabilitation?',
         answer:
-          'Yes. You can request a specific clinician on the contact form, or let us match you. If you are unsure, our coordinator will suggest one or two based on what you describe. If the fit is not right after a session or two, say so — changing therapists within the practice is normal and we will make it easy.',
+          'Getting started is straightforward: (1) Obtain a referral from your licensed mental health therapist, psychiatrist, or medical provider; (2) Submit your referral form online or contact our intake team; (3) We verify your Maryland Medicaid eligibility and schedule an initial functional assessment to build your personalized rehabilitation plan.',
       },
       {
-        id: 'first-session',
-        question: 'What happens in the first session?',
+        id: 'after-referral',
+        question: 'What happens after I submit a referral?',
         answer:
-          'Mostly listening. Your therapist will ask what brought you in, some history, what has helped before and what has not, and what you would like to be different. You are not expected to arrive with a tidy summary. You set the pace, and you can decline any question.',
+          'Once we receive a referral, our intake coordinator reviews the clinical documentation and confirms active Maryland Medicaid coverage within 1–2 business days. We then reach out to the participant or referring provider to schedule the initial intake assessment.',
       },
       {
-        id: 'how-long',
-        question: 'How long will I be in therapy?',
+        id: 'initial-assessment',
+        question: 'What happens during the initial assessment?',
         answer:
-          'It depends on what you are working on. Focused work on a specific issue often runs 8 to 20 sessions. Longer-standing patterns take longer. Around session four to six your therapist will review progress with you openly, and that review repeats — you should always know why you are still coming.',
+          'During the initial assessment, a rehabilitation coordinator meets with you to discuss your strengths, daily living needs, recovery goals, housing, transportation, and areas where you want support. Together, you will outline your Individualized Rehabilitation Plan (IRP).',
+      },
+      {
+        id: 'intake-duration',
+        question: 'How long does the intake process take?',
+        answer:
+          'From initial referral submission to your first community rehabilitation session typically takes 3 to 7 business days, depending on provider documentation and Maryland Medicaid pre-authorization timelines.',
       },
     ],
   },
   {
-    id: 'cost-insurance',
-    heading: 'Cost & insurance',
+    id: 'prp-services',
+    heading: 'Psychiatric Rehabilitation Services',
     items: [
       {
-        id: 'rates',
-        question: 'What do sessions cost?',
+        id: 'included-services',
+        question: 'What services are included in psychiatric rehabilitation?',
         answer:
-          'Individual sessions are $175 for 50 minutes. Couples and family sessions are $215 for 60 minutes. Trauma and EMDR sessions are $205 for 60 to 90 minutes. Group programs are $75 per session. These are our standard private-pay rates before any insurance benefit is applied.',
+          'Healing Horizons offers comprehensive PRP components including Daily Living Skills (hygiene, nutrition, budgeting, home upkeep), Mental Health Symptom Management, Community Resource Coordination (housing, SNAP, SSI/SSDI), Educational & Vocational Readiness, Medication Education & Routine Building, Social Skills, and Crisis Prevention Planning.',
       },
       {
-        id: 'insurance',
-        question: 'Do you take insurance?',
+        id: 'in-home-services',
+        question: 'Are services provided in the home?',
         answer:
-          'We are in-network with several regional plans, listed on our Rates & Insurance page. If we are out of network with your plan, we can provide a monthly superbill that you submit for out-of-network reimbursement. We recommend calling the number on your card and asking about your outpatient mental health benefit, your deductible, and your out-of-network reimbursement rate before your first session.',
+          'Yes. Rehabilitation specialists provide one-on-one support directly in your home environment, helping you build and practice functional daily living routines where they are most relevant.',
       },
       {
-        id: 'good-faith',
-        question: 'What is a Good Faith Estimate?',
+        id: 'community-services',
+        question: 'Can PRP services be provided in the community?',
         answer:
-          'Under the federal No Surprises Act, if you are uninsured or choose not to use insurance, you have the right to a written estimate of what your care will cost before you begin. We provide one automatically at intake, and you can request one at any time.',
+          'Yes. A core feature of PRP is real-world community skill practice. Sessions frequently occur at local grocery stores, public transit hubs, libraries, community centers, and employment or educational facilities.',
       },
       {
-        id: 'sliding-scale',
-        question: 'Do you offer reduced fees?',
+        id: 'service-frequency',
+        question: 'How often will I receive services?',
         answer:
-          'We hold a limited number of sliding-scale slots for clients experiencing financial hardship, allocated by need rather than first-come. Ask our intake coordinator — the conversation is confidential and it will not affect the care you are offered.',
-      },
-      {
-        id: 'cancellation',
-        question: 'What is your cancellation policy?',
-        answer:
-          'We ask for 24 hours notice. Sessions cancelled with less than 24 hours notice, and missed sessions, are charged at the full rate, and insurance does not cover late cancellations. We waive the fee for genuine emergencies and for illness — tell us what happened.',
+          'Session frequency is determined collaboratively in your Individualized Rehabilitation Plan (IRP), typically ranging from 2 to 6 face-to-face sessions per month based on your assessed needs and clinical recommendations.',
       },
     ],
   },
   {
-    id: 'privacy',
-    heading: 'Privacy & confidentiality',
+    id: 'medicaid-coverage',
+    heading: 'Maryland Medicaid & Coverage',
     items: [
       {
-        id: 'confidential',
-        question: 'Is what I say confidential?',
+        id: 'medicaid-covers-prp',
+        question: 'Does Maryland Medicaid cover psychiatric rehabilitation services?',
         answer:
-          'Yes, with narrow legal exceptions your therapist will explain in full at your first session: a serious and imminent risk of harm to yourself or another identifiable person, suspected abuse or neglect of a child, an older adult or a dependent adult, and a valid court order. Outside of those, nothing leaves the room without your written authorisation.',
+          'Yes. Psychiatric Rehabilitation Program (PRP) services are 100% covered by Maryland Medicaid (HealthChoice and fee-for-service) for individuals who meet clinical eligibility and authorization criteria.',
       },
       {
-        id: 'records',
-        question: 'Who can see my records?',
+        id: 'healing-horizons-medicaid',
+        question: 'Does Healing Horizons accept Maryland Medicaid?',
         answer:
-          'Your clinical record is held under HIPAA. Your therapist can see it, and administrative staff can see the minimum necessary for scheduling and billing. Nobody outside the practice receives records without your signed release, except in the legal exceptions above. You may request a copy of your record at any time.',
+          'Yes. Healing Horizons Behavioral Health is an authorized Maryland Medicaid behavioral health provider and bills Medicaid directly for all covered PRP services.',
       },
       {
-        id: 'teens-privacy',
-        question: 'How does confidentiality work for teenagers?',
+        id: 'need-medicaid',
+        question: 'Do I need Medicaid to receive services?',
         answer:
-          'We set this out explicitly in the first caregiver session. Broadly: the content of a teen\'s sessions is private, and caregivers receive progress and safety information rather than transcripts. Safety concerns are always shared. Oregon law also gives minors aged 14 and over certain rights to consent to outpatient mental health treatment — your therapist will walk your family through what that means.',
+          'Active Maryland Medicaid is required for state-authorized PRP funding. If you are uninsured or need assistance applying for Maryland Medicaid, our intake team can help connect you with state entitlement resources.',
       },
       {
-        id: 'website-data',
-        question: 'Is the contact form on this site secure?',
+        id: 'prp-costs',
+        question: 'Are there costs for psychiatric rehabilitation services?',
         answer:
-          'The form is encrypted in transit, but please treat it as you would email — do not include clinical details, diagnoses or anything you would not want in an ordinary inbox. Give us your name, how to reach you, and a sentence about what you are looking for. Clinical conversation belongs in session or on the phone.',
+          'No. There are zero co-pays, deductibles, or out-of-pocket costs for authorized participants with active Maryland Medicaid coverage.',
       },
     ],
   },
   {
-    id: 'logistics',
-    heading: 'Sessions & logistics',
+    id: 'eligibility-referrals',
+    heading: 'Eligibility & Referrals',
     items: [
       {
-        id: 'telehealth-quality',
-        question: 'Is online therapy as effective as in person?',
+        id: 'who-is-eligible',
+        question: 'Who is eligible for psychiatric rehabilitation services in Maryland?',
         answer:
-          'For most presentations the research shows comparable outcomes, and telehealth removes a barrier that keeps a lot of people out of therapy entirely. Some work — certain trauma processing, some family sessions, and anyone in an unsafe or non-private living situation — is better in the room. Your therapist will be honest with you about which applies.',
+          'To be eligible for PRP in Maryland, individuals must: (1) Be an adult (18+) or transitional-age youth; (2) Have an active, qualifying behavioral health diagnosis; (3) Be currently engaged in outpatient mental health therapy with a licensed clinician; and (4) Have active Maryland Medicaid.',
       },
       {
-        id: 'where-located',
-        question: 'Where are you located?',
+        id: 'who-can-refer',
+        question: 'Who can refer someone to a PRP program?',
         answer:
-          'Our office is at 1420 Alder Street, Suite 300, Portland, Oregon. The building is step-free from the street with an elevator to the third floor, and there is metered street parking plus a garage on the same block. We see telehealth clients anywhere in Oregon and Washington.',
+          'Referrals can be submitted by licensed outpatient therapists, psychologists, psychiatrists, psychiatric nurse practitioners (CRNP-PMH), primary care physicians, hospital discharge planners, or Core Service Agencies (CSAs).',
       },
       {
-        id: 'medication',
-        question: 'Can you prescribe medication?',
+        id: 'family-referral',
+        question: 'Can a family member make a referral?',
         answer:
-          'No. Our clinicians are psychologists, counsellors and clinical social workers, not prescribers. If medication seems worth exploring, we will coordinate with your primary care doctor or refer you to a psychiatric provider, and continue therapy alongside it.',
+          'Family members or caregivers can initiate the intake process and help coordinate documentation. However, an official clinical referral form signed by the participant’s licensed mental health provider is required by Maryland regulations.',
       },
       {
-        id: 'emergency',
-        question: 'What if I am in crisis between sessions?',
+        id: 'self-referral',
+        question: 'Can I refer myself?',
         answer:
-          'This practice is not a crisis service and we do not monitor messages after hours. If you are in immediate danger, call 911. For urgent support at any hour, call or text 988 for the Suicide & Crisis Lifeline, or text HOME to 741741 for the Crisis Text Line. Every client also builds a personal safety plan with their therapist early in treatment.',
+          'Yes, you can contact us directly to begin the intake process. We will reach out to your current therapist or psychiatrist with your consent to obtain the necessary clinical referral documentation.',
+      },
+    ],
+  },
+  {
+    id: 'privacy-confidentiality',
+    heading: 'Privacy & Confidentiality',
+    items: [
+      {
+        id: 'is-confidential',
+        question: 'Is my information confidential?',
+        answer:
+          'Yes. Healing Horizons adheres strictly to HIPAA regulations, Maryland behavioral health privacy laws, and professional ethical standards. Your personal, clinical, and rehabilitation records are kept completely confidential.',
+      },
+      {
+        id: 'who-accesses-records',
+        question: 'Who can access my records?',
+        answer:
+          'Only your designated rehabilitation team and clinical supervisors have access to your records. Information is only shared with external parties (such as family members, doctors, or therapists) when you have signed an explicit, written Authorization for Release of Information.',
+      },
+      {
+        id: 'information-protection',
+        question: 'How is my information protected?',
+        answer:
+          'We maintain state-of-the-art electronic health records with 256-bit encryption, strict role-based access permissions, and ongoing compliance audits that meet all federal and Maryland state data security standards.',
+      },
+    ],
+  },
+  {
+    id: 'sessions-support',
+    heading: 'Sessions & Support',
+    items: [
+      {
+        id: 'where-services-provided',
+        question: 'Where are psychiatric rehabilitation services provided?',
+        answer:
+          'Services are community-based and delivered wherever daily living skills are practiced: inside your home, in your neighborhood, at community resource centers, workplaces, libraries, or transit stations across Maryland.',
+      },
+      {
+        id: 'in-home-provided',
+        question: 'Do you provide in-home services?',
+        answer:
+          'Yes, in-home visits are a cornerstone of our program. Meeting in your home allows our specialists to assist directly with organization, routine scheduling, meal planning, and personal wellness strategies.',
+      },
+      {
+        id: 'support-between-sessions',
+        question: 'What happens if I need support between sessions?',
+        answer:
+          'You can contact your assigned rehabilitation specialist during regular business hours for scheduled check-ins and coordination. Your Individualized Rehabilitation Plan also includes coping toolkits and natural support contacts.',
+      },
+      {
+        id: 'mental-health-crisis',
+        question: 'What should I do in a mental health crisis?',
+        answer:
+          'If you or someone you know is experiencing an immediate life-threatening emergency, call 911 immediately. For urgent mental health support 24/7, call or text 988 (Suicide & Crisis Lifeline) or contact your local Maryland Mobile Crisis Team. Every participant also develops a personalized Crisis Prevention & Safety Plan at intake.',
       },
     ],
   },
@@ -140,10 +193,10 @@ export const allFaqs = faqGroups.flatMap((group) =>
 
 /** Short subset for the home page. */
 export const homeFaqs = [
-  allFaqs.find((f) => f.id === 'first-step'),
-  allFaqs.find((f) => f.id === 'insurance'),
-  allFaqs.find((f) => f.id === 'confidential'),
-  allFaqs.find((f) => f.id === 'telehealth-quality'),
+  allFaqs.find((f) => f.id === 'what-is-prp'),
+  allFaqs.find((f) => f.id === 'how-to-start'),
+  allFaqs.find((f) => f.id === 'medicaid-covers-prp'),
+  allFaqs.find((f) => f.id === 'who-is-eligible'),
 ].filter(Boolean);
 
 export default faqGroups;

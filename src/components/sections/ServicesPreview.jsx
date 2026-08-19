@@ -1,27 +1,23 @@
 import { Card, Icon, SectionHeading } from '../ui';
-import { featuredServices } from '../../data/services';
+import { featuredPrograms } from '../../data/programs';
 import paths from '../../routes/paths';
 import styles from './ServicesPreview.module.css';
 
 /**
  * ServicesPreview — the four featured services, each card a link to its page.
- *
- * The whole card is the link (Card handles that), so the "Read about…" line is
- * an affordance rather than a second target. The meta row answers the two
- * questions people actually ask first: is this for me, and how long is it.
  */
 const serviceHeadings = {
   'daily-living-skills': {
-    title: 'Daily Living & Life Skills',
+    title: 'Daily Living & Independent Living Skills',
     subheading: 'Independent Living & Self-Sufficiency',
   },
   'symptom-management': {
-    title: 'Symptom Self-Management',
+    title: 'Mental Health Symptom Management',
     subheading: 'Emotional Regulation & Relapse Prevention',
   },
   'community-coordination': {
-    title: 'Community Resource Linkage',
-    subheading: 'Care Coordination & Resource Navigation',
+    title: 'Community Resource & Care Coordination',
+    subheading: 'Resource Navigation & Healthcare Linkages',
   },
   'vocational-educational': {
     title: 'Educational & Vocational Support',
@@ -40,11 +36,11 @@ export function ServicesPreview() {
           id="services-heading"
           eyebrow="Core PRP Services"
           title="Psychiatric Rehabilitation Services Across Maryland"
-          intro="Person-centered, structured rehabilitation interventions designed to build functional skills, independence, and long-term community wellness."
+          intro="Our Maryland psychiatric rehabilitation services provide structured, person-centered support designed to help individuals develop practical life skills, improve independence, manage mental health symptoms, and build stronger connections within their communities."
         />
 
         <ul className={styles.grid}>
-          {featuredServices.map((service) => {
+          {featuredPrograms.map((service) => {
             const headingInfo = serviceHeadings[service.slug] || {
               title: service.name,
               subheading: service.forWho,
@@ -53,7 +49,7 @@ export function ServicesPreview() {
             return (
               <li key={service.slug} className={styles.cell}>
                 <Card
-                  to={paths.service(service.slug)}
+                  to={paths.program(service.slug)}
                   padding="md"
                   className={styles.card}
                 >

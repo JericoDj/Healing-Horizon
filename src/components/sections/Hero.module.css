@@ -4,6 +4,8 @@
   position: relative;
   isolation: isolate;
   overflow-x: clip;
+  padding-block-start: var(--section-y-tight) !important;
+  padding-block-end: clamp(3rem, 5vw, 5rem) !important;
   background-image:
     radial-gradient(100% 70% at 85% 10%, rgba(27, 117, 188, 0.12) 0%, transparent 60%),
     radial-gradient(75% 60% at 15% 15%, rgba(27, 117, 188, 0.08) 0%, transparent 65%),
@@ -64,14 +66,17 @@
 
 .title {
   margin: 0;
-  max-width: 18ch;
+  max-width: 28ch;
   color: var(--ink-900);
-  font-size: clamp(2rem, 3.2vw, 3.125rem);
+  font-size: clamp(2rem, 2.5vw + 1rem, 2.85rem);
   font-weight: 600;
   letter-spacing: -0.025em;
-  line-height: 1.15;
-  text-wrap: balance;
+  line-height: 1.2;
   text-align: center;
+}
+
+.titleBreak {
+  display: block;
 }
 
 .intro {
@@ -386,7 +391,7 @@
   }
 
   .licence {
-    top: var(--space-8);
+    top: var(--space-4);
     right: calc(var(--space-6) * -1);
   }
 

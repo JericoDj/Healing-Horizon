@@ -1,151 +1,187 @@
-import { Link } from 'react-router-dom';
 import { usePageMeta } from '../hooks/usePageMeta';
-import { Avatar, Button, Card, Icon, SectionHeading } from '../components/ui';
+import { useUI } from '../context/UIContext';
+import { Button, Card, Icon, SectionHeading } from '../components/ui';
 import { site } from '../data/site';
-import { team } from '../data/team';
 import { affiliations } from '../data/testimonials';
 import paths from '../routes/paths';
 import styles from './AboutPage.module.css';
 
-/**
- * The practice's operating principles. These are page content rather than
- * catalogue data, so they live here; move them to `src/data/` if the practice
- * starts revising them regularly.
- */
 const PRINCIPLES = [
   {
-    id: 'fit',
+    id: 'recovery',
+    icon: 'sparkle',
+    title: 'Recovery is Possible for Every Individual',
+    body: 'We operate with the core conviction that meaningful recovery, functional growth, and community independence are attainable for every participant through consistent, structured support.',
+  },
+  {
+    id: 'person-centered',
     icon: 'heartHand',
-    title: 'Fit matters more than modality',
-    body: 'A therapist’s training matters. It matters less than whether you can be honest with them. So we match on fit first and method second, and if it is not right after a session or two, say so. Changing therapists inside the practice is an ordinary request, not an awkward one, and we make it easy.',
+    title: 'Person-Centered & Strength-Based',
+    body: 'Rehabilitation plans are tailored to individual goals and built on personal strengths, resilience, and unique life aspirations rather than deficits.',
   },
   {
-    id: 'cost',
-    icon: 'info',
-    title: 'You know what it costs before you commit',
-    body: 'Every rate we charge is published on this site, along with the plans we take, the cancellation policy and what happens if we are out of network with you. Nobody should find out the price of therapy from a bill.',
+    id: 'partnership',
+    icon: 'group',
+    title: 'Active Partnership in Rehabilitation',
+    body: 'Participants are primary decision-makers in their recovery journey, defining their own milestones and directing the pace and focus of their rehabilitation plan.',
   },
   {
-    id: 'plan',
-    icon: 'calendar',
-    title: 'The plan is visible, and it is yours to question',
-    body: 'Around session four to six your therapist reviews with you what is shifting, what is not, and what you are working towards. That review repeats. You should always be able to answer the question of why you are still coming.',
+    id: 'real-life',
+    icon: 'home',
+    title: 'Support in Real-Life Environments',
+    body: 'Rehabilitation takes place in the home and community settings where daily living skills, grocery shopping, transit, and social routines actually occur.',
   },
   {
-    id: 'refer',
-    icon: 'external',
-    title: 'We will say if we are not the right place',
-    body: 'Referring you elsewhere on day one is a better outcome than six weeks of near-miss. If you need a prescriber, a higher level of care, or a specialty nobody here holds, we will tell you plainly and help you find it rather than keeping the appointment.',
-  },
-  {
-    id: 'consent',
-    icon: 'leaf',
-    title: 'Consent and pace belong to you',
-    body: 'You can decline a question, stop an exercise, or say that today is not the day for the hard thing. In trauma work especially, stopping is a skill we teach on purpose. It is not a sign the work is failing.',
-  },
-  {
-    id: 'confidentiality',
+    id: 'coordination',
     icon: 'shieldCheck',
-    title: 'You hear the limits of confidentiality first',
-    body: 'Your therapist explains the narrow legal exceptions at the first session, in plain language, before you decide what to tell us. For teenagers we agree how communication with caregivers will work before the first session, not after something difficult comes up.',
+    title: 'Integrated Care Coordination',
+    body: 'We collaborate closely with outpatient therapists, prescribing psychiatrists, primary care doctors, and family supports to ensure seamless, holistic care.',
+  },
+  {
+    id: 'standards',
+    icon: 'leaf',
+    title: 'Built to CARF & Maryland BHA Standards',
+    body: 'Our program operates strictly under Maryland Behavioral Health Administration (BHA) regulations and CARF-aligned quality and safety standards.',
   },
 ];
 
-/** What "trauma-informed" changes about an actual session here. */
-const TRAUMA_INFORMED = [
-  'You are told what a session will involve before it starts, and you can decline any part of it.',
-  'We ask before going into detail about what happened, and we stop when you say stop.',
-  'Grounding and stabilisation come before any trauma processing, even when that takes weeks.',
-  'Sessions close with time to settle, rather than ending at the hardest moment.',
-  'We plan for the day after a heavy session, not only the hour itself.',
-  'Nobody has to prove what happened to them in order to be taken seriously.',
+const PRP_PILLARS = [
+  'Individualized Rehabilitation Plans (IRP) developed collaboratively with measurable 6-month goals.',
+  'One-on-one community-based and in-home skill development sessions across Maryland.',
+  'Daily living skill building: meal planning, budgeting, hygiene, home organization, and transit navigation.',
+  'Mental health symptom self-management, early warning sign recognition, and crisis safety planning.',
+  'Educational, vocational, and volunteer readiness support tailored to personal career aspirations.',
+  'Maryland Medicaid-covered services with no out-of-pocket costs for authorized participants.',
+];
+
+const WHY_CHOOSE_ITEMS = [
+  {
+    icon: 'person',
+    title: 'Person-Centered Care',
+    body: 'Personalized rehabilitation plans built around your strengths, dignity, values, and individualized pace of recovery.',
+  },
+  {
+    icon: 'home',
+    title: 'Community-Based Support',
+    body: 'Practical skill practice in real-life settings: your home, neighborhood, grocery store, and local transit stations.',
+  },
+  {
+    icon: 'mapPin',
+    title: 'Maryland-Focused Services',
+    body: 'Seamless Maryland Medicaid billing, alignment with BHA/LBHA regulations, and dedicated local coordination.',
+  },
 ];
 
 export function AboutPage() {
+  const { openBooking } = useUI();
+
   usePageMeta({
-    title: 'About us',
+    title: 'About Healing Horizons Behavioral Health | Psychiatric Rehabilitation Maryland',
     description:
-      'Healing Horizon is a six-clinician group practice in Portland, founded in 2016. What we believe, how the practice runs, and where to find us.',
+      'Healing Horizons provides person-centered psychiatric rehabilitation services (PRP) for adults and transitional-age youth across Maryland.',
   });
 
   return (
     <>
-      {/* ------------------------------------------------------------- hero -- */}
+      {/* -------------------------------------------------------- 1. Hero -- */}
       <section className={`section section--tight section--sunken ${styles.hero}`} aria-labelledby="about-heading">
         <div className="container">
           <div className={styles.heroInner}>
-            <p className="eyebrow">About the practice</p>
-            <h1 id="about-heading">About Healing Horizon</h1>
+            <p className="eyebrow">ABOUT HEALING HORIZONS</p>
+            <h1 id="about-heading">About Healing Horizons Behavioral Health</h1>
+            <p className="eyebrow" style={{ color: 'var(--text-brand)', marginTop: 'calc(-1 * var(--space-2))' }}>
+              Empowering Independence, Recovery &amp; Community Living
+            </p>
             <p className={styles.lead}>
-              We are a group practice in Portland: six licensed therapists, one office on Alder
-              Street, and telehealth across Oregon and Washington. This page covers the part most
-              practice websites leave vague — who runs the place, what we actually believe about
-              doing this work, and how it operates when you are not in the room.
+              Healing Horizons provides person-centered psychiatric rehabilitation services for
+              adults and transitional-age youth across Maryland.
             </p>
           </div>
         </div>
       </section>
 
-      {/* --------------------------------------------------------- our story -- */}
-      <section className={`section section--sunken ${styles.story}`} aria-labelledby="story-heading">
+      {/* ------------------- 2. Mission, Vision & Values -- */}
+      <section id="mission" className={`section section--sunken ${styles.story}`} aria-labelledby="mission-heading">
         <div className="container">
           <div className={styles.storyLayout}>
             <div className={styles.storyMain}>
               <SectionHeading
-                id="story-heading"
-                eyebrow="Why we exist"
-                title="Built for the six months after the crisis"
+                id="mission-heading"
+                eyebrow="Healing Horizons Behavioral Health"
+                title="Mission, Vision &amp; Values"
+                intro="Healing Horizons Behavioral Health, LLC is committed to providing high-quality, person-centered Psychiatric Rehabilitation Program (PRP) services that empower individuals to achieve stability, independence, and meaningful community integration."
               />
 
-              <div className={styles.storyProse}>
+              <div className={styles.missionGrid}>
+                <Card tone="raised" padding="lg" className={styles.missionCard}>
+                  <div className={styles.missionCardHeader}>
+                    <span className={styles.missionIcon} aria-hidden="true">
+                      <Icon name="sparkle" size={24} />
+                    </span>
+                    <h3 className={styles.missionCardTitle}>Mission Statement</h3>
+                  </div>
+                  <p className={styles.missionCardBody}>
+                    To support individuals experiencing mental health challenges through structured rehabilitation, skill-building, and recovery-focused services delivered with dignity, compassion, and clinical excellence.
+                  </p>
+                </Card>
+
+                <Card tone="raised" padding="lg" className={styles.missionCard}>
+                  <div className={styles.missionCardHeader}>
+                    <span className={styles.missionIcon} aria-hidden="true">
+                      <Icon name="compass" size={24} />
+                    </span>
+                    <h3 className={styles.missionCardTitle}>Vision Statement</h3>
+                  </div>
+                  <p className={styles.missionCardBody}>
+                    Healing Horizons Behavioral Health envisions a community where every person has access to the support needed to live a fulfilling, independent life.
+                  </p>
+                </Card>
+              </div>
+
+              <div className={styles.storyProse} style={{ marginTop: 'var(--space-8)' }}>
                 <p>
-                  Dr. Maya Okafor spent ten years in hospital-based behavioral health before
-                  opening this practice in {site.founded}. Hospital work is good at the acute
-                  end — keep someone safe, get them through the night, discharge them steady. What
-                  it is not built for is the six months afterwards, when the useful work becomes
-                  possible and the waiting list is months long. She started Healing Horizon for
-                  the six months afterwards.
+                  While clinical psychotherapy and medication management provide vital symptom
+                  treatment, individuals facing serious mental health conditions often need
+                  hands-on, practical support navigating the realities of daily community life.
+                  Healing Horizons was established to bridge that exact gap through structured,
+                  person-centered Psychiatric Rehabilitation (PRP).
                 </p>
                 <p>
-                  It is a group practice rather than one clinician with a website, and that is a
-                  deliberate structure rather than a growth stage. Six licensed therapists, each
-                  with a real specialty, who consult with one another every week. That matters
-                  more than it sounds. If you come in for couples work and it becomes clear one
-                  partner is carrying untreated trauma, there is a colleague down the hall who
-                  does that work, and you do not have to start over somewhere else.
+                  PRP is recovery-oriented and focused on functional rehabilitation rather than
+                  clinical therapy alone. Our rehabilitation specialists work directly with
+                  participants in their homes and local Maryland communities to build sustainable
+                  habits, manage symptoms, establish daily routines, and foster meaningful
+                  social connections.
                 </p>
                 <p>
-                  We see clients in person at the Portland office and by secure video anywhere in{' '}
-                  {site.serviceAreas.join(' or ')}. Telehealth started as a necessity in 2020 and
-                  stayed, because for a lot of people it is the difference between therapy
-                  happening and therapy staying on a list.
+                  We serve adults and transitional-age youth (TAY) throughout Maryland, working in
+                  close collaboration with outpatient therapists, psychiatrists, CSAs, and
+                  hospital discharge planners to ensure care is integrated and continuous.
                 </p>
                 <p>
-                  We are small on purpose and intend to stay that way. Adding a clinician here
-                  means finding someone we would send our own family to, which happens rarely and
-                  never on a schedule. When that means a short wait rather than an immediate
-                  opening with whoever is free, we would rather tell you about the wait.
+                  Every service is individualized: we meet participants where they are, honor
+                  their dignity, and empower them to build self-sufficiency on their own terms.
                 </p>
               </div>
             </div>
 
-            <aside className={styles.storyAside} aria-label="Practice facts">
+            <aside className={styles.storyAside} aria-label="Program facts">
               <dl className={styles.factList}>
                 <div className={styles.fact}>
-                  <dt className={styles.factLabel}>Founded</dt>
-                  <dd className={styles.factValue}>{site.founded}</dd>
+                  <dt className={styles.factLabel}>PROGRAM</dt>
+                  <dd className={styles.factValue}>Psychiatric Rehabilitation (PRP)</dd>
                 </div>
                 <div className={styles.fact}>
-                  <dt className={styles.factLabel}>Clinicians</dt>
-                  <dd className={styles.factValue}>{team.length} licensed therapists</dd>
+                  <dt className={styles.factLabel}>COVERAGE</dt>
+                  <dd className={styles.factValue}>Maryland Medicaid Authorized</dd>
                 </div>
                 <div className={styles.fact}>
-                  <dt className={styles.factLabel}>Licensed in</dt>
-                  <dd className={styles.factValue}>{site.serviceAreas.join(' and ')}</dd>
+                  <dt className={styles.factLabel}>SERVICE AREA</dt>
+                  <dd className={styles.factValue}>Statewide Maryland (Community &amp; In-Home)</dd>
                 </div>
                 <div className={styles.fact}>
-                  <dt className={styles.factLabel}>First conversation</dt>
-                  <dd className={styles.factValue}>Free, 15 minutes, by phone</dd>
+                  <dt className={styles.factLabel}>STANDARDS</dt>
+                  <dd className={styles.factValue}>CARF Behavioral Health</dd>
                 </div>
               </dl>
             </aside>
@@ -153,14 +189,14 @@ export function AboutPage() {
         </div>
       </section>
 
-      {/* ------------------------------------------------------ what we believe */}
-      <section className={`section ${styles.beliefs}`} aria-labelledby="beliefs-heading">
+      {/* ---------------- 3. Core Values & Principles -- */}
+      <section id="principles" className={`section ${styles.beliefs}`} aria-labelledby="beliefs-heading">
         <div className="container">
           <SectionHeading
             id="beliefs-heading"
-            eyebrow="What we believe"
-            title="Six things we hold ourselves to"
-            intro="Not values on a wall. These are the commitments you can hold us to, and the ones we would want you to name if we ever fell short of them."
+            eyebrow="Our Values"
+            title="Core Values &amp; Practice Commitments"
+            intro="Six foundational commitments that guide every rehabilitation plan, skill-building session, and community interaction."
           />
 
           <ul className={styles.beliefGrid}>
@@ -179,64 +215,59 @@ export function AboutPage() {
         </div>
       </section>
 
-      {/* ----------------------------------------------------- how we operate -- */}
+      {/* ------ 4. Our Approach to Person-Centered Psychiatric Rehabilitation -- */}
       <section
+        id="care-model"
         className={`section section--sunken ${styles.practice}`}
         aria-labelledby="practice-heading"
       >
         <div className="container">
           <SectionHeading
             id="practice-heading"
-            eyebrow="How we work as a practice"
-            title="What happens behind your hour"
-            intro="Therapy is only as good as the structure around it. Here is the structure."
+            eyebrow="Care Model"
+            title="Our Approach to Person-Centered Psychiatric Rehabilitation"
+            intro="Psychiatric rehabilitation requires intentional structure, skilled clinical coordination, and continuous quality oversight."
           />
 
           <div className={styles.practiceGrid}>
             <article className={styles.practiceBlock}>
-              <h3 className={styles.practiceTitle}>Consultation is not optional</h3>
+              <h3 className={styles.practiceTitle}>Clinical Supervision &amp; Case Reviews</h3>
               <p>
-                Every clinician here brings cases to a weekly consultation group, and newly
-                licensed clinicians also have individual supervision with our clinical director.
-                Your therapist is never the only mind on your situation, and getting a second
-                perspective does not require you to go anywhere. Consultation happens inside the
-                practice under the same confidentiality obligations as your sessions.
+                Our rehabilitation specialists receive structured clinical supervision and
+                participate in regular multidisciplinary case reviews. Your progress is supported
+                by an experienced team dedicated to keeping your goals on track.
               </p>
             </article>
 
             <article className={styles.practiceBlock}>
-              <h3 className={styles.practiceTitle}>Training the practice pays for</h3>
+              <h3 className={styles.practiceTitle}>Specialized Psychiatric Rehabilitation Training</h3>
               <p>
-                Continuing education is funded by the practice and the hours are protected rather
-                than squeezed into evenings. That is where the EMDRIA certification, the Gottman
-                Level 3 training, the intensive DBT training and the perinatal mental health
-                certification on this team came from. Nobody here is working from what they
-                learned in graduate school a decade ago.
+                Staff complete comprehensive training in psychiatric rehabilitation competencies,
+                motivational interviewing, trauma-informed care, and crisis de-escalation to
+                provide safe, compassionate, and effective community support.
               </p>
             </article>
 
             <article className={styles.practiceBlock}>
-              <h3 className={styles.practiceTitle}>Matching before you commit</h3>
+              <h3 className={styles.practiceTitle}>Collaborative Care Coordination</h3>
               <p>
-                Our intake coordinator is a licensed clinician, not a receptionist, and she runs
-                the first call herself. She will ask what you are looking for and who you would
-                find it easiest to talk to. If nobody here is the right answer, that is what she
-                will tell you on that call.
+                We maintain active communication with outpatient mental health therapists,
+                psychiatrists, primary care providers, and case managers to ensure all parts of
+                your care work together toward the same goals.
               </p>
             </article>
           </div>
 
           <div className={styles.traumaBlock}>
-            <h3 className={styles.practiceTitle}>What we mean by trauma-informed</h3>
+            <h3 className={styles.practiceTitle}>Our Rehabilitation Standards</h3>
             <p className={styles.traumaIntro}>
-              It has become a label people put on a website. Here is what it changes about an
-              actual session:
+              What you can expect from every rehabilitation service at Healing Horizons:
             </p>
             <ul className={styles.checkList}>
-              {TRAUMA_INFORMED.map((item) => (
+              {PRP_PILLARS.map((item) => (
                 <li key={item} className={styles.checkItem}>
                   <span className={styles.checkMark} aria-hidden="true">
-                    <Icon name="check" size={16} strokeWidth={2.2} />
+                    <Icon name="check" size={16} />
                   </span>
                   <span>{item}</span>
                 </li>
@@ -246,14 +277,14 @@ export function AboutPage() {
         </div>
       </section>
 
-      {/* ----------------------------------------------------------- the office */}
-      <section className={`section ${styles.office}`} aria-labelledby="office-heading">
+      {/* --- 5. Community-Based Psychiatric Rehabilitation Across Maryland -- */}
+      <section id="service-areas" className={`section ${styles.office}`} aria-labelledby="office-heading">
         <div className="container">
           <SectionHeading
             id="office-heading"
-            eyebrow="The office"
-            title="Where this actually happens"
-            intro="If travelling somewhere unfamiliar is part of what makes a first appointment hard, here is everything you would otherwise have to ask."
+            eyebrow="Where We Serve"
+            title="Community-Based Psychiatric Rehabilitation Across Maryland"
+            intro="We provide rehabilitation support through in-home and community settings where individuals can build practical skills and work toward greater independence."
           />
 
           <div className={styles.officeGrid}>
@@ -261,10 +292,9 @@ export function AboutPage() {
               <span className={styles.officeIcon} aria-hidden="true">
                 <Icon name="mapPin" size={22} />
               </span>
-              <h3 className={styles.officeTitle}>Where to find us</h3>
+              <h3 className={styles.officeTitle}>Administrative Office</h3>
               <address className={styles.address}>
                 <span>{site.address.line1}</span>
-                <span>{site.address.line2}</span>
                 <span>
                   {site.address.city}, {site.address.state} {site.address.postalCode}
                 </span>
@@ -281,51 +311,88 @@ export function AboutPage() {
 
             <Card className={styles.officeCard} padding="lg" tone="sunken">
               <span className={styles.officeIcon} aria-hidden="true">
-                <Icon name="check" size={22} />
+                <Icon name="home" size={22} />
               </span>
-              <h3 className={styles.officeTitle}>Getting into the building</h3>
+              <h3 className={styles.officeTitle}>In-Home &amp; Community Settings</h3>
               <ul className={styles.officeList}>
-                <li>Step-free from the street, with an elevator to the third floor.</li>
-                <li>Metered street parking, plus a garage on the same block.</li>
-                <li>
-                  If you would rather wait in your car until your session time, tell your
-                  therapist and they will come out to meet you.
-                </li>
+                <li>One-on-one sessions in your home, neighborhood, or public library.</li>
+                <li>Real-world practice: grocery stores, transit stops, and community centers.</li>
+                <li>Serving Charles County, Prince George’s, and surrounding Maryland areas.</li>
               </ul>
               <p className={styles.officeNote}>
-                If something would make the building easier for you, tell us before your first
-                visit and we will arrange it. Our{' '}
-                <Link to={paths.accessibility}>accessibility statement</Link> covers this site
-                itself.
+                Sessions are scheduled flexibly to fit participant routines and work commitments.
               </p>
             </Card>
 
             <Card className={styles.officeCard} padding="lg" tone="sunken">
               <span className={styles.officeIcon} aria-hidden="true">
-                <Icon name="video" size={22} />
+                <Icon name="shieldCheck" size={22} />
               </span>
-              <h3 className={styles.officeTitle}>Or do not travel at all</h3>
+              <h3 className={styles.officeTitle}>Maryland Medicaid Coverage</h3>
               <p className={styles.officeBody}>
-                We see telehealth clients anywhere in {site.serviceAreas.join(' and ')}, on a
-                HIPAA-compliant platform that needs a browser link and nothing else. No account,
-                no download. Same clinicians, same rates, same session length.
+                PRP services are 100% covered by Maryland Medicaid for eligible participants with an
+                active mental health diagnosis and referral from a licensed clinician.
               </p>
-              <Button to={paths.service('telehealth')} variant="ghost" size="sm" iconRight="arrowRight">
-                How online sessions work
+              <Button to={paths.contact} variant="ghost" size="sm" iconRight="arrowRight">
+                Ask about eligibility
               </Button>
             </Card>
           </div>
         </div>
       </section>
 
-      {/* ------------------------------------------------------- affiliations -- */}
+      {/* -------------------------- 6. Our Mental Health Professionals -- */}
+      <section className={`section section--sunken ${styles.team}`} aria-labelledby="team-heading">
+        <div className="container">
+          <SectionHeading
+            id="team-heading"
+            eyebrow="Our Professionals"
+            title="Our Mental Health Professionals"
+            intro="Our team brings experience in psychiatric rehabilitation, mental health support, care coordination, and community-based services. We work collaboratively with each participant, their support system, and appropriate healthcare providers."
+          />
+
+          <div className={styles.teamAction} style={{ marginTop: 'var(--space-6)' }}>
+            <Button to={paths.therapists} size="lg" iconRight="arrowRight">
+              Meet Our Team
+            </Button>
+          </div>
+        </div>
+      </section>
+
+      {/* --------------------------------- 7. Why Choose Healing Horizons? -- */}
+      <section id="why-choose" className={`section ${styles.whySection}`} aria-labelledby="why-heading">
+        <div className="container">
+          <SectionHeading
+            id="why-heading"
+            eyebrow="Why Healing Horizons"
+            title="Why Choose Healing Horizons?"
+            intro="We combine person-centered psychiatric rehabilitation, community-based support, and coordinated care to help participants work toward meaningful and practical goals."
+          />
+
+          <ul className={styles.whyGrid}>
+            {WHY_CHOOSE_ITEMS.map((item) => (
+              <li key={item.title}>
+                <div className={styles.whyCard}>
+                  <span className={styles.whyIcon} aria-hidden="true">
+                    <Icon name={item.icon} size={22} />
+                  </span>
+                  <h3 className={styles.whyTitle}>{item.title}</h3>
+                  <p className={styles.whyBody}>{item.body}</p>
+                </div>
+              </li>
+            ))}
+          </ul>
+        </div>
+      </section>
+
+      {/* ------------------------------------------------- Affiliations Bar -- */}
       <section
         className={`section section--tight section--accent ${styles.affiliations}`}
         aria-labelledby="affiliations-heading"
       >
         <div className="container">
           <h2 id="affiliations-heading" className={styles.affiliationsHeading}>
-            Professional bodies our clinicians belong to or trained through
+            Accreditations, Authorizations &amp; Compliance Standards
           </h2>
           <ul className={styles.affiliationList}>
             {affiliations.map((affiliation) => (
@@ -338,62 +405,22 @@ export function AboutPage() {
         </div>
       </section>
 
-      {/* --------------------------------------------------------- team preview */}
-      <section className={`section ${styles.team}`} aria-labelledby="team-heading">
-        <div className="container">
-          <SectionHeading
-            id="team-heading"
-            eyebrow="The team"
-            title="The people you would actually be talking to"
-            intro="Every clinician here is independently licensed. Each profile says what they work with, how they work, and whether they have room this month."
-          />
-
-          <ul className={styles.teamGrid}>
-            {team.map((member) => (
-              <li key={member.slug} className={styles.teamItem}>
-                <Card to={paths.therapist(member.slug)} className={styles.teamCard} padding="md">
-                  <Avatar
-                    initials={member.initials}
-                    accent={member.accent}
-                    size="sm"
-                    alt={member.name}
-                  />
-                  <div className={styles.teamText}>
-                    <h3 className={styles.teamName}>{member.name}</h3>
-                    <p className={styles.teamRole}>{member.role}</p>
-                    <p className={styles.teamCreds}>{member.credentials}</p>
-                  </div>
-                </Card>
-              </li>
-            ))}
-          </ul>
-
-          <div className={styles.teamAction}>
-            <Button to={paths.therapists} variant="secondary" size="lg" iconRight="arrowRight">
-              Read the full profiles
-            </Button>
-          </div>
-        </div>
-      </section>
-
-      {/* -------------------------------------------------------- closing CTA -- */}
-      <section className={`section section--inverse ${styles.cta}`} aria-labelledby="cta-heading">
+      {/* ------------------------------------------------ 8. Closing CTA -- */}
+      <section id="get-started" className={`section section--inverse ${styles.cta}`} aria-labelledby="cta-heading">
         <div className="container">
           <div className={styles.ctaInner}>
-            <p className="eyebrow">Next step</p>
-            <h2 id="cta-heading">If this sounds like the right place</h2>
+            <p className="eyebrow">Get Started</p>
+            <h2 id="cta-heading">Ready to Start Psychiatric Rehabilitation Services?</h2>
             <p className={styles.ctaCopy}>
-              Start with a free 15-minute call. You describe what has been going on, we tell you
-              who here has the right training and the availability, and you decide afterwards
-              whether to book anything. If we are not the right fit, we will say so on that call
-              and point you somewhere better.
+              Whether you're seeking support for yourself, a family member, or someone you care for,
+              our intake team can help you understand the next steps.
             </p>
             <div className={styles.ctaActions}>
-              <Button to={paths.book} variant="inverse" size="lg" iconRight="arrowRight">
-                Book a consultation
+              <Button type="button" variant="inverse" size="lg" iconRight="arrowRight" className={styles.bookCta} onClick={openBooking}>
+                Get Started / Make a Referral
               </Button>
               <Button to={paths.contact} variant="inverseOutline" size="lg">
-                Ask a question first
+                Contact Our Intake Team
               </Button>
             </div>
           </div>

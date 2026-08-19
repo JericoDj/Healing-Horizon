@@ -405,24 +405,50 @@ hr {
   transform: translateY(0);
 }
 
-/* Reveal-on-scroll — opt-in, respects reduced motion via token collapse */
-.reveal {
-  opacity: 0;
-  transform: translateY(16px);
-  transition: opacity var(--duration-deliberate) var(--ease-entrance),
-    transform var(--duration-deliberate) var(--ease-entrance);
-}
-
-.reveal.is-visible {
-  opacity: 1;
-  transform: none;
-}
-
-@media (prefers-reduced-motion: reduce) {
-  .reveal {
+/* --------------------------------------------------------------------------
+   Page & Section Entrance Animations
+   -------------------------------------------------------------------------- */
+@keyframes pageSettle {
+  from {
+    opacity: 0;
+    transform: translateY(14px);
+  }
+  to {
     opacity: 1;
     transform: none;
   }
+}
+
+/* Page Hero entrance animation cascade */
+[class*="hero"] .container > *,
+[class*="heroInner"] > *,
+[class*="missingInner"] > * {
+  animation: pageSettle var(--duration-deliberate) var(--ease-entrance) both;
+}
+
+[class*="hero"] .container > *:nth-child(1),
+[class*="heroInner"] > *:nth-child(1) {
+  animation-delay: 0ms;
+}
+
+[class*="hero"] .container > *:nth-child(2),
+[class*="heroInner"] > *:nth-child(2) {
+  animation-delay: 80ms;
+}
+
+[class*="hero"] .container > *:nth-child(3),
+[class*="heroInner"] > *:nth-child(3) {
+  animation-delay: 160ms;
+}
+
+[class*="hero"] .container > *:nth-child(4),
+[class*="heroInner"] > *:nth-child(4) {
+  animation-delay: 240ms;
+}
+
+[class*="hero"] .container > *:nth-child(5),
+[class*="heroInner"] > *:nth-child(5) {
+  animation-delay: 320ms;
 }
 
 /* Responsive grid helper used by card listings */
@@ -430,4 +456,12 @@ hr {
   display: grid;
   gap: var(--space-6);
   grid-template-columns: repeat(auto-fit, minmax(min(100%, 280px), 1fr));
+}
+
+@media (prefers-reduced-motion: reduce) {
+  [class*="hero"] .container > *,
+  [class*="heroInner"] > *,
+  [class*="missingInner"] > * {
+    animation: none !important;
+  }
 }
