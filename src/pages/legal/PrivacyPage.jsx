@@ -1,429 +1,470 @@
-import { Link } from 'react-router-dom';
-import { site } from '../../data/site';
 import { usePageMeta } from '../../hooks/usePageMeta';
-import paths from '../../routes/paths';
 import LegalLayout from './LegalLayout';
 
-const LAST_UPDATED = '1 August 2026';
-const EFFECTIVE_DATE = '2026-08-01';
+const LAST_UPDATED = 'April 2026';
+const EFFECTIVE_DATE = '2026-04-01';
 
-/**
- * PrivacyPage
- *
- * The section with `id="hipaa"` is linked directly from the footer, so its id
- * must not change. The distinction the whole page turns on — website data is
- * not the same thing as your clinical record — is stated first, because it is
- * the thing people are actually confused about.
- */
 export function PrivacyPage() {
   usePageMeta({
-    title: 'Privacy Policy',
-    description: `How ${site.name} handles information collected through this website, and how protected health information in your clinical record is treated under HIPAA.`,
+    title: 'Privacy Policy & Notice of Privacy Practices | Healing Horizons Behavioral Health',
+    description:
+      'Notice of Privacy Practices and Privacy Policy for Healing Horizons Behavioral Health, LLC Psychiatric Rehabilitation Program (PRP) in Waldorf, Maryland.',
   });
+
+  const intro = (
+    <>
+      <p style={{ fontWeight: 'var(--weight-semibold)', color: 'var(--text-primary)', fontSize: 'var(--text-lg)' }}>
+        Your Privacy Matters
+      </p>
+      <p>
+        Healing Horizons Behavioral Health, LLC is committed to protecting the privacy, dignity, and
+        confidentiality of individuals who receive Psychiatric Rehabilitation Program (PRP) services.
+      </p>
+      <p>
+        This notice explains how we protect Protected Health Information (PHI), how information may
+        be used or disclosed, your privacy rights, and how you can contact us with questions or
+        concerns. This notice applies to information maintained by Healing Horizons in connection
+        with PRP services.
+      </p>
+      <p style={{ fontWeight: 'var(--weight-bold)', color: 'var(--text-primary)', textTransform: 'uppercase', letterSpacing: '0.02em' }}>
+        THIS NOTICE DESCRIBES HOW MEDICAL INFORMATION ABOUT YOU MAY BE USED AND DISCLOSED AND HOW
+        YOU CAN GET ACCESS TO THIS INFORMATION. PLEASE REVIEW IT CAREFULLY.
+      </p>
+    </>
+  );
+
+  const customNotice = (
+    <p>
+      This Privacy Notice describes Healing Horizons Behavioral Health, LLC&apos;s privacy practices
+      for Protected Health Information and should be reviewed and approved by the organization&apos;s
+      privacy/compliance leadership or legal counsel before publication. This notice is not intended
+      to replace any separate website privacy, cookie, analytics, or technology disclosures that may
+      be required based on the tools and services used by the website.
+    </p>
+  );
 
   const sections = [
     {
-      id: 'scope',
-      heading: 'What this policy covers',
+      id: 'our-responsibilities',
+      heading: 'Our Privacy Responsibilities',
       body: (
         <>
+          <span id="hipaa" style={{ position: 'relative', top: '-100px', visibility: 'hidden' }} />
           <p>
-            This policy explains how {site.legalName} (&ldquo;{site.name}&rdquo;,
-            &ldquo;we&rdquo;, &ldquo;us&rdquo;) handles information collected through this
-            website, at {site.url}.
+            Healing Horizons maintains safeguards designed to protect participant information and
+            comply with applicable privacy and confidentiality requirements, including:
           </p>
-          <p>
-            <strong>
-              Information collected through this website is not the same thing as your clinical
-              record.
-            </strong>{' '}
-            That distinction matters more than anything else on this page. If you become a client,
-            the notes, assessments and treatment records your therapist keeps are protected health
-            information governed by HIPAA and by Oregon and Washington law. Those are described in{' '}
-            <a href="#hipaa">section 5</a> and in the full Notice of Privacy Practices you receive
-            at intake.
-          </p>
-          <p>
-            Everything else on this page — forms, cookies, server logs — is ordinary website data,
-            and is handled under this policy.
-          </p>
-        </>
-      ),
-    },
-    {
-      id: 'information-you-give',
-      heading: 'Information you give us',
-      body: (
-        <>
-          <p>When you use a form on this site, you choose what to tell us. We collect:</p>
           <ul>
-            <li>
-              <strong>Contact form</strong> — your name, email address, phone number if you give
-              one, how you would prefer to be contacted, whether you have a therapist in mind, and
-              the message you write.
-            </li>
-            <li>
-              <strong>Consultation request</strong> — the kind of support you are looking for, your
-              preferred format and times, your earliest availability, how you expect to pay, your
-              contact details, and any note you add.
-            </li>
-            <li>
-              <strong>Newsletter</strong> — your email address only.
-            </li>
+            <li>The Health Insurance Portability and Accountability Act (HIPAA)</li>
+            <li>Applicable Maryland confidentiality and behavioral health requirements</li>
+            <li>CARF Behavioral Health Standards</li>
+            <li>Applicable professional and ethical standards</li>
           </ul>
           <p>
-            <strong>Please do not send clinical information through these forms.</strong> They are
-            encrypted in transit, but they arrive in an ordinary work inbox and are not a secure
-            channel for health information. A sentence about what you are looking for is all we
-            need to point you the right way. Anything clinical belongs in a session or on the
-            phone.
+            We are required by law to maintain the privacy and security of Protected Health
+            Information and to follow the privacy practices described in this notice.
           </p>
           <p>
-            We do not ask for, and you should not send, your Social Security number, insurance
-            member ID, date of birth or payment card details through this website. Those are
-            collected through our secure intake system after you become a client.
+            Our staff receive confidentiality and HIPAA training during onboarding and on an ongoing
+            basis.
           </p>
         </>
       ),
     },
     {
-      id: 'information-collected-automatically',
-      heading: 'Information collected automatically',
+      id: 'what-is-phi',
+      heading: 'What Is Protected Health Information?',
       body: (
         <>
           <p>
-            Like almost every website, ours records some technical information when you visit. Our
-            hosting provider keeps server logs containing your IP address, browser and device type,
-            the pages you requested, the time of the request, and the referring page if there was
-            one.
+            Protected Health Information (PHI) is information that identifies an individual and
+            relates to their physical or mental health, treatment, services, or payment for
+            healthcare.
           </p>
-          <p>
-            We use this to keep the site working, diagnose errors and detect abuse. Logs are
-            retained for a limited period and are not used to build a profile of you.
-          </p>
-          <p>
-            <strong>Cookies and analytics.</strong> This site uses only the storage strictly
-            necessary for it to function — for example, remembering that you dismissed a notice.
-            We do not run advertising trackers, and we do not sell or share information with data
-            brokers.
-          </p>
-          <p>
-            If analytics are added in future, they will be configured to anonymise IP addresses,
-            they will not be used to target advertising, and this policy will be updated before
-            they go live. Advertising or tracking pixels on a mental health website can reveal that
-            someone is seeking care, and we treat that as unacceptable rather than as a trade-off.
-          </p>
-        </>
-      ),
-    },
-    {
-      id: 'how-we-use-it',
-      heading: 'How we use information',
-      body: (
-        <>
-          <p>We use the information described above only to:</p>
+          <p>Examples may include:</p>
           <ul>
-            <li>reply to your enquiry and, if you ask, arrange a consultation;</li>
-            <li>match you with a clinician whose training and availability fit;</li>
-            <li>answer questions about rates, insurance and scheduling;</li>
-            <li>send the newsletter, if you subscribed, until you unsubscribe;</li>
-            <li>operate, secure and improve the website;</li>
-            <li>meet our legal, regulatory and professional obligations.</li>
+            <li>Diagnosis and clinical history</li>
+            <li>Intake and assessment information</li>
+            <li>Individual Rehabilitation Plans (IRPs)</li>
+            <li>Progress notes</li>
+            <li>Medication information</li>
+            <li>Insurance and Medicaid information</li>
+            <li>Participant contact information</li>
+            <li>Information about services received</li>
           </ul>
-          <p>
-            We do not use website enquiry data for marketing to you beyond the newsletter you
-            explicitly asked for, and we do not add enquirers to a mailing list automatically.
-          </p>
         </>
       ),
     },
     {
-      id: 'hipaa',
-      heading: 'Your clinical record and HIPAA',
+      id: 'uses-and-disclosures',
+      heading: 'How We May Use and Disclose Your Information',
       body: (
         <>
+          <p>Healing Horizons may use or disclose PHI as permitted or required by applicable law.</p>
+
+          <h3>Treatment</h3>
           <p>
-            Once you become a client, your therapist keeps a clinical record. That record is{' '}
-            <strong>protected health information</strong> under the Health Insurance Portability
-            and Accountability Act, and is subject to considerably stronger rules than this
-            website.
-          </p>
-          <p>
-            This section is a summary. The complete <strong>Notice of Privacy Practices</strong>{' '}
-            is given to you at intake, you sign to acknowledge receiving it, and you can request
-            another copy at any time.
+            We may use or share information to provide, coordinate, or manage your rehabilitation
+            services. For example, information may be shared with members of your authorized care
+            team or other providers involved in your care when permitted by law.
           </p>
 
-          <h3>Uses and disclosures that do not need your authorisation</h3>
-          <ul>
-            <li>
-              <strong>Treatment</strong> — coordinating your care within the practice, and with
-              other providers involved in your treatment where clinically appropriate.
-            </li>
-            <li>
-              <strong>Payment</strong> — billing you or your insurer, and providing the minimum
-              information necessary for a claim.
-            </li>
-            <li>
-              <strong>Health care operations</strong> — quality review, clinical supervision and
-              consultation, and practice administration.
-            </li>
-          </ul>
-
-          <h3>Disclosures the law requires or permits</h3>
+          <h3>Payment</h3>
           <p>
-            Your therapist will explain these in full at your first session. In summary, we may be
-            required to disclose information without your authorisation when:
-          </p>
-          <ul>
-            <li>
-              there is a serious and imminent risk of harm to you or to another identifiable
-              person, and disclosure is necessary to prevent it;
-            </li>
-            <li>
-              we have reasonable cause to believe a child, an older adult or a dependent adult is
-              being abused or neglected — mandatory reporting under Oregon and Washington law;
-            </li>
-            <li>we receive a valid court order or a subpoena that we cannot lawfully resist;</li>
-            <li>disclosure is required by another specific law or by a regulator.</li>
-          </ul>
-          <p>
-            These exceptions are narrow, and your therapist will tell you if one is triggered
-            unless doing so would itself create risk. Outside of them, nothing leaves the practice
-            without your signed authorisation, and you may revoke an authorisation in writing at
-            any time.
+            We may use or disclose information as necessary to obtain payment for services. This may
+            include communicating with Medicaid, health plans, or other authorized payers regarding
+            eligibility, authorization, claims, or payment.
           </p>
 
-          <h3>Psychotherapy notes</h3>
+          <h3>Health Care Operations</h3>
           <p>
-            Process notes kept separately from your main record receive additional protection under
-            HIPAA and generally require your specific written authorisation before they can be
-            disclosed — including to an insurer.
+            We may use or disclose information for activities necessary to operate and improve our
+            program, including:
           </p>
+          <ul>
+            <li>Quality improvement</li>
+            <li>Compliance activities</li>
+            <li>Staff supervision</li>
+            <li>Documentation review</li>
+            <li>Program administration</li>
+            <li>Audits and accreditation activities</li>
+          </ul>
+          <p>We limit access to information based on staff roles and job responsibilities.</p>
         </>
       ),
     },
     {
-      id: 'your-rights',
-      heading: 'Your rights',
+      id: 'authorization-required',
+      heading: 'When Your Authorization Is Required',
       body: (
         <>
-          <p>In relation to your clinical record, you have the right to:</p>
+          <p>
+            For uses or disclosures that require your written authorization, Healing Horizons will
+            obtain the appropriate authorization before sharing your information.
+          </p>
+          <p>A Release of Information (ROI) may identify:</p>
           <ul>
+            <li>Your name and identifying information</li>
+            <li>The specific information to be released</li>
+            <li>The person or organization receiving the information</li>
+            <li>The purpose of the disclosure</li>
+            <li>The expiration date</li>
             <li>
-              <strong>Inspect and copy</strong> your record, in the format you request where we can
-              readily produce it;
-            </li>
-            <li>
-              <strong>Request an amendment</strong> if you believe something is inaccurate or
-              incomplete — we must respond in writing, and if we decline you may file a statement
-              of disagreement that stays with the record;
-            </li>
-            <li>
-              <strong>Receive an accounting</strong> of certain disclosures we have made;
-            </li>
-            <li>
-              <strong>Request a restriction</strong> on how your information is used or disclosed.
-              If you pay in full out of pocket for a service, you have the right to require that we
-              do not disclose it to your health plan;
-            </li>
-            <li>
-              <strong>Request confidential communications</strong> — for example, that we only
-              call a particular number, or never leave a voicemail;
-            </li>
-            <li>
-              <strong>Receive a paper copy</strong> of the Notice of Privacy Practices, even if you
-              agreed to an electronic one;
-            </li>
-            <li>
-              <strong>Be notified</strong> if a breach affects your unsecured protected health
-              information.
+              Your signature and date, or the signature of an authorized representative
             </li>
           </ul>
           <p>
-            <strong>Complaints.</strong> If you believe your privacy rights have been violated, you
-            can complain to us using the contact details at the foot of this page, or directly to
-            the U.S. Department of Health and Human Services Office for Civil Rights.{' '}
-            <strong>
-              We will not retaliate against you in any way for making a complaint, and it will not
-              affect your care.
-            </strong>
+            You may revoke an authorization in writing, subject to limitations that may apply under
+            law.
           </p>
         </>
       ),
     },
     {
-      id: 'sharing',
-      heading: 'Who we share information with',
+      id: 'disclosures-without-authorization',
+      heading: 'When Information May Be Shared Without Authorization',
       body: (
         <>
           <p>
-            <strong>We do not sell personal information, and we never will.</strong>
+            Information may be disclosed without written authorization when permitted or required by
+            applicable law. Examples may include:
           </p>
-          <p>We share information only with:</p>
+          <ul>
+            <li>Medical emergencies</li>
+            <li>Suspected abuse, neglect, or exploitation</li>
+            <li>Court orders or lawful subpoenas</li>
+            <li>Serious and imminent threats to safety</li>
+            <li>Certain regulatory or oversight activities</li>
+            <li>Other disclosures required or permitted by law</li>
+          </ul>
+          <p>
+            Healing Horizons documents disclosures made under applicable legal requirements.
+          </p>
+        </>
+      ),
+    },
+    {
+      id: 'community-based-privacy',
+      heading: 'Privacy in Community-Based Services',
+      body: (
+        <>
+          <p>
+            Because PRP services may be provided in homes and community settings, we take additional
+            precautions to protect privacy. Staff are expected to:
+          </p>
+          <ul>
+            <li>Avoid unnecessary discussions of PHI in public areas</li>
+            <li>Use discretion during home and community visits</li>
+            <li>Confirm participant identity before sharing information</li>
+            <li>Protect service notes and other records from unauthorized viewing</li>
+            <li>Maintain appropriate professional boundaries</li>
+            <li>Take reasonable steps to protect confidentiality during community-based services</li>
+          </ul>
+          <p>
+            Our PRP program is primarily community-based, and services may occur in participant
+            residences, community centers, libraries, educational or employment settings, provider
+            offices when appropriate, and other approved locations.
+          </p>
+        </>
+      ),
+    },
+    {
+      id: 'your-privacy-rights',
+      heading: 'Your Privacy Rights',
+      body: (
+        <>
+          <p>
+            You have rights regarding your Protected Health Information, subject to applicable law.
+            You may have the right to:
+          </p>
           <ul>
             <li>
-              <strong>Service providers</strong> who help us operate — our electronic health record
-              and scheduling system, our billing processor, our email provider and our website
-              host. Any provider that handles protected health information does so under a{' '}
-              <strong>Business Associate Agreement</strong> that binds them to HIPAA-equivalent
-              obligations.
+              <strong>Access Your Records:</strong> Request access to your health information and
+              records as permitted by HIPAA and applicable law.
             </li>
             <li>
-              <strong>Your insurer</strong>, where you have asked us to bill them, and only the
-              minimum information necessary for the claim.
+              <strong>Request Corrections:</strong> Request correction of information that you
+              believe is inaccurate or incomplete.
             </li>
             <li>
-              <strong>Other providers</strong> involved in your care, where that is clinically
-              appropriate or where you have authorised it.
+              <strong>Request Confidential Communications:</strong> Request that we communicate with
+              you about your health information in a particular way or at a particular location when
+              permitted by law.
             </li>
             <li>
-              <strong>Authorities</strong>, where one of the narrow legal exceptions in{' '}
-              <a href="#hipaa">section 5</a> applies.
+              <strong>Request Restrictions:</strong> Request restrictions on certain uses or
+              disclosures of your health information, subject to applicable legal requirements.
             </li>
+            <li>
+              <strong>Request an Accounting of Disclosures:</strong> Request information about
+              certain disclosures of your PHI, subject to applicable exceptions.
+            </li>
+            <li>
+              <strong>Receive a Copy of This Notice:</strong> Request a paper or electronic copy of
+              this Privacy Notice at any time.
+            </li>
+            <li>
+              <strong>Choose a Personal Representative:</strong> Where legally authorized, a
+              personal representative such as a guardian may exercise applicable privacy rights on
+              your behalf.
+            </li>
+            <li>
+              <strong>File a Complaint:</strong> You may file a privacy complaint with Healing
+              Horizons or with the U.S. Department of Health and Human Services Office for Civil
+              Rights.
+            </li>
+          </ul>
+          <p>
+            Healing Horizons will not retaliate against you for filing a privacy complaint.
+          </p>
+        </>
+      ),
+    },
+    {
+      id: 'how-we-protect-information',
+      heading: 'How We Protect Your Information',
+      body: (
+        <>
+          <p>
+            Healing Horizons maintains safeguards designed to protect participant information from
+            unauthorized access, use, disclosure, alteration, or loss.
+          </p>
+
+          <h3>Physical Records</h3>
+          <p>Physical records are:</p>
+          <ul>
+            <li>Stored in secure locations</li>
+            <li>Accessible only to authorized personnel</li>
+            <li>Protected from unauthorized removal or access</li>
+          </ul>
+
+          <h3>Electronic Records</h3>
+          <p>
+            Electronic information is maintained using security measures appropriate to the systems
+            in use, which may include:
+          </p>
+          <ul>
+            <li>Password-protected systems</li>
+            <li>Role-based access</li>
+            <li>User authentication</li>
+            <li>Secure backups</li>
+            <li>Encryption where appropriate</li>
+          </ul>
+          <p>
+            Access to participant information is limited to authorized personnel who need the
+            information to perform their responsibilities.
+          </p>
+        </>
+      ),
+    },
+    {
+      id: 'workforce-training',
+      heading: 'Confidentiality Training & Workforce Responsibilities',
+      body: (
+        <>
+          <p>
+            Healing Horizons requires staff to protect participant confidentiality. Staff receive
+            training regarding:
+          </p>
+          <ul>
+            <li>HIPAA and confidentiality requirements</li>
+            <li>Handling Protected Health Information</li>
+            <li>Release of Information procedures</li>
+            <li>Community-based privacy practices</li>
+            <li>Reporting privacy incidents</li>
+            <li>Professional boundaries and ethical responsibilities</li>
+          </ul>
+          <p>Privacy and confidentiality requirements apply across all service settings.</p>
+        </>
+      ),
+    },
+    {
+      id: 'privacy-incidents-breaches',
+      heading: 'Privacy Incidents & Breaches',
+      body: (
+        <>
+          <p>
+            A privacy breach may occur when Protected Health Information is accessed, used, or
+            disclosed improperly. Examples may include:
+          </p>
+          <ul>
+            <li>Unauthorized access to participant information</li>
+            <li>Sharing records without proper authorization</li>
+            <li>Improper discussion of participant information</li>
+            <li>Loss of unsecured participant documentation</li>
+          </ul>
+          <p>
+            When a potential breach is identified, Healing Horizons will take appropriate steps,
+            which may include:
+          </p>
+          <ul>
+            <li>Securing the affected information</li>
+            <li>Notifying appropriate leadership or compliance personnel</li>
+            <li>Investigating the incident</li>
+            <li>Documenting findings and corrective actions</li>
+            <li>Notifying affected individuals when required</li>
+            <li>Reporting to regulatory authorities when legally required</li>
           </ul>
         </>
       ),
     },
     {
-      id: 'retention',
-      heading: 'How long we keep information',
+      id: 'participant-records',
+      heading: 'Participant Records & Confidentiality',
       body: (
         <>
           <p>
-            <strong>Website enquiries.</strong> If you contact us and do not become a client, we
-            keep your enquiry only as long as needed to respond and to keep a basic record that we
-            did, then delete it. You can ask us to delete it sooner.
+            Healing Horizons maintains participant records in accordance with applicable
+            requirements. Records may include:
           </p>
+          <ul>
+            <li>Referral information</li>
+            <li>Intake assessments</li>
+            <li>Eligibility documentation</li>
+            <li>Consent and authorization forms</li>
+            <li>Participant rights acknowledgments</li>
+            <li>Individual Rehabilitation Plans</li>
+            <li>Service encounter documentation</li>
+            <li>Progress notes</li>
+            <li>Reviews and updates</li>
+            <li>Incident documentation when applicable</li>
+            <li>Discharge and transition documentation</li>
+          </ul>
           <p>
-            <strong>Newsletter.</strong> Until you unsubscribe. Every email carries an unsubscribe
-            link, and we act on it immediately.
-          </p>
-          <p>
-            <strong>Clinical records.</strong> Retention periods are set by state law and
-            professional standards rather than by us, and differ for adults and for clients seen as
-            minors. The specific period that applies to your record is set out in the Notice of
-            Privacy Practices you receive at intake — ask your therapist if you want it confirmed
-            before then.
+            Records are maintained securely and accessed only by authorized personnel with a
+            legitimate need for the information.
           </p>
         </>
       ),
     },
     {
-      id: 'security',
-      heading: 'How we protect information',
+      id: 'commitment-to-privacy',
+      heading: 'Our Commitment to Privacy',
       body: (
         <>
           <p>
-            This website is served over HTTPS, and form submissions are encrypted in transit. Our
-            electronic health record is a HIPAA-compliant system with access controls, audit
-            logging and encryption at rest. Access is limited to staff who need it, and staff
-            complete privacy and security training.
+            Healing Horizons Behavioral Health, LLC is committed to protecting participant privacy
+            while providing recovery-oriented, person-centered psychiatric rehabilitation services.
           </p>
           <p>
-            <strong>An honest limitation.</strong> No website or email system is perfectly secure.
-            Email in particular is not a secure channel — it can sit unencrypted on a mail server,
-            and it can be read by anyone with access to the device it arrives on. That is why we
-            ask you to keep clinical detail out of email and web forms, and why we use a secure
-            portal for anything sensitive once you are a client.
+            Our program is designed around dignity, independence, community integration, and
+            participant-centered care.
           </p>
           <p>
-            If you share a device or a mailbox with someone, tell us. We can adjust how we contact
-            you, and we would much rather be asked.
+            We review our privacy and confidentiality practices regularly and update them as
+            necessary to reflect applicable HIPAA requirements, Maryland behavioral health
+            requirements, CARF standards, and organizational practices.
           </p>
         </>
       ),
     },
     {
-      id: 'minors',
-      heading: 'Children and minors',
+      id: 'changes-to-notice',
+      heading: 'Changes to This Notice',
       body: (
         <>
           <p>
-            This website is not directed at children under 13, and we do not knowingly collect
-            information from them through it. A parent or guardian should make the initial contact
-            about care for a child.
+            We may update this Privacy Notice when our privacy practices or applicable requirements
+            change. The current version will be made available on our website and upon request.
           </p>
           <p>
-            Confidentiality for adolescent clients is a clinical matter, not just a privacy one,
-            and it is agreed explicitly with the family at the first caregiver session. Broadly:
-            the content of a teenager&rsquo;s sessions is treated as private, caregivers receive
-            progress and safety information rather than transcripts, and safety concerns are always
-            shared. Oregon law also gives minors aged 14 and over certain rights to consent to
-            outpatient mental health treatment, which affects who controls the record. Your
-            therapist will explain exactly how this works for your family before treatment starts.
+            The effective date shown at the beginning of this notice identifies the current version.
           </p>
         </>
       ),
     },
     {
-      id: 'third-parties',
-      heading: 'Links to other websites',
+      id: 'questions-and-contacts',
+      heading: 'Questions, Privacy Requests & Complaints',
       body: (
         <>
           <p>
-            This site links to external resources — crisis lines, professional bodies, insurers.
-            Those sites have their own privacy policies and we do not control them. Following a
-            link means leaving this site.
+            If you have questions about this notice, want to request access to your records, or have
+            a privacy concern, please contact Healing Horizons Behavioral Health, LLC.
           </p>
-          <p>
-            We chose the links on this site deliberately and review them, but a link is not an
-            endorsement of everything on the destination.
+          <div
+            style={{
+              padding: 'var(--space-4)',
+              borderRadius: 'var(--radius-md)',
+              backgroundColor: 'var(--surface-sunken)',
+              border: '1px solid var(--border-default)',
+              marginTop: 'var(--space-4)',
+            }}
+          >
+            <p style={{ fontWeight: 'var(--weight-bold)', margin: 0, color: 'var(--text-primary)' }}>
+              Privacy Contact
+            </p>
+            <p style={{ margin: 'var(--space-1) 0 0' }}>
+              <strong>Healing Horizons Behavioral Health, LLC</strong>
+              <br />
+              Waldorf, Maryland
+              <br />
+              Phone: <a href="tel:4434139692">443-413-9692</a>
+              <br />
+              Email:{' '}
+              <a href="mailto:privacy@healinghorizonsbhs.com">privacy@healinghorizonsbhs.com</a>
+            </p>
+          </div>
+          <p style={{ marginTop: 'var(--space-3)' }}>
+            You may also contact us to request a paper copy of this notice.
           </p>
         </>
       ),
     },
     {
-      id: 'state-rights',
-      heading: 'Oregon and Washington residents',
+      id: 'hhs-complaints',
+      heading: 'Complaints to the U.S. Department of Health & Human Services',
       body: (
         <>
+          <p>You may also submit a complaint to the:</p>
           <p>
-            Residents of some states have additional rights over their personal information,
-            including rights to access, correct and delete it, and to opt out of certain kinds of
-            sharing. Where such a right applies to you, you can exercise it using the contact
-            details at the foot of this page, and we will not treat you differently for doing so.
+            <strong>U.S. Department of Health and Human Services</strong>
+            <br />
+            Office for Civil Rights
           </p>
           <p>
-            <strong>Washington&rsquo;s My Health My Data Act</strong> gives Washington consumers
-            particular rights over consumer health data — broadly defined to include information
-            that identifies someone&rsquo;s past, present or future physical or mental health
-            status, and which can include the fact that a person sought care. It generally requires
-            separate consent before such data is collected or shared, prohibits its sale without
-            specific authorisation, and provides rights to access and to withdraw consent.
-          </p>
-          <p>
-            Because we do not run advertising trackers on this site and do not sell personal
-            information, most of the practices that Act was written to address do not occur here.
-            If you are a Washington resident and want to exercise a right under it, contact us and
-            we will respond within the time the law allows.
-          </p>
-          <p>
-            Information already governed by HIPAA as part of your clinical record continues to be
-            governed by HIPAA and by state health-information law.
-          </p>
-        </>
-      ),
-    },
-    {
-      id: 'changes',
-      heading: 'Changes to this policy',
-      body: (
-        <>
-          <p>
-            We update this policy when our practices change or when the law changes. The
-            &ldquo;last updated&rdquo; date at the top of the page always reflects the current
-            version.
-          </p>
-          <p>
-            If we make a change that materially affects how we handle information we already hold
-            about you, we will tell you directly rather than relying on you to notice the date.
-            Changes to the Notice of Privacy Practices are handled separately, under the process
-            that Notice describes.
-          </p>
-          <p>
-            You may also want to read our <Link to={paths.terms}>Terms of Service</Link> and our{' '}
-            <Link to={paths.accessibility}>Accessibility statement</Link>.
+            You have the right to file a complaint if you believe your privacy rights have been
+            violated. Healing Horizons will not retaliate against you for filing a complaint.
           </p>
         </>
       ),
@@ -432,22 +473,12 @@ export function PrivacyPage() {
 
   return (
     <LegalLayout
-      title="Privacy Policy"
+      title="Privacy Policy & Notice of Privacy Practices"
       lastUpdated={LAST_UPDATED}
       effectiveDate={EFFECTIVE_DATE}
+      intro={intro}
+      customNotice={customNotice}
       sections={sections}
-      intro={
-        <>
-          <p>
-            Deciding to look for a therapist is private, and so is looking at a therapist&rsquo;s
-            website. This policy sets out plainly what we collect, why, who sees it, and what you
-            can ask us to do about it.
-          </p>
-          <p>
-            If anything here is unclear, ask. We would rather explain it than have you wonder.
-          </p>
-        </>
-      }
     />
   );
 }

@@ -18,12 +18,22 @@ import styles from './LegalLayout.module.css';
  * @param {{id: string, heading: string, body: React.ReactNode}[]} props.sections
  * @param {React.ReactNode} [props.children]  rendered after the sections
  */
-export function LegalLayout({ title, lastUpdated, effectiveDate, intro, sections = [], children }) {
+export function LegalLayout({
+  eyebrow = 'Legal',
+  title,
+  lastUpdated,
+  effectiveDate,
+  intro,
+  sections = [],
+  hideTemplateWarning = false,
+  customNotice = null,
+  children,
+}) {
   return (
     <>
       <section className={`section section--tight ${styles.hero}`} aria-labelledby="legal-heading">
-        <div className="container container--narrow">
-          <p className="eyebrow">Legal</p>
+        <div className={styles.containerLegal}>
+          <p className="eyebrow">{eyebrow}</p>
           <h1 id="legal-heading" className={styles.title}>
             {title}
           </h1>
@@ -38,26 +48,59 @@ export function LegalLayout({ title, lastUpdated, effectiveDate, intro, sections
 
           <div className={styles.intro}>{intro}</div>
 
-          <Alert
-            tone="warning"
-            title="This is a template, not finished legal advice"
-            className={styles.templateWarning}
-          >
-            <p>
-              {site.name} is a fictional demonstration practice, and this document is a starting
-              point written to be edited — not a policy any practice should publish as-is. Have a
-              licensed healthcare attorney in your state review and adapt it before you rely on
-              it. Names, licence numbers, addresses and phone numbers on this site are
-              placeholders.
-            </p>
-          </Alert>
+          {customNotice ? (
+            <Alert
+              tone="warning"
+              title="Important Notice"
+              className={styles.templateWarning}
+            >
+              {customNotice}
+            </Alert>
+          ) : !hideTemplateWarning ? (
+            <Alert
+              tone="warning"
+              title="This is a template, not finished legal advice"
+              className={styles.templateWarning}
+            >
+              <p>
+                {site.name} is a fictional demonstration practice, and this document is a starting
+                point written to be edited — not a policy any practice should publish as-is. Have a
+                licensed healthcare attorney in your state review and adapt it before you rely on
+                it. Names, licence numbers, addresses and phone numbers on this site are
+                placeholders.
+              </p>
+            </Alert>
+          ) : null}
         </div>
       </section>
 
       <div className={`section ${styles.body}`}>
-        <div className="container container--narrow">
+        <div className={styles.containerLegal}>
+          {/* Mobile Collapsible Navigation */}
+          <div className={styles.tocMobileWrapper}>
+            <details className={styles.tocDetails}>
+              <summary className={styles.tocSummary}>
+                <span>On this page ({sections.length} sections)</span>
+                <Icon name="chevronDown" size={16} />
+              </summary>
+              <ol className={styles.tocList}>
+                {sections.map((section, index) => (
+                  <li key={section.id}>
+                    <a href={`#${section.id}`} className={styles.tocLink}>
+                      <span className={styles.tocNumber} aria-hidden="true">
+                        {index + 1}
+                      </span>
+                      {section.tocHeading || section.heading}
+                    </a>
+                  </li>
+                ))}
+              </ol>
+            </details>
+          </div>
+
           <div className={styles.layout}>
-            <nav className={styles.toc} aria-label="On this page">
+            {/* Desktop Sticky Navigation */}
+            <nav className={`${styles.toc} ${styles.tocDesktop}`} aria-label="On this page">
               <p className={styles.tocHeading}>On this page</p>
               <ol className={styles.tocList}>
                 {sections.map((section, index) => (
@@ -66,7 +109,7 @@ export function LegalLayout({ title, lastUpdated, effectiveDate, intro, sections
                       <span className={styles.tocNumber} aria-hidden="true">
                         {index + 1}
                       </span>
-                      {section.heading}
+                      {section.tocHeading || section.heading}
                     </a>
                   </li>
                 ))}
@@ -74,22 +117,33 @@ export function LegalLayout({ title, lastUpdated, effectiveDate, intro, sections
             </nav>
 
             <div className={styles.content}>
-              {sections.map((section, index) => (
-                <section
-                  key={section.id}
-                  id={section.id}
-                  className={styles.section}
-                  aria-labelledby={`${section.id}-heading`}
-                >
-                  <h2 id={`${section.id}-heading`} className={styles.sectionHeading}>
-                    <span className={styles.sectionNumber} aria-hidden="true">
-                      {index + 1}.
-                    </span>
-                    {section.heading}
-                  </h2>
-                  <div className="prose">{section.body}</div>
-                </section>
-              ))}
+              {sections.map((section, index) => {
+                const cardClass =
+                  section.cardTone === 'warning'
+                    ? `${styles.highlightCard} ${styles.highlightCardWarning}`
+                    : section.cardTone === 'accent'
+                    ? `${styles.highlightCard} ${styles.highlightCardAccent}`
+                    : section.cardTone === 'default'
+                    ? styles.highlightCard
+                    : '';
+
+                return (
+                  <section
+                    key={section.id}
+                    id={section.id}
+                    className={`${styles.section} ${cardClass}`}
+                    aria-labelledby={`${section.id}-heading`}
+                  >
+                    <h2 id={`${section.id}-heading`} className={styles.sectionHeading}>
+                      <span className={styles.sectionNumber} aria-hidden="true">
+                        {index + 1}.
+                      </span>
+                      {section.heading}
+                    </h2>
+                    <div className="prose">{section.body}</div>
+                  </section>
+                );
+              })}
 
               {children}
 
