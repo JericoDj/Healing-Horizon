@@ -17,6 +17,7 @@ import styles from './TherapistsPage.module.css';
 
 const ALL_FOCUS = 'all';
 
+
 /**
  * TherapistsPage — the clinician directory.
  *

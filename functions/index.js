@@ -67,8 +67,13 @@ function isAllowed(value) {
   );
 }
 
+/** Resend needs "a@b.com" or "Name <a@b.com>"; a bare name falls back to the test sender. */
+const DEFAULT_FROM = /@/.test(process.env.MAIL_FROM ?? '')
+  ? process.env.MAIL_FROM.trim()
+  : `${process.env.MAIL_FROM?.trim() || 'Healing Horizons Website'} <${RESEND_TEST_SENDER}>`;
+
 const DEFAULT_ROUTING = {
-  from: process.env.MAIL_FROM || `Healing Horizons Website <${RESEND_TEST_SENDER}>`,
+  from: DEFAULT_FROM,
   to: emailList(process.env.MAIL_TO),
   cc: emailList(process.env.MAIL_CC),
 };
