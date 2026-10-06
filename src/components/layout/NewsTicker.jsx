@@ -64,10 +64,24 @@ export function NewsTicker() {
 
   const colorClasses = [styles.iconOrange, styles.iconYellow, styles.iconGreen];
 
-  const items = announcements.map((item, index) => {
+  /* With only one or two announcements a set is narrower than a wide screen,
+     which leaves a blank gap in the loop. Repeat the list until a set holds
+     at least four items; the repeats are hidden from assistive tech so each
+     announcement is still read only once. */
+  const MIN_ITEMS = 4;
+  const repeats = prefersReducedMotion ? 1 : Math.ceil(MIN_ITEMS / announcements.length);
+  const looped = Array.from({ length: repeats }, (_, round) =>
+    announcements.map((item) => ({ ...item, round })),
+  ).flat();
+
+  const items = looped.map((item, index) => {
     const colorClass = colorClasses[index % colorClasses.length];
     return (
-      <li key={item.id} className={styles.item}>
+      <li
+        key={`${item.id}-${item.round}`}
+        className={styles.item}
+        aria-hidden={item.round > 0 ? 'true' : undefined}
+      >
         <Icon name={item.icon} size={16} strokeWidth={2} className={`${styles.itemIcon} ${colorClass}`} />
         <span className={styles.itemText}>{item.text}</span>
       </li>

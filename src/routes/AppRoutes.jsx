@@ -24,7 +24,8 @@ const ContactPage = lazy(() => import('../pages/ContactPage'));
 const BookingPage = lazy(() => import('../pages/BookingPage'));
 const PrivacyPage = lazy(() => import('../pages/legal/PrivacyPage'));
 const TermsPage = lazy(() => import('../pages/legal/TermsPage'));
-const AccessibilityPage = lazy(() => import('../pages/legal/AccessibilityPage'));
+// Accessibility page hidden for now — restore together with its <Route> below.
+// const AccessibilityPage = lazy(() => import('../pages/legal/AccessibilityPage'));
 const NotFoundPage = lazy(() => import('../pages/NotFoundPage'));
 
 function LegacyServiceRedirect() {
@@ -161,6 +162,7 @@ export function AppRoutes() {
             </Suspense>
           }
         />
+        {/* Accessibility page hidden for now
         <Route
           path={paths.accessibility}
           element={
@@ -168,7 +170,7 @@ export function AppRoutes() {
               <AccessibilityPage />
             </Suspense>
           }
-        />
+        /> */}
 
         {/* Legacy / convenience redirects */}
         <Route path="/services" element={<Navigate to={paths.programs} replace />} />

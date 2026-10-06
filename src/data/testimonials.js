@@ -75,7 +75,7 @@ export const trustSignals = [
 
 /** Professional affiliations shown as a quiet logo/credential row. */
 export const affiliations = [
-  'CARF International Standards Aligned',
+  // 'CARF International Standards Aligned',
   'Maryland Behavioral Health Administration (BHA)',
   'Maryland Medicaid Authorized Provider',
   'Local Behavioral Health Authorities (LBHAs/CSAs)',

@@ -106,6 +106,7 @@ function ContactPageInner() {
 
           <div className={styles.layout}>
             <div className={styles.main}>
+            {/* Emergency notice hidden for now
             <Alert
               tone="danger"
               title="This form is not for emergencies"
@@ -126,7 +127,7 @@ function ContactPageInner() {
                   </li>
                 ))}
               </ul>
-            </Alert>
+            </Alert> */}
 
             <Alert tone="info" title="Please keep clinical details out of this form">
               <p>
@@ -286,6 +287,7 @@ function ContactPageInner() {
                   hint="We will use this and nothing else. Say if a voicemail is not safe to leave."
                 />
 
+                {/* Specialist picker hidden until real staff names are available
                 <Select
                   label="Is there a specialist you would like to work with?"
                   name="preferredTherapist"
@@ -295,7 +297,7 @@ function ContactPageInner() {
                   onChange={handleChange}
                   onBlur={handleBlur}
                   error={errorFor('preferredTherapist')}
-                />
+                /> */}
 
                 <Textarea
                   label="What are you looking for?"
@@ -347,14 +349,14 @@ function ContactPageInner() {
               </h3>
               <address className={styles.address}>
                 <a href={site.address.mapUrl} target="_blank" rel="noreferrer noopener">
-                  {site.address.line1}
+                  {site.address.line1}, {site.address.line2}
                   <br />
                   {site.address.city}, {site.address.state} {site.address.postalCode}
                   <Icon name="external" size={14} className={styles.externalIcon} />
                 </a>
               </address>
               <p className={styles.detailNote}>
-                Administrative office in Waldorf, MD. Rehabilitation services are delivered across
+                Administrative office in {site.address.city}, {site.address.state}. Rehabilitation services are delivered across
                 Charles County, Prince George’s County, and surrounding Maryland communities in-home
                 and on-site.
               </p>
@@ -370,7 +372,8 @@ function ContactPageInner() {
               </p>
               <p className={styles.detailNote}>
                 Answered during office hours. Leave a voicemail outside them and we return it the
-                next business day. Fax: {site.contact.fax}.
+                next business day.
+                {/* Fax hidden until a real number is confirmed: Fax: {site.contact.fax}. */}
               </p>
             </Card>
 
@@ -381,20 +384,12 @@ function ContactPageInner() {
               </h3>
               <ul className={styles.emailList}>
                 <li>
-                  <span className={styles.emailLabel}>Intake &amp; Referrals</span>
-                  <a href={`mailto:${site.contact.intakeEmail}`}>{site.contact.intakeEmail}</a>
-                </li>
-                <li>
-                  <span className={styles.emailLabel}>General</span>
+                  <span className={styles.emailLabel}>General, Referrals &amp; Billing</span>
                   <a href={`mailto:${site.contact.email}`}>{site.contact.email}</a>
                 </li>
                 <li>
-                  <span className={styles.emailLabel}>Billing &amp; Medicaid</span>
-                  <a href={`mailto:${site.contact.billingEmail}`}>{site.contact.billingEmail}</a>
-                </li>
-                <li>
-                  <span className={styles.emailLabel}>Privacy / Compliance</span>
-                  <a href={`mailto:${site.contact.privacyEmail}`}>{site.contact.privacyEmail}</a>
+                  <span className={styles.emailLabel}>Alternate</span>
+                  <a href={`mailto:${site.contact.altEmail}`}>{site.contact.altEmail}</a>
                 </li>
               </ul>
               <p className={styles.detailNote}>
@@ -482,8 +477,9 @@ function ContactPageInner() {
                   Questions about any section can be answered directly with your intake coordinator on the phone or in person.
                 </li>
                 <li>
-                  Need large print, plain language, or language interpretation? Let us know — see our{' '}
-                  <Link to={paths.accessibility}>accessibility statement</Link>.
+                  {/* Need large print, plain language, or language interpretation? Let us know — see our{' '}
+                  <Link to={paths.accessibility}>accessibility statement</Link>. */}
+                  Need large print, plain language, or language interpretation? Just let us know.
                 </li>
               </ul>
             </Card>

@@ -1,0 +1,15 @@
+rules_version = '2';
+
+// Rules for the `healing-horizons` database only (see firebase.json).
+// Business Manager Pro's default database is not affected by this file.
+//
+// Browsers get no access at all. Form submissions are written by the
+// healinghorizons-mailer Cloud Functions using the Admin SDK, which bypasses
+// these rules. Staff read requests in the Firebase console.
+service cloud.firestore {
+  match /databases/{database}/documents {
+    match /{document=**} {
+      allow read, write: if false;
+    }
+  }
+}

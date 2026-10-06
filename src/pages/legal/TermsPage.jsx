@@ -558,14 +558,17 @@ export function TermsPage() {
               Healing Horizons Behavioral Health, LLC
             </p>
             <p style={{ margin: 'var(--space-1) 0 0' }}>
-              Waldorf, Maryland
+              10339 Southern Maryland Blvd, Suite 205
               <br />
-              Phone: <a href="tel:4434139692">443-413-9692</a>
+              Dunkirk, MD 20754
               <br />
-              Email: <a href="mailto:info@healinghorizonsbhs.com">info@healinghorizonsbhs.com</a>
+              Phone: <a href="tel:+14438583270">+1 443-858-3270</a>
               <br />
-              Privacy questions:{' '}
-              <a href="mailto:privacy@healinghorizonsbhs.com">privacy@healinghorizonsbhs.com</a>
+              Email:{' '}
+              <a href="mailto:info@healinghorizonsbehavioralmd.net">info@healinghorizonsbehavioralmd.net</a>
+              <br />
+              Alternate email:{' '}
+              <a href="mailto:healinghorizonsbh@gmail.com">healinghorizonsbh@gmail.com</a>
             </p>
           </div>
         </>

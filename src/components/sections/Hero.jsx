@@ -61,10 +61,12 @@ export function Hero() {
           <div className={styles.visual}>
             <HorizonArt className={styles.art} />
 
+            {/* CARF pill hidden for now
             <p className={styles.licence}>
               <Icon name="shieldCheck" size={18} />
               <span>CARF-Aligned · Licensed in {site.serviceAreas.join(' & ')}</span>
             </p>
+            */}
 
             <div className={styles.availability}>
               <StatusBadge available>Accepting new referrals</StatusBadge>

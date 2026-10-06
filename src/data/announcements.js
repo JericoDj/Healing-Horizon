@@ -19,30 +19,36 @@
 
 export const announcements = [
   {
-    id: 'referrals',
+    id: 'calvert-referrals',
     icon: 'group',
-    text: 'Accepting new participant referrals for adults & transitional-age youth',
+    text: 'Now Accepting PRP Referrals in Calvert County and Surrounding Areas',
   },
-  {
-    id: 'medicaid',
-    icon: 'shieldCheck',
-    text: 'Maryland Medicaid & Behavioral Health Administration (BHA) authorized',
-  },
-  {
-    id: 'community-delivery',
-    icon: 'home',
-    text: 'Community-based & in-home rehabilitation services across Maryland',
-  },
-  {
-    id: 'carf',
-    icon: 'sparkle',
-    text: 'Built to CARF Behavioral Health Standards with person-centered care',
-  },
-  {
-    id: 'availability',
-    icon: 'calendar',
-    text: 'Flexible scheduling & responsive intake coordination',
-  },
+  // Previous announcements, hidden for now:
+  // {
+  //   id: 'referrals',
+  //   icon: 'group',
+  //   text: 'Accepting new participant referrals for adults & transitional-age youth',
+  // },
+  // {
+  //   id: 'medicaid',
+  //   icon: 'shieldCheck',
+  //   text: 'Maryland Medicaid & Behavioral Health Administration (BHA) authorized',
+  // },
+  // {
+  //   id: 'community-delivery',
+  //   icon: 'home',
+  //   text: 'Community-based & in-home rehabilitation services across Maryland',
+  // },
+  // {
+  //   id: 'carf',
+  //   icon: 'sparkle',
+  //   text: 'Built to CARF Behavioral Health Standards with person-centered care',
+  // },
+  // {
+  //   id: 'availability',
+  //   icon: 'calendar',
+  //   text: 'Flexible scheduling & responsive intake coordination',
+  // },
 ];
 
 /**

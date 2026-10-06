@@ -9,6 +9,7 @@
  * a marketing site should not be a PHI intake channel.
  */
 
+import { services } from '../data/services';
 import { contactService } from '../services/contactService';
 import { ApiError } from '../services/httpClient';
 import {
@@ -60,7 +61,8 @@ export const bookingSteps = [
     id: 'details',
     title: 'How to reach you',
     description: 'We will call to confirm before anything is booked.',
-    fields: ['firstName', 'lastName', 'email', 'phone', 'payment', 'notes', 'consent'],
+    // 'payment' removed from the form — PRP is Medicaid-covered.
+    fields: ['firstName', 'lastName', 'email', 'phone', 'notes', 'consent'],
   },
 ];
 
@@ -96,7 +98,7 @@ export const bookingSchema = {
     required('The consultation happens by phone, so we need a number'),
     phoneRule(),
   ],
-  payment: [required(), oneOf(PAYMENT_OPTIONS.map((p) => p.value))],
+  // payment: [required(), oneOf(PAYMENT_OPTIONS.map((p) => p.value))],
   notes: [maxLength(1000, 'Please keep this under 1000 characters')],
   consent: [
     mustBeTrue('Please confirm you understand this is a request, not a confirmed appointment'),
@@ -139,7 +141,18 @@ export const bookingController = {
   },
 
   buildPayload(values) {
+    const service = services.find((item) => item.slug === values.serviceSlug);
+    const format = SESSION_FORMATS.find((item) => item.value === values.format);
+    const windows = TIME_WINDOWS.filter((item) => values.timeWindows.includes(item.value));
+
     return {
+      /* Human-readable versions for the notification email, so the practice
+         sees "Early morning (8–10am)" rather than "early-morning". */
+      labels: {
+        service: service?.name ?? null,
+        format: format?.label ?? null,
+        timeWindows: windows.map((item) => `${item.label} (${item.detail})`),
+      },
       serviceSlug: values.serviceSlug,
       format: values.format,
       preferredTherapist: values.preferredTherapist || null,
@@ -149,7 +162,6 @@ export const bookingController = {
       lastName: values.lastName.trim(),
       email: values.email.trim().toLowerCase(),
       phone: values.phone.replace(/\D/g, ''),
-      payment: values.payment,
       notes: values.notes.trim() || null,
       submittedAt: new Date().toISOString(),
       source: 'website-booking-form',

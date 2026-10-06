@@ -20,7 +20,8 @@ export function Footer() {
 
   return (
     <footer className={styles.footer}>
-      <CrisisStrip />
+      {/* Crisis hotline strip hidden for now
+      <CrisisStrip /> */}
 
       <div className={`container ${styles.main}`}>
         <div className={styles.brandColumn}>
@@ -59,6 +60,10 @@ export function Footer() {
               <Icon name="mail" size={17} />
               <span>{site.contact.email}</span>
             </a>
+            <a href={`mailto:${site.contact.altEmail}`} className={styles.addressLink}>
+              <Icon name="mail" size={17} />
+              <span>{site.contact.altEmail}</span>
+            </a>
           </address>
 
           {/* Social media links commented out per request
@@ -94,7 +99,8 @@ export function Footer() {
           ))}
         </nav>
 
-        <NewsletterForm />
+        {/* Newsletter signup hidden for now
+        <NewsletterForm /> */}
       </div>
 
       <div className={styles.legalBar}>
@@ -109,11 +115,12 @@ export function Footer() {
             <li>
               <Link to={paths.terms}>Terms of Service</Link>
             </li>
-            <li>
+            {/* <li>
               <Link to={paths.accessibility}>Accessibility</Link>
-            </li>
+            </li> */}
           </ul>
         </div>
+        {/* Template disclaimer removed by request
         <div className={`container ${styles.disclaimerWrap}`}>
           <p className={styles.disclaimer}>
             The content on this website is for general information only and is not a substitute for
@@ -121,7 +128,7 @@ export function Footer() {
             a therapist–client relationship. {site.name} is a fictional demonstration practice; all
             names, licence numbers and contact details on this site are placeholders.
           </p>
-        </div>
+        </div> */}
       </div>
     </footer>
   );

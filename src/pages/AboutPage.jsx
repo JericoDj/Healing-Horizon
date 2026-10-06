@@ -40,8 +40,10 @@ const PRINCIPLES = [
   {
     id: 'standards',
     icon: 'leaf',
-    title: 'Built to CARF & Maryland BHA Standards',
-    body: 'Our program operates strictly under Maryland Behavioral Health Administration (BHA) regulations and CARF-aligned quality and safety standards.',
+    // title: 'Built to CARF & Maryland BHA Standards',
+    // body: 'Our program operates strictly under Maryland Behavioral Health Administration (BHA) regulations and CARF-aligned quality and safety standards.',
+    title: 'Built to Maryland BHA Standards',
+    body: 'Our program operates strictly under Maryland Behavioral Health Administration (BHA) regulations and quality and safety standards.',
   },
 ];
 
@@ -179,10 +181,10 @@ export function AboutPage() {
                   <dt className={styles.factLabel}>SERVICE AREA</dt>
                   <dd className={styles.factValue}>Statewide Maryland (Community &amp; In-Home)</dd>
                 </div>
-                <div className={styles.fact}>
+                {/* <div className={styles.fact}>
                   <dt className={styles.factLabel}>STANDARDS</dt>
                   <dd className={styles.factValue}>CARF Behavioral Health</dd>
-                </div>
+                </div> */}
               </dl>
             </aside>
           </div>
@@ -294,7 +296,7 @@ export function AboutPage() {
               </span>
               <h3 className={styles.officeTitle}>Administrative Office</h3>
               <address className={styles.address}>
-                <span>{site.address.line1}</span>
+                <span>{site.address.line1}, {site.address.line2}</span>
                 <span>
                   {site.address.city}, {site.address.state} {site.address.postalCode}
                 </span>

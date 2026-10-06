@@ -171,6 +171,7 @@ function BookingPageInner() {
       <section className={`section ${styles.formSection}`} aria-labelledby="booking-form-heading">
         <div className={`container ${styles.layout}`}>
           <div className={styles.main}>
+            {/* Emergency notice hidden for now
             <Alert
               tone="danger"
               title="This form is not for emergencies"
@@ -193,7 +194,7 @@ function BookingPageInner() {
                   </li>
                 ))}
               </ul>
-            </Alert>
+            </Alert> */}
 
             {isSuccess ? (
               <Card tone="raised" padding="lg" className={styles.confirmation}>
@@ -226,10 +227,10 @@ function BookingPageInner() {
                     <dt>Format</dt>
                     <dd>{chosenFormat?.label ?? 'Not specified'}</dd>
                   </div>
-                  <div className={styles.summaryRow}>
+                  {/* <div className={styles.summaryRow}>
                     <dt>Therapist</dt>
                     <dd>{chosenTherapist?.label ?? 'No preference — match me'}</dd>
-                  </div>
+                  </div> */}
                   <div className={styles.summaryRow}>
                     <dt>Times that could work</dt>
                     <dd>
@@ -244,10 +245,11 @@ function BookingPageInner() {
                       <dd>{formatDate(values.earliestDate)}</dd>
                     </div>
                   ) : null}
+                  {/* Payment question hidden — PRP is Medicaid-covered.
                   <div className={styles.summaryRow}>
                     <dt>Paying</dt>
                     <dd>{chosenPayment?.label ?? 'Not specified'}</dd>
-                  </div>
+                  </div> */}
                   <div className={styles.summaryRow}>
                     <dt>We will call</dt>
                     <dd>{formatPhone(values.phone)}</dd>
@@ -400,6 +402,7 @@ function BookingPageInner() {
                           hint="Online sessions are available to residents of Oregon and Washington."
                         />
 
+                        {/* Specialist picker hidden until real staff names are available
                         <Select
                           label="Is there a therapist you would like to see?"
                           name="preferredTherapist"
@@ -409,7 +412,7 @@ function BookingPageInner() {
                           onChange={handleChange}
                           onBlur={handleBlur}
                           error={errorFor('preferredTherapist')}
-                        />
+                        /> */}
                       </>
                     ) : null}
 
@@ -498,6 +501,7 @@ function BookingPageInner() {
                           />
                         </div>
 
+                        {/* Payment question hidden — PRP is Medicaid-covered.
                         <RadioCardGroup
                           legend="How are you thinking about paying?"
                           name="payment"
@@ -507,7 +511,7 @@ function BookingPageInner() {
                           onChange={(value) => setValue('payment', value)}
                           error={errorFor('payment')}
                           hint="Nothing here is binding. It just tells us what to have ready on the call."
-                        />
+                        /> */}
 
                         <Textarea
                           label="Anything else we should know?"

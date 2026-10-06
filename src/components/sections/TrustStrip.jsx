@@ -53,7 +53,8 @@ export function TrustStrip() {
             Why Families Choose Our Psychiatric Rehabilitation Program in Maryland
           </h2>
           <p className={styles.subtitle}>
-            Person-centered rehabilitation, CARF-aligned standards, and responsive community care built for individuals and families across Maryland.
+            {/* Person-centered rehabilitation, CARF-aligned standards, and responsive community care built for individuals and families across Maryland. */}
+            Person-centered rehabilitation and responsive community care built for individuals and families across Maryland.
           </p>
         </header>
 

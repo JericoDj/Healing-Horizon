@@ -8,7 +8,7 @@ export function PrivacyPage() {
   usePageMeta({
     title: 'Privacy Policy & Notice of Privacy Practices | Healing Horizons Behavioral Health',
     description:
-      'Notice of Privacy Practices and Privacy Policy for Healing Horizons Behavioral Health, LLC Psychiatric Rehabilitation Program (PRP) in Waldorf, Maryland.',
+      'Notice of Privacy Practices and Privacy Policy for Healing Horizons Behavioral Health, LLC Psychiatric Rehabilitation Program (PRP) in Dunkirk, Maryland.',
   });
 
   const intro = (
@@ -57,7 +57,7 @@ export function PrivacyPage() {
           <ul>
             <li>The Health Insurance Portability and Accountability Act (HIPAA)</li>
             <li>Applicable Maryland confidentiality and behavioral health requirements</li>
-            <li>CARF Behavioral Health Standards</li>
+            {/* <li>CARF Behavioral Health Standards</li> */}
             <li>Applicable professional and ethical standards</li>
           </ul>
           <p>
@@ -392,8 +392,9 @@ export function PrivacyPage() {
           </p>
           <p>
             We review our privacy and confidentiality practices regularly and update them as
+            {/* ...Maryland behavioral health requirements, CARF standards, and organizational practices. */}
             necessary to reflect applicable HIPAA requirements, Maryland behavioral health
-            requirements, CARF standards, and organizational practices.
+            requirements, and organizational practices.
           </p>
         </>
       ),
@@ -437,12 +438,17 @@ export function PrivacyPage() {
             <p style={{ margin: 'var(--space-1) 0 0' }}>
               <strong>Healing Horizons Behavioral Health, LLC</strong>
               <br />
-              Waldorf, Maryland
+              10339 Southern Maryland Blvd, Suite 205
               <br />
-              Phone: <a href="tel:4434139692">443-413-9692</a>
+              Dunkirk, MD 20754
+              <br />
+              Phone: <a href="tel:+14438583270">+1 443-858-3270</a>
               <br />
               Email:{' '}
-              <a href="mailto:privacy@healinghorizonsbhs.com">privacy@healinghorizonsbhs.com</a>
+              <a href="mailto:info@healinghorizonsbehavioralmd.net">info@healinghorizonsbehavioralmd.net</a>
+              <br />
+              Alternate email:{' '}
+              <a href="mailto:healinghorizonsbh@gmail.com">healinghorizonsbh@gmail.com</a>
             </p>
           </div>
           <p style={{ marginTop: 'var(--space-3)' }}>

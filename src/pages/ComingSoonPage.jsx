@@ -33,7 +33,7 @@ export function ComingSoonPage({ title = 'Coming Soon', sectionName }) {
 
         {/* Eyebrow Location */}
         <p className={styles.eyebrow}>
-          {site.address.line1}, {site.address.city} • {site.serviceAreas.join(' & ')}
+          {site.address.line1}, {site.address.line2}, {site.address.city} • {site.serviceAreas.join(' & ')}
         </p>
 
         {/* Title */}

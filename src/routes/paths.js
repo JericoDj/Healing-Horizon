@@ -33,7 +33,7 @@ export const paths = {
 
   privacy: '/privacy',
   terms: '/terms',
-  accessibility: '/accessibility',
+  // accessibility: '/accessibility',
 
   notFound: '*',
 };

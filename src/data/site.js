@@ -22,30 +22,32 @@ export const site = {
   url: 'https://healinghorizonsbhs.netlify.app',
 
   contact: {
-    /* From the licensure cover letter. NOTE: this replaces the earlier
-       443-123-4567, which was placeholder digits. */
-    phone: '443-413-9692',
-    phoneHref: 'tel:+14434139692',
+    /* Shown with the +1 country code so it reads as a US number.
+       Previously 443-413-9692 (from the licensure cover letter). */
+    phone: '+1 443-858-3270',
+    phoneHref: 'tel:+14438583270',
     /* ⚠️ TO CONFIRM — no fax number appears anywhere in the policy packet. */
     fax: '443-413-9693',
-    email: 'info@healinghorizonsbhs.com',
-    intakeEmail: 'referrals@healinghorizonsbhs.com',
-    billingEmail: 'billing@healinghorizonsbhs.com',
-    privacyEmail: 'privacy@healinghorizonsbhs.com',
+    /* The practice has two inboxes. The separate referrals@ / billing@ /
+       privacy@ addresses on the old healinghorizonsbhs.com domain were
+       placeholders, so every role now points at the main inbox. */
+    email: 'info@healinghorizonsbehavioralmd.net',
+    altEmail: 'healinghorizonsbh@gmail.com',
+    intakeEmail: 'info@healinghorizonsbehavioralmd.net',
+    billingEmail: 'info@healinghorizonsbehavioralmd.net',
+    privacyEmail: 'info@healinghorizonsbehavioralmd.net',
   },
 
   address: {
-    /* ⚠️ STREET ADDRESS TO CONFIRM. Every policy header states only
-       "Waldorf, Maryland" — no street or suite is given anywhere in the
-       packet, so nothing is invented here. The previous Dunkirk address
-       did not come from these documents. */
-    line1: 'Street address to be confirmed',
-    line2: 'Waldorf, MD',
-    city: 'Waldorf',
+    /* Confirmed office address. Replaces the earlier "Waldorf, MD"
+       placeholder taken from the policy packet headers. */
+    line1: '10339 Southern Maryland Blvd',
+    line2: 'Suite 205',
+    city: 'Dunkirk',
     state: 'MD',
-    postalCode: '20601',
+    postalCode: '20754',
     country: 'US',
-    mapUrl: 'https://maps.google.com/?q=Waldorf+MD',
+    mapUrl: 'https://maps.google.com/?q=10339+Southern+Maryland+Blvd+Suite+205+Dunkirk+MD+20754',
   },
 
   /* Statewide only for now, by request — the specific catchment is held back
@@ -58,12 +60,12 @@ export const site = {
   serviceAreas: ['Maryland'],
 
   hours: [
-    { day: 'Monday', open: '8:00 AM', close: '7:00 PM' },
-    { day: 'Tuesday', open: '8:00 AM', close: '7:00 PM' },
-    { day: 'Wednesday', open: '8:00 AM', close: '7:00 PM' },
-    { day: 'Thursday', open: '8:00 AM', close: '7:00 PM' },
-    { day: 'Friday', open: '8:00 AM', close: '5:00 PM' },
-    { day: 'Saturday', open: '9:00 AM', close: '1:00 PM' },
+    { day: 'Monday', open: null, close: null },
+    { day: 'Tuesday', open: '10:00 AM', close: '4:00 PM' },
+    { day: 'Wednesday', open: '10:00 AM', close: '4:00 PM' },
+    { day: 'Thursday', open: '10:00 AM', close: '4:00 PM' },
+    { day: 'Friday', open: '10:00 AM', close: '4:00 PM' },
+    { day: 'Saturday', open: null, close: null },
     { day: 'Sunday', open: null, close: null },
   ],
 
@@ -82,7 +84,7 @@ export const site = {
      until they are. See docs/CONTENT-MAP.md §Claims to hold back. */
   credentials: [
     'Maryland PRP licensure in progress',
-    'Built to CARF Behavioral Health Standards',
+    // 'Built to CARF Behavioral Health Standards',
     'Person-centered and recovery-oriented',
     'Trauma-informed, culturally responsive care',
   ],

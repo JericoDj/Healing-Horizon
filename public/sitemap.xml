@@ -29,5 +29,5 @@
   <url><loc>https://www.healinghorizon.example/book</loc><priority>1.0</priority></url>
   <url><loc>https://www.healinghorizon.example/privacy</loc><priority>0.3</priority></url>
   <url><loc>https://www.healinghorizon.example/terms</loc><priority>0.3</priority></url>
-  <url><loc>https://www.healinghorizon.example/accessibility</loc><priority>0.3</priority></url>
+  <!-- <url><loc>https://www.healinghorizon.example/accessibility</loc><priority>0.3</priority></url> -->
 </urlset>

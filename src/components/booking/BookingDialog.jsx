@@ -18,6 +18,7 @@ import {
   Input,
   Modal,
   Select,
+  Textarea,
 } from '../ui';
 import styles from './BookingDialog.module.css';
 
@@ -114,13 +115,14 @@ function BookingDialogInner() {
         </div>
       ) : (
         <form className={styles.form} onSubmit={handleSubmit} noValidate>
+          {/* Emergency notice hidden for now
           <Alert tone="warning" title="This form is not for emergencies">
             <p>
               Requests are read during office hours only. If you need support right now, call or
               text <a href="tel:988">988</a>, text HOME to <a href="sms:741741">741741</a>, or call{' '}
               <a href="tel:911">911</a> if you are in immediate danger.
             </p>
-          </Alert>
+          </Alert> */}
 
           {formError ? (
             <Alert live tone="danger" title="We could not send your request">
@@ -204,6 +206,19 @@ function BookingDialogInner() {
             />
           </div>
 
+          <Textarea
+            label="Anything else we should know?"
+            name="notes"
+            rows={3}
+            maxLength={1000}
+            hint="Scheduling notes, access needs, or when not to call. Please leave out clinical detail."
+            value={values.notes}
+            onChange={handleChange}
+            onBlur={handleBlur}
+            error={errorFor('notes')}
+          />
+
+          {/* Specialist picker hidden until real staff names are available
           <Select
             label="Preferred therapist"
             name="preferredTherapist"
@@ -211,7 +226,7 @@ function BookingDialogInner() {
             value={values.preferredTherapist}
             onChange={handleChange}
             error={errorFor('preferredTherapist')}
-          />
+          /> */}
 
           <Checkbox
             label="I understand this is a request, not a confirmed appointment, and that this form is not for urgent or clinical information."
