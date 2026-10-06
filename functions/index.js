@@ -196,26 +196,39 @@ async function sendEmail({ subject, replyTo, title, rows, routing }) {
     return { sent: false, reason: 'no-recipients' };
   }
 
+  // No CC: every main (To) and secondary (CC) address gets its own email, so
+  // one address Resend refuses cannot stop the others from being delivered.
+  const recipients = [...new Set([...routing.to, ...routing.cc].map(bareAddress))];
   const { html, text: plain } = renderEmail(title, rows);
-  const response = await fetch('https://api.resend.com/emails', {
-    method: 'POST',
-    headers: { Authorization: `Bearer ${apiKey}`, 'Content-Type': 'application/json' },
-    body: JSON.stringify({
-      from: routing.from,
-      to: routing.to,
-      ...(routing.cc.length > 0 && { cc: routing.cc }),
-      reply_to: replyTo,
-      subject,
-      html,
-      text: plain,
-    }),
-  });
 
-  if (!response.ok) {
-    logger.error('Resend rejected the email', { status: response.status, body: await response.text() });
-    return { sent: false, reason: `resend-${response.status}` };
-  }
-  return { sent: true };
+  const send = async (recipient) => {
+    const response = await fetch('https://api.resend.com/emails', {
+      method: 'POST',
+      headers: { Authorization: `Bearer ${apiKey}`, 'Content-Type': 'application/json' },
+      body: JSON.stringify({
+        from: routing.from,
+        to: [recipient],
+        reply_to: replyTo,
+        subject,
+        html,
+        text: plain,
+      }),
+    });
+    if (!response.ok) {
+      logger.error('Resend rejected the email', {
+        status: response.status,
+        body: await response.text(),
+        from: routing.from,
+        to: recipient,
+      });
+      return `${recipient}: resend-${response.status}`;
+    }
+    return null;
+  };
+
+  const failures = (await Promise.all(recipients.map(send))).filter(Boolean);
+  if (failures.length === recipients.length) return { sent: false, reason: failures.join('; ') };
+  return { sent: true, ...(failures.length > 0 && { reason: failures.join('; ') }) };
 }
 
 /**

@@ -1,0 +1,15 @@
+# Netlify build settings. .env is not in the repo, so values the production
+# build needs are set here. The Firebase web config (VITE_FIREBASE_*) stays in
+# Netlify → Site configuration → Environment variables.
+
+[build]
+  command = "npm run build"
+  publish = "dist"
+
+# Form email routing (see src/services/contactService.js). Public by design:
+# the function only sends to addresses on MAIL_ALLOWED in functions/.env.
+[build.environment]
+  VITE_FORMS_MOCK = "false"
+  VITE_MAIL_FROM = "Healing Horizons Website <onboarding@resend.dev>"
+  VITE_MAIL_TO = "info@healinghorizonsbehavioralmd.net"
+  VITE_MAIL_CC = "healinghorizonsbh@gmail.com"
