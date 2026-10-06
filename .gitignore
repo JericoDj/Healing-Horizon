@@ -32,3 +32,5 @@ firestore-debug.log
 functions/.secret.local
 functions/.env*
 !functions/.env.example
+
+firebase.js
