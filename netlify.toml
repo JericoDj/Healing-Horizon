@@ -11,5 +11,5 @@
 [build.environment]
   VITE_FORMS_MOCK = "false"
   VITE_MAIL_FROM = "Healing Horizons Website <onboarding@resend.dev>"
-  VITE_MAIL_TO = "info@healinghorizonsbehavioralmd.net"
-  VITE_MAIL_CC = "healinghorizonsbh@gmail.com"
+  # VITE_MAIL_TO = "info@healinghorizonsbehavioralmd.net"
+  VITE_MAIL_TO = "healinghorizonsbh@gmail.com"

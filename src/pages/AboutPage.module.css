@@ -573,7 +573,7 @@
 /* --- Why Choose Section -------------------------------------------------- */
 
 .whySection {
-  background-color: var(--surface-raised);
+  background-color: var(--surface-sunken);
 }
 
 .whyGrid {

@@ -56,13 +56,10 @@ export function Footer() {
               <Icon name="phone" size={17} />
               <span>{site.contact.phone}</span>
             </a>
-            {/* <a href={`mailto:${site.contact.email}`} className={styles.addressLink}>
+            {/* info@healinghorizonsbehavioralmd.net commented out */}
+            <a href={`mailto:${site.contact.email}`} className={styles.addressLink}>
               <Icon name="mail" size={17} />
               <span>{site.contact.email}</span>
-            </a> */}
-            <a href={`mailto:${site.contact.altEmail}`} className={styles.addressLink}>
-              <Icon name="mail" size={17} />
-              <span>{site.contact.altEmail}</span>
             </a>
           </address>
 

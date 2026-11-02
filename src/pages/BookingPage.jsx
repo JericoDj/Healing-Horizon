@@ -79,6 +79,7 @@ function BookingPageInner() {
     goToStep,
     restart,
     formats,
+    days,
     timeWindows,
     paymentOptions,
   } = useBooking();
@@ -130,6 +131,7 @@ function BookingPageInner() {
     (option) => option.value === values.preferredTherapist,
   );
   const chosenPayment = paymentOptions.find((option) => option.value === values.payment);
+  const chosenDays = (days || []).filter((day) => values.days?.includes(day.value));
   const chosenWindows = timeWindows.filter((window) => values.timeWindows.includes(window.value));
 
   return (
@@ -223,14 +225,22 @@ function BookingPageInner() {
                     <dt>Kind of support</dt>
                     <dd>{chosenService?.name ?? 'Not specified'}</dd>
                   </div>
-                  <div className={styles.summaryRow}>
+                  {/* <div className={styles.summaryRow}>
                     <dt>Format</dt>
                     <dd>{chosenFormat?.label ?? 'Not specified'}</dd>
-                  </div>
+                  </div> */}
                   {/* <div className={styles.summaryRow}>
                     <dt>Therapist</dt>
                     <dd>{chosenTherapist?.label ?? 'No preference — match me'}</dd>
                   </div> */}
+                  <div className={styles.summaryRow}>
+                    <dt>Days that could work</dt>
+                    <dd>
+                      {chosenDays.length > 0
+                        ? chosenDays.map((day) => day.label).join(', ')
+                        : 'Not specified'}
+                    </dd>
+                  </div>
                   <div className={styles.summaryRow}>
                     <dt>Times that could work</dt>
                     <dd>
@@ -391,6 +401,7 @@ function BookingPageInner() {
                           hint="Pick the closest fit. If you are not sure, choose individual therapy and we will sort it out on the call."
                         />
 
+                        {/* In person or online question hidden per request
                         <RadioCardGroup
                           legend="In person or online?"
                           name="format"
@@ -400,7 +411,7 @@ function BookingPageInner() {
                           onChange={(value) => setValue('format', value)}
                           error={errorFor('format')}
                           hint="Online sessions are available to residents of Oregon and Washington."
-                        />
+                        /> */}
 
                         {/* Specialist picker hidden until real staff names are available
                         <Select
@@ -419,8 +430,18 @@ function BookingPageInner() {
                     {step.id === 'availability' ? (
                       <>
                         <CheckboxCardGroup
+                          legend="Which days work best?"
+                          columns={2}
+                          options={days}
+                          values={values.days}
+                          onToggle={(value) => toggleArrayValue('days', value)}
+                          error={errorFor('days')}
+                          hint="Choose any days from Tuesday to Friday that work."
+                        />
+
+                        <CheckboxCardGroup
                           legend="When could a session usually work?"
-                          columns={3}
+                          columns={2}
                           options={timeWindows}
                           values={values.timeWindows}
                           onToggle={(value) => toggleArrayValue('timeWindows', value)}

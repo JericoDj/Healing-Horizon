@@ -24,18 +24,26 @@ import {
 } from '../utils/validators';
 
 export const SESSION_FORMATS = [
-  { value: 'in-person', label: 'In person', detail: 'Portland office, 1420 Alder St' },
-  { value: 'telehealth', label: 'Online', detail: 'Secure video, anywhere in OR or WA' },
-  { value: 'either', label: 'Either is fine', detail: 'We will suggest what fits your therapist' },
+  { value: 'in-person', label: 'In person', detail: 'Dunkirk office, 10339 Southern Maryland Blvd' },
+  { value: 'telehealth', label: 'Online / Telehealth', detail: 'Maryland residents' },
+  { value: 'either', label: 'Either is fine', detail: 'We will suggest what fits you best' },
+];
+
+export const BOOKING_DAYS = [
+  { value: 'tuesday', label: 'Tuesday' },
+  { value: 'wednesday', label: 'Wednesday' },
+  { value: 'thursday', label: 'Thursday' },
+  { value: 'friday', label: 'Friday' },
 ];
 
 export const TIME_WINDOWS = [
-  { value: 'early-morning', label: 'Early morning', detail: '8–10am' },
-  { value: 'midday', label: 'Midday', detail: '10am–2pm' },
-  { value: 'afternoon', label: 'Afternoon', detail: '2–5pm' },
-  { value: 'evening', label: 'Evening', detail: '5–7pm' },
-  { value: 'saturday', label: 'Saturday', detail: '9am–1pm' },
+  { value: '10am-12pm', label: '10:00 AM – 12:00 PM' },
+  { value: '1pm-2pm', label: '1:00 PM – 2:00 PM' },
+  { value: '2pm-3pm', label: '2:00 PM – 3:00 PM' },
+  { value: '3pm-4pm', label: '3:00 PM – 4:00 PM' },
 ];
+
+export const BOOKING_TIME_SLOTS = TIME_WINDOWS;
 
 export const PAYMENT_OPTIONS = [
   { value: 'insurance', label: 'I plan to use insurance' },
@@ -49,13 +57,13 @@ export const bookingSteps = [
     id: 'care',
     title: 'What you are looking for',
     description: 'So we can match you with the right clinician.',
-    fields: ['serviceSlug', 'format', 'preferredTherapist'],
+    fields: ['serviceSlug'],
   },
   {
     id: 'availability',
     title: 'When you are free',
     description: 'Pick everything that could work — more options means a sooner start.',
-    fields: ['timeWindows', 'earliestDate'],
+    fields: ['days', 'timeWindows', 'earliestDate'],
   },
   {
     id: 'details',
@@ -70,6 +78,7 @@ export const initialBookingValues = {
   serviceSlug: '',
   format: 'either',
   preferredTherapist: '',
+  days: [],
   timeWindows: [],
   earliestDate: '',
   firstName: '',
@@ -87,8 +96,9 @@ const atLeastOne = (message) => (value) =>
 
 export const bookingSchema = {
   serviceSlug: [required('Please choose the kind of support you are looking for')],
-  format: [required(), oneOf(SESSION_FORMATS.map((f) => f.value))],
+  format: [],
   preferredTherapist: [],
+  days: [atLeastOne('Please select at least one day that could work')],
   timeWindows: [atLeastOne('Please select at least one time that could work')],
   earliestDate: [notInPast('Please choose today or a later date')],
   firstName: [required('Please enter your first name'), maxLength(60)],
@@ -110,6 +120,7 @@ export const bookingController = {
   initialValues: initialBookingValues,
   schema: bookingSchema,
   formats: SESSION_FORMATS,
+  days: BOOKING_DAYS,
   timeWindows: TIME_WINDOWS,
   paymentOptions: PAYMENT_OPTIONS,
 
@@ -143,20 +154,23 @@ export const bookingController = {
   buildPayload(values) {
     const service = services.find((item) => item.slug === values.serviceSlug);
     const format = SESSION_FORMATS.find((item) => item.value === values.format);
-    const windows = TIME_WINDOWS.filter((item) => values.timeWindows.includes(item.value));
+    const selectedDays = BOOKING_DAYS.filter((item) => values.days?.includes(item.value));
+    const windows = TIME_WINDOWS.filter((item) => values.timeWindows?.includes(item.value));
 
     return {
       /* Human-readable versions for the notification email, so the practice
-         sees "Early morning (8–10am)" rather than "early-morning". */
+         sees "Tuesday, Wednesday" and "10:00 AM – 12:00 PM" rather than raw keys. */
       labels: {
         service: service?.name ?? null,
         format: format?.label ?? null,
-        timeWindows: windows.map((item) => `${item.label} (${item.detail})`),
+        days: selectedDays.map((item) => item.label),
+        timeWindows: windows.map((item) => (item.detail ? `${item.label} (${item.detail})` : item.label)),
       },
       serviceSlug: values.serviceSlug,
       format: values.format,
       preferredTherapist: values.preferredTherapist || null,
-      timeWindows: values.timeWindows,
+      days: values.days || [],
+      timeWindows: values.timeWindows || [],
       earliestDate: values.earliestDate || null,
       firstName: values.firstName.trim(),
       lastName: values.lastName.trim(),

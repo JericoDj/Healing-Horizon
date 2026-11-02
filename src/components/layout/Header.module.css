@@ -590,6 +590,7 @@
   .desktopNav {
     display: block;
     margin-inline: auto;
+    transform: translateX(-5.5rem);
   }
 
   .cta {

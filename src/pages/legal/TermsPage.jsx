@@ -564,10 +564,8 @@ export function TermsPage() {
               <br />
               Phone: <a href="tel:+14438583270">+1 443-858-3270</a>
               <br />
+              {/* Email: <a href="mailto:info@healinghorizonsbehavioralmd.net">info@healinghorizonsbehavioralmd.net</a> */}
               Email:{' '}
-              <a href="mailto:info@healinghorizonsbehavioralmd.net">info@healinghorizonsbehavioralmd.net</a>
-              <br />
-              Alternate email:{' '}
               <a href="mailto:healinghorizonsbh@gmail.com">healinghorizonsbh@gmail.com</a>
             </p>
           </div>

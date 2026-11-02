@@ -37,14 +37,14 @@ const PRINCIPLES = [
     title: 'Integrated Care Coordination',
     body: 'We collaborate closely with outpatient therapists, prescribing psychiatrists, primary care doctors, and family supports to ensure seamless, holistic care.',
   },
-  {
-    id: 'standards',
-    icon: 'leaf',
-    // title: 'Built to CARF & Maryland BHA Standards',
-    // body: 'Our program operates strictly under Maryland Behavioral Health Administration (BHA) regulations and CARF-aligned quality and safety standards.',
-    title: 'Built to Maryland BHA Standards',
-    body: 'Our program operates strictly under Maryland Behavioral Health Administration (BHA) regulations and quality and safety standards.',
-  },
+  // {
+  //   id: 'standards',
+  //   icon: 'leaf',
+  //   // title: 'Built to CARF & Maryland BHA Standards',
+  //   // body: 'Our program operates strictly under Maryland Behavioral Health Administration (BHA) regulations and CARF-aligned quality and safety standards.',
+  //   title: 'Built to Maryland BHA Standards',
+  //   body: 'Our program operates strictly under Maryland Behavioral Health Administration (BHA) regulations and quality and safety standards.',
+  // },
 ];
 
 const PRP_PILLARS = [
@@ -177,10 +177,10 @@ export function AboutPage() {
                   <dt className={styles.factLabel}>COVERAGE</dt>
                   <dd className={styles.factValue}>Maryland Medicaid Authorized</dd>
                 </div>
-                <div className={styles.fact}>
+                {/* <div className={styles.fact}>
                   <dt className={styles.factLabel}>SERVICE AREA</dt>
                   <dd className={styles.factValue}>Statewide Maryland (Community &amp; In-Home)</dd>
-                </div>
+                </div> */}
                 {/* <div className={styles.fact}>
                   <dt className={styles.factLabel}>STANDARDS</dt>
                   <dd className={styles.factValue}>CARF Behavioral Health</dd>
@@ -326,7 +326,7 @@ export function AboutPage() {
               </p>
             </Card>
 
-            <Card className={styles.officeCard} padding="lg" tone="sunken">
+            {/* <Card className={styles.officeCard} padding="lg" tone="sunken">
               <span className={styles.officeIcon} aria-hidden="true">
                 <Icon name="shieldCheck" size={22} />
               </span>
@@ -338,13 +338,13 @@ export function AboutPage() {
               <Button to={paths.contact} variant="ghost" size="sm" iconRight="arrowRight">
                 Ask about eligibility
               </Button>
-            </Card>
+            </Card> */}
           </div>
         </div>
       </section>
 
       {/* -------------------------- 6. Our Mental Health Professionals -- */}
-      <section className={`section section--sunken ${styles.team}`} aria-labelledby="team-heading">
+      {/* <section className={`section section--sunken ${styles.team}`} aria-labelledby="team-heading">
         <div className="container">
           <SectionHeading
             id="team-heading"
@@ -359,10 +359,10 @@ export function AboutPage() {
             </Button>
           </div>
         </div>
-      </section>
+      </section> */}
 
       {/* --------------------------------- 7. Why Choose Healing Horizons? -- */}
-      <section id="why-choose" className={`section ${styles.whySection}`} aria-labelledby="why-heading">
+      <section id="why-choose" className={`section section--sunken ${styles.whySection}`} aria-labelledby="why-heading">
         <div className="container">
           <SectionHeading
             id="why-heading"
@@ -388,7 +388,7 @@ export function AboutPage() {
       </section>
 
       {/* ------------------------------------------------- Affiliations Bar -- */}
-      <section
+      {/* <section
         className={`section section--tight section--accent ${styles.affiliations}`}
         aria-labelledby="affiliations-heading"
       >
@@ -405,7 +405,7 @@ export function AboutPage() {
             ))}
           </ul>
         </div>
-      </section>
+      </section> */}
 
       {/* ------------------------------------------------ 8. Closing CTA -- */}
       <section id="get-started" className={`section section--inverse ${styles.cta}`} aria-labelledby="cta-heading">

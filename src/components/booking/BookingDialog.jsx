@@ -1,12 +1,10 @@
 import { useEffect, useRef } from 'react';
-import { Link } from 'react-router-dom';
 import { useBooking } from '../../context/BookingContext';
 import { useUI } from '../../context/UIContext';
 import { services } from '../../data/services';
 import { site } from '../../data/site';
 import { therapistOptions } from '../../data/team';
 import BookingProvider from '../../providers/BookingProvider';
-import paths from '../../routes/paths';
 import { formatPhone } from '../../utils/validators';
 import {
   Alert,
@@ -48,6 +46,7 @@ function BookingDialogInner() {
     isSuccess,
     result,
     formError,
+    days,
     timeWindows,
     restart,
   } = useBooking();
@@ -77,7 +76,7 @@ function BookingDialogInner() {
     <Modal
       open={isBookingOpen}
       onClose={closeBooking}
-      title={isSuccess ? 'Your request is in' : 'Book a free 15-minute call'}
+      title={isSuccess ? 'Your request is in' : 'Book a call'}
       description={
         isSuccess
           ? undefined
@@ -145,8 +144,18 @@ function BookingDialogInner() {
           />
 
           <CheckboxCardGroup
-            legend="When could you take a call?"
-            hint="Pick everything that could work — more options means a sooner start."
+            legend="Preferred days"
+            hint="Choose any days from Tuesday to Friday that work."
+            columns={2}
+            options={days}
+            values={values.days}
+            onToggle={(value) => toggleArrayValue('days', value)}
+            error={errorFor('days')}
+          />
+
+          <CheckboxCardGroup
+            legend="Preferred times"
+            hint="Pick all time slots that could work for you."
             columns={2}
             options={timeWindows}
             values={values.timeWindows}
@@ -248,12 +257,8 @@ function BookingDialogInner() {
           </div>
 
           <p className={styles.footnote}>
-            Prefer to take your time?{' '}
-            <Link to={paths.book} onClick={closeBooking}>
-              Use the full booking form
-            </Link>{' '}
-            — it asks about format, dates and how you plan to pay. Or just call{' '}
-            <a href={site.contact.phoneHref}>{site.contact.phone}</a>.
+            Questions? Call us directly at{' '}
+            <a href={site.contact.phoneHref}>{site.contact.phone}</a> during office hours.
           </p>
         </form>
       )}

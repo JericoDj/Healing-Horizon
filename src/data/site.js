@@ -31,11 +31,13 @@ export const site = {
     /* The practice has two inboxes. The separate referrals@ / billing@ /
        privacy@ addresses on the old healinghorizonsbhs.com domain were
        placeholders, so every role now points at the main inbox. */
-    email: 'info@healinghorizonsbehavioralmd.net',
-    altEmail: 'healinghorizonsbh@gmail.com',
-    intakeEmail: 'info@healinghorizonsbehavioralmd.net',
-    billingEmail: 'info@healinghorizonsbehavioralmd.net',
-    privacyEmail: 'info@healinghorizonsbehavioralmd.net',
+    /* Primary inbox: healinghorizonsbh@gmail.com */
+    // email: 'info@healinghorizonsbehavioralmd.net',
+    email: 'healinghorizonsbh@gmail.com',
+    altEmail: null,
+    intakeEmail: 'healinghorizonsbh@gmail.com',
+    billingEmail: 'healinghorizonsbh@gmail.com',
+    privacyEmail: 'healinghorizonsbh@gmail.com',
   },
 
   address: {
@@ -129,9 +131,9 @@ export const crisisResources = [
 export const primaryNav = [
   { label: 'Home', to: '/', icon: 'home' },
   // { label: 'Programs', to: '/programs', icon: 'leaf' },
-  { label: 'Explore', to: '/explore', icon: 'compass' },
+  // { label: 'Explore', to: '/explore', icon: 'compass' },
   { label: 'About', to: '/about', icon: 'sparkle' },
-  { label: 'FAQ', to: '/faq', icon: 'info' },
+  // { label: 'FAQ', to: '/faq', icon: 'info' },
   { label: 'Contact', to: '/contact', icon: 'mail' },
 ];
 

@@ -275,6 +275,7 @@ export const submitBooking = onCall(callableOptions, async (request) => {
     phone: phone(body.phone, { required: true }),
     serviceSlug: text(body.serviceSlug, { field: 'service', max: 80 }),
     format: text(body.format, { field: 'format', max: 40 }),
+    days: list(body.days),
     timeWindows: list(body.timeWindows),
     earliestDate: text(body.earliestDate, { field: 'earliest date', max: 20 }) || null,
     notes: text(body.notes, { field: 'notes', max: 1000 }),
@@ -286,6 +287,7 @@ export const submitBooking = onCall(callableOptions, async (request) => {
   const labels = body.labels && typeof body.labels === 'object' ? body.labels : {};
   const serviceLabel = text(labels.service, { field: 'service label', max: 120 });
   const formatLabel = text(labels.format, { field: 'format label', max: 60 });
+  const dayLabels = list(labels.days, { itemMax: 40 });
   const timeLabels = list(labels.timeWindows, { itemMax: 60 });
 
   const name = `${data.firstName} ${data.lastName}`.trim();
@@ -304,7 +306,8 @@ export const submitBooking = onCall(callableOptions, async (request) => {
         ['Email', data.email],
         ['Service', serviceLabel || data.serviceSlug],
         ['Format', formatLabel || data.format],
-        ['Times that work', (timeLabels.length ? timeLabels : data.timeWindows).join('\n')],
+        ['Preferred days', (dayLabels.length ? dayLabels : data.days).join(', ')],
+        ['Preferred times', (timeLabels.length ? timeLabels : data.timeWindows).join(', ')],
         ['Earliest date', formatDate(data.earliestDate) || 'As soon as possible'],
         ['Notes', data.notes],
       ],

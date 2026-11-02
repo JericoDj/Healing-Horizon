@@ -383,13 +383,10 @@ function ContactPageInner() {
                 By Email
               </h3>
               <ul className={styles.emailList}>
+                {/* Email: info@healinghorizonsbehavioralmd.net commented out */}
                 <li>
                   <span className={styles.emailLabel}>General, Referrals &amp; Billing</span>
                   <a href={`mailto:${site.contact.email}`}>{site.contact.email}</a>
-                </li>
-                <li>
-                  <span className={styles.emailLabel}>Alternate</span>
-                  <a href={`mailto:${site.contact.altEmail}`}>{site.contact.altEmail}</a>
                 </li>
               </ul>
               <p className={styles.detailNote}>

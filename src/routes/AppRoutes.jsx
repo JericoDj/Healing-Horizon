@@ -15,12 +15,13 @@ const AboutPage = lazy(() => import('../pages/AboutPage'));
 // Programs pages hidden for now — restore together with their <Route> below.
 // const ProgramsPage = lazy(() => import('../pages/ProgramsPage'));
 // const ProgramDetailPage = lazy(() => import('../pages/ProgramDetailPage'));
-const TherapistsPage = lazy(() => import('../pages/TherapistsPage'));
+// const TherapistsPage = lazy(() => import('../pages/TherapistsPage'));
 const TherapistDetailPage = lazy(() => import('../pages/TherapistDetailPage'));
 const RatesPage = lazy(() => import('../pages/RatesPage'));
-const ExplorePage = lazy(() => import('../pages/ExplorePage'));
-const ExploreDetailPage = lazy(() => import('../pages/ExploreDetailPage'));
-const FaqPage = lazy(() => import('../pages/FaqPage'));
+// Explore & FAQ pages hidden for now — restore together with their <Route> below.
+// const ExplorePage = lazy(() => import('../pages/ExplorePage'));
+// const ExploreDetailPage = lazy(() => import('../pages/ExploreDetailPage'));
+// const FaqPage = lazy(() => import('../pages/FaqPage'));
 const ContactPage = lazy(() => import('../pages/ContactPage'));
 const BookingPage = lazy(() => import('../pages/BookingPage'));
 const PrivacyPage = lazy(() => import('../pages/legal/PrivacyPage'));
@@ -34,10 +35,10 @@ const NotFoundPage = lazy(() => import('../pages/NotFoundPage'));
 //   return <Navigate to={paths.program(slug)} replace />;
 // }
 
-function LegacyResourceRedirect() {
-  const { slug } = useParams();
-  return <Navigate to={paths.exploreArticle(slug)} replace />;
-}
+// function LegacyResourceRedirect() {
+//   const { slug } = useParams();
+//   return <Navigate to={paths.exploreArticle(slug)} replace />;
+// }
 
 export function AppRoutes() {
   return (
@@ -75,6 +76,7 @@ export function AppRoutes() {
         </Route>
         */}
 
+        {/* Therapists route hidden for now
         <Route path={paths.therapists}>
           <Route
             index
@@ -93,7 +95,9 @@ export function AppRoutes() {
             }
           />
         </Route>
+        */}
 
+        {/* Rates route hidden for now
         <Route
           path={paths.rates}
           element={
@@ -102,7 +106,9 @@ export function AppRoutes() {
             </Suspense>
           }
         />
+        */}
 
+        {/* Explore route hidden for now
         <Route path={paths.explore}>
           <Route
             index
@@ -121,7 +127,9 @@ export function AppRoutes() {
             }
           />
         </Route>
+        */}
 
+        {/* FAQ route hidden for now
         <Route
           path={paths.faq}
           element={
@@ -130,6 +138,7 @@ export function AppRoutes() {
             </Suspense>
           }
         />
+        */}
 
         <Route
           path={paths.contact}
@@ -175,17 +184,27 @@ export function AppRoutes() {
           }
         /> */}
 
-        {/* Legacy / convenience redirects */}
-        {/* <Route path="/services" element={<Navigate to={paths.programs} replace />} />
-        <Route path="/services/:slug" element={<LegacyServiceRedirect />} /> */}
-        <Route path="/resources" element={<Navigate to={paths.explore} replace />} />
-        <Route path="/resources/:slug" element={<LegacyResourceRedirect />} />
-        <Route path="/team" element={<Navigate to={paths.therapists} replace />} />
-        <Route path="/pricing" element={<Navigate to={paths.rates} replace />} />
-        <Route path="/blog" element={<Navigate to={paths.explore} replace />} />
+        {/* Explicit redirects to Home for unavailable or legacy routes */}
+        <Route path="/therapists" element={<Navigate to={paths.home} replace />} />
+        <Route path="/therapists/*" element={<Navigate to={paths.home} replace />} />
+        <Route path="/programs" element={<Navigate to={paths.home} replace />} />
+        <Route path="/programs/*" element={<Navigate to={paths.home} replace />} />
+        <Route path="/explore" element={<Navigate to={paths.home} replace />} />
+        <Route path="/explore/*" element={<Navigate to={paths.home} replace />} />
+        <Route path="/faq" element={<Navigate to={paths.home} replace />} />
+        <Route path="/rates" element={<Navigate to={paths.home} replace />} />
+        <Route path="/pricing" element={<Navigate to={paths.home} replace />} />
+        <Route path="/team" element={<Navigate to={paths.home} replace />} />
+        <Route path="/services" element={<Navigate to={paths.home} replace />} />
+        <Route path="/services/*" element={<Navigate to={paths.home} replace />} />
+        <Route path="/resources" element={<Navigate to={paths.home} replace />} />
+        <Route path="/resources/*" element={<Navigate to={paths.home} replace />} />
+        <Route path="/blog" element={<Navigate to={paths.home} replace />} />
+        <Route path="/blog/*" element={<Navigate to={paths.home} replace />} />
+        <Route path="/accessibility" element={<Navigate to={paths.home} replace />} />
         <Route path="/appointment" element={<Navigate to={paths.book} replace />} />
 
-        {/* Catch-all fallback for invalid routes: redirect to Home Page */}
+        {/* Catch-all fallback for any other unavailable/invalid routes: redirect to Home Page */}
         <Route path="*" element={<Navigate to={paths.home} replace />} />
       </Route>
     </Routes>

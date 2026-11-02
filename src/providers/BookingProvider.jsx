@@ -90,6 +90,7 @@ export function BookingProvider({ children }) {
       goToStep,
       restart,
       formats: bookingController.formats,
+      days: bookingController.days,
       timeWindows: bookingController.timeWindows,
       paymentOptions: bookingController.paymentOptions,
     }),
