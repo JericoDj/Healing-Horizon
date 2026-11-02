@@ -3,6 +3,7 @@ import { Button, Icon, StatusBadge } from '../ui';
 import { site } from '../../data/site';
 import { team } from '../../data/team';
 import paths from '../../routes/paths';
+import heroSectionImg from '../../assets/Hero_Section_Image_2.png';
 import styles from './Hero.module.css';
 
 /**
@@ -36,30 +37,35 @@ export function Hero() {
             </h1>
 
             <p className={styles.subtitle} style={{ fontSize: '1.25rem', fontWeight: 600, color: 'var(--color-primary-dark, #1B365D)', marginTop: '-0.5rem', marginBottom: '1rem' }}>
-              Empowering Independence, Recovery &amp; Community Living
+            Empowering Independence, Recovery &amp; Community Living
             </p>
 
             <p className={styles.intro}>
-              Maryland Medicaid-covered psychiatric rehabilitation services with person-centered, community-based care.
+             Healing Horizons Behavioral Health, LLC is committed to providing high-quality, person-centered Psychiatric Rehabilitation Program (PRP) services that empower individuals to achieve stability, independence, and meaningful community integration.
             </p>
 
             <div className={styles.actions}>
               <Button type="button" size="lg" iconRight="arrowRight" onClick={openBooking}>
                 Get Started With Psychiatric Rehabilitation
               </Button>
-              <Button to={paths.programs} size="lg" variant="outline">
+              {/* <Button to={paths.programs} size="lg" variant="outline">
                 Explore Maryland PRP Programs
-              </Button>
+              </Button> */}
             </div>
 
-            <p className={styles.reassure}>
+            {/* <p className={styles.reassure}>
               <Icon name="shieldCheck" size={18} />
               <span>Maryland Medicaid &amp; BHA Authorized · Community &amp; In-Home Delivery</span>
-            </p>
+            </p> */}
           </div>
 
           <div className={styles.visual}>
-            <HorizonArt className={styles.art} />
+            <img
+              src={heroSectionImg}
+              alt="Healing Horizons - Empowering Independence, Recovery & Community Living"
+              className={styles.heroImg}
+            />
+            {/* <HorizonArt className={styles.art} /> */}
 
             {/* CARF pill hidden for now
             <p className={styles.licence}>
@@ -68,12 +74,12 @@ export function Hero() {
             </p>
             */}
 
-            <div className={styles.availability}>
+            {/* <div className={styles.availability}>
               <StatusBadge available>Accepting new referrals</StatusBadge>
               <p className={styles.availabilityText}>
                 Accepting new participants & referrals for adults and youth across Maryland with flexible scheduling.
               </p>
-            </div>
+            </div> */}
           </div>
         </div>
       </div>

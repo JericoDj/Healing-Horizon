@@ -222,9 +222,9 @@ export function ExplorePage() {
               <Button to={paths.contact} variant="inverse" size="lg" iconRight="arrowRight">
                 Talk With Our Intake Team
               </Button>
-              <Button to={paths.programs} variant="inverseOutline" size="lg">
+              {/* <Button to={paths.programs} variant="inverseOutline" size="lg">
                 Explore Our Programs
-              </Button>
+              </Button> */}
             </div>
           </div>
         </div>

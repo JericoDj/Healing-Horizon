@@ -30,7 +30,7 @@ export function Footer() {
             <span className={styles.brandName}>{site.name}</span>
           </Link>
 
-          <p className={styles.blurb}>{site.description}</p>
+          {/* <p className={styles.blurb}>{site.description}</p> */}
 
           <address className={styles.address}>
             {/* Street / suite / city on their own lines — the previous
@@ -56,10 +56,10 @@ export function Footer() {
               <Icon name="phone" size={17} />
               <span>{site.contact.phone}</span>
             </a>
-            <a href={`mailto:${site.contact.email}`} className={styles.addressLink}>
+            {/* <a href={`mailto:${site.contact.email}`} className={styles.addressLink}>
               <Icon name="mail" size={17} />
               <span>{site.contact.email}</span>
-            </a>
+            </a> */}
             <a href={`mailto:${site.contact.altEmail}`} className={styles.addressLink}>
               <Icon name="mail" size={17} />
               <span>{site.contact.altEmail}</span>

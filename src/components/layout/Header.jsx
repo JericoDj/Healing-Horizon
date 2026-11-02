@@ -139,6 +139,7 @@ export function Header() {
               <li key={item.to}>
                 <NavLink
                   to={item.to}
+                  end={item.to === '/'}
                   data-to={item.to}
                   onMouseEnter={() => setHoveredTo(item.to)}
                   className={({ isActive }) => {
@@ -247,6 +248,7 @@ export function Header() {
               <li key={item.to}>
                 <NavLink
                   to={item.to}
+                  end={item.to === '/'}
                   onClick={closeNav}
                   className={({ isActive }) =>
                     `${styles.drawerLink} ${isActive ? styles.drawerLinkActive : ''}`

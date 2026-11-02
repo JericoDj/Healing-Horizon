@@ -127,6 +127,14 @@
   margin-inline: auto;
 }
 
+.heroImg {
+  width: 100%;
+  height: auto;
+  display: block;
+  border-radius: var(--radius-2xl, 24px);
+  box-shadow: 0 18px 38px color-mix(in srgb, var(--brand-800) 14%, transparent);
+}
+
 .art {
   width: 100%;
   height: auto;

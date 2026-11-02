@@ -12,8 +12,9 @@ import paths from './paths';
 
 const ComingSoonPage = lazy(() => import('../pages/ComingSoonPage'));
 const AboutPage = lazy(() => import('../pages/AboutPage'));
-const ProgramsPage = lazy(() => import('../pages/ProgramsPage'));
-const ProgramDetailPage = lazy(() => import('../pages/ProgramDetailPage'));
+// Programs pages hidden for now — restore together with their <Route> below.
+// const ProgramsPage = lazy(() => import('../pages/ProgramsPage'));
+// const ProgramDetailPage = lazy(() => import('../pages/ProgramDetailPage'));
 const TherapistsPage = lazy(() => import('../pages/TherapistsPage'));
 const TherapistDetailPage = lazy(() => import('../pages/TherapistDetailPage'));
 const RatesPage = lazy(() => import('../pages/RatesPage'));
@@ -28,10 +29,10 @@ const TermsPage = lazy(() => import('../pages/legal/TermsPage'));
 // const AccessibilityPage = lazy(() => import('../pages/legal/AccessibilityPage'));
 const NotFoundPage = lazy(() => import('../pages/NotFoundPage'));
 
-function LegacyServiceRedirect() {
-  const { slug } = useParams();
-  return <Navigate to={paths.program(slug)} replace />;
-}
+// function LegacyServiceRedirect() {
+//   const { slug } = useParams();
+//   return <Navigate to={paths.program(slug)} replace />;
+// }
 
 function LegacyResourceRedirect() {
   const { slug } = useParams();
@@ -53,6 +54,7 @@ export function AppRoutes() {
           }
         />
 
+        {/* Programs route hidden for now
         <Route path={paths.programs}>
           <Route
             index
@@ -71,6 +73,7 @@ export function AppRoutes() {
             }
           />
         </Route>
+        */}
 
         <Route path={paths.therapists}>
           <Route
@@ -173,8 +176,8 @@ export function AppRoutes() {
         /> */}
 
         {/* Legacy / convenience redirects */}
-        <Route path="/services" element={<Navigate to={paths.programs} replace />} />
-        <Route path="/services/:slug" element={<LegacyServiceRedirect />} />
+        {/* <Route path="/services" element={<Navigate to={paths.programs} replace />} />
+        <Route path="/services/:slug" element={<LegacyServiceRedirect />} /> */}
         <Route path="/resources" element={<Navigate to={paths.explore} replace />} />
         <Route path="/resources/:slug" element={<LegacyResourceRedirect />} />
         <Route path="/team" element={<Navigate to={paths.therapists} replace />} />

@@ -6,7 +6,7 @@ import HowItWorks from '../components/sections/HowItWorks';
 import ReflectionsSection from '../components/sections/ReflectionsSection';
 import ServicesPreview from '../components/sections/ServicesPreview';
 import TeamPreview from '../components/sections/TeamPreview';
-import TrustStrip from '../components/sections/TrustStrip';
+// import TrustStrip from '../components/sections/TrustStrip';
 import styles from './HomePage.module.css';
 
 /**
@@ -31,7 +31,7 @@ export function HomePage() {
     <div className={styles.page}>
       <Hero />
       <ServicesPreview />
-      <TrustStrip />
+      {/* <TrustStrip /> */}
       {/* 
       <HowItWorks />
       <TeamPreview />

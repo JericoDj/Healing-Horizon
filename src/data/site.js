@@ -127,7 +127,8 @@ export const crisisResources = [
  * `components/ui/Icon.jsx`.
  */
 export const primaryNav = [
-  { label: 'Programs', to: '/programs', icon: 'leaf' },
+  { label: 'Home', to: '/', icon: 'home' },
+  // { label: 'Programs', to: '/programs', icon: 'leaf' },
   { label: 'Explore', to: '/explore', icon: 'compass' },
   { label: 'About', to: '/about', icon: 'sparkle' },
   { label: 'FAQ', to: '/faq', icon: 'info' },
@@ -135,6 +136,7 @@ export const primaryNav = [
 ];
 
 export const footerNav = [
+  /* Programs & Explore hidden for now
   {
     heading: 'Programs',
     links: [
@@ -153,6 +155,7 @@ export const footerNav = [
       { label: 'Maryland Resources', to: '/explore#maryland-resources' },
     ],
   },
+  */
   {
     heading: 'About',
     links: [
@@ -162,6 +165,7 @@ export const footerNav = [
       { label: 'Why Choose Us', to: '/about#why-choose' },
     ],
   },
+  /* FAQ hidden for now
   {
     heading: 'FAQ',
     links: [
@@ -171,6 +175,7 @@ export const footerNav = [
       { label: 'Maryland Medicaid Coverage', to: '/faq#medicaid-coverage' },
     ],
   },
+  */
 ];
 
 export default site;
