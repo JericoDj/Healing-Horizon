@@ -8,19 +8,41 @@
 .hero {
   background: linear-gradient(180deg, var(--surface-hero) 0%, var(--surface-page) 100%);
   border-bottom: 1px solid var(--border-default);
+  min-height: min(32svh, 320px);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding-block: clamp(1.75rem, 4vh, 3.5rem) !important;
+}
+
+@media (min-width: 48rem) {
+  .hero {
+    min-height: min(38dvh, 380px);
+  }
 }
 
 .heroInner {
   display: flex;
   flex-direction: column;
-  gap: var(--space-4);
+  gap: clamp(0.75rem, 1.8vh, 1.25rem);
   max-width: var(--measure-prose);
+  width: 100%;
+}
+
+.hero h1 {
+  font-size: clamp(1.75rem, 3.2vw + 0.8rem, 2.75rem);
+  line-height: 1.2;
+  letter-spacing: -0.02em;
+  margin: 0;
+  word-break: break-word;
+  overflow-wrap: break-word;
 }
 
 .lede {
-  font-size: var(--text-lg);
+  font-size: clamp(1rem, 1.2vw + 0.65rem, 1.2rem);
   line-height: var(--leading-relaxed);
   color: var(--text-secondary);
+  margin: 0;
 }
 
 .heroFacts {
@@ -29,6 +51,7 @@
   display: flex;
   flex-wrap: wrap;
   gap: var(--space-3);
+  margin: 0;
 }
 
 .heroFacts li {
@@ -42,6 +65,8 @@
   font-size: var(--text-sm);
   font-weight: var(--weight-semibold);
   color: var(--text-primary);
+  max-width: 100%;
+  word-break: break-word;
 }
 
 .heroFacts svg {

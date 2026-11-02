@@ -8,36 +8,64 @@
 .hero {
   background: linear-gradient(180deg, var(--surface-hero) 0%, var(--surface-page) 100%);
   border-bottom: 1px solid var(--border-default);
+  min-height: min(38svh, 380px);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding-block: clamp(2rem, 4.5vh, 4rem) !important;
+}
+
+@media (min-width: 48rem) {
+  .hero {
+    min-height: min(45dvh, 440px);
+    padding-block: clamp(2.5rem, 5.5vh, 4.5rem) !important;
+  }
 }
 
 .heroInner {
   display: flex;
   flex-direction: column;
-  gap: var(--space-4);
+  gap: clamp(0.75rem, 1.8vh, 1.25rem);
   max-width: var(--measure-prose);
+  width: 100%;
+}
+
+.hero h1 {
+  font-size: clamp(1.75rem, 3.2vw + 0.8rem, 2.75rem);
+  line-height: 1.2;
+  letter-spacing: -0.02em;
+  margin: 0;
+  word-break: break-word;
+  overflow-wrap: break-word;
 }
 
 .lede {
-  font-size: var(--text-lg);
+  font-size: clamp(1rem, 1.2vw + 0.65rem, 1.2rem);
   line-height: var(--leading-relaxed);
   color: var(--text-secondary);
+  margin: 0;
+  max-width: 58ch;
 }
 
 .promise {
   display: flex;
   align-items: flex-start;
   gap: var(--space-3);
-  padding: var(--space-4) var(--space-5);
+  padding: clamp(0.75rem, 2vw, 1rem) clamp(0.875rem, 2.5vw, 1.25rem);
   border-radius: var(--radius-md);
   background-color: var(--surface-raised);
   border: 1px solid var(--border-default);
   color: var(--text-primary);
-  font-size: var(--text-base);
+  font-size: clamp(0.875rem, 1vw + 0.55rem, 1rem);
   line-height: var(--leading-normal);
+  max-width: 100%;
+  word-break: break-word;
+  overflow-wrap: break-word;
 }
 
 .promise svg {
   margin-top: 2px;
+  flex-shrink: 0;
   color: var(--text-brand);
 }
 

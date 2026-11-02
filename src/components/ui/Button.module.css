@@ -31,6 +31,15 @@
     transform var(--duration-fast) var(--ease-out);
 }
 
+@media (max-width: 32rem) {
+  .button {
+    white-space: normal;
+    text-align: center;
+    max-width: 100%;
+    word-break: break-word;
+  }
+}
+
 /* Buttons render as <a> when given `to`/`href`, and the global `a:hover` rule
    (specificity 0,1,1) outranks `.button` (0,1,0) — which flipped inverse
    buttons to the dark link colour on hover. This selector is (0,2,0). */

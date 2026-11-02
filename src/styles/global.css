@@ -345,6 +345,7 @@ hr {
   display: inline-flex;
   align-items: center;
   width: fit-content;
+  max-width: 100%;
   margin: 0 0 var(--space-2);
   padding: 4px 14px;
   border-radius: var(--radius-pill, 9999px);
@@ -356,6 +357,10 @@ hr {
   letter-spacing: var(--tracking-wide);
   text-transform: uppercase;
   color: var(--green-text, #1b6e2e);
+  line-height: 1.35;
+  text-align: center;
+  word-break: break-word;
+  overflow-wrap: break-word;
 }
 
 /* On dark sections the eyebrow becomes a filled green chip rather than tinted

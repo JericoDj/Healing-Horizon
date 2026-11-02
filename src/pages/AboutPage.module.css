@@ -7,20 +7,55 @@
 .hero {
   background: linear-gradient(180deg, var(--surface-hero) 0%, var(--surface-page) 100%);
   border-bottom: 1px solid var(--border-default);
-  padding-bottom: var(--section-y-tight);
+  min-height: min(35svh, 340px);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding-block: clamp(2rem, 4.5vh, 4rem) !important;
+}
+
+@media (min-width: 48rem) {
+  .hero {
+    min-height: min(42dvh, 420px);
+    padding-block: clamp(2.5rem, 5.5vh, 4.5rem) !important;
+  }
 }
 
 .heroInner {
   display: flex;
   flex-direction: column;
-  gap: var(--space-4);
+  gap: clamp(0.75rem, 1.8vh, 1.25rem);
   max-width: var(--measure-prose);
+  width: 100%;
+}
+
+.hero h1 {
+  font-size: clamp(1.75rem, 3.2vw + 0.8rem, 2.75rem);
+  line-height: 1.2;
+  letter-spacing: -0.02em;
+  margin: 0;
+  word-break: break-word;
+  overflow-wrap: break-word;
+}
+
+.heroSubtitle {
+  color: var(--brand-700) !important;
+  border-color: rgba(27, 117, 188, 0.25) !important;
+  background-color: rgba(27, 117, 188, 0.08) !important;
+  font-weight: 600;
+  margin-top: calc(-1 * var(--space-2));
+  max-width: 100%;
+  word-break: break-word;
+  overflow-wrap: break-word;
+  line-height: 1.35;
 }
 
 .lead {
-  font-size: var(--text-lg);
+  font-size: clamp(1rem, 1.2vw + 0.65rem, 1.2rem);
   line-height: var(--leading-relaxed);
   color: var(--text-secondary);
+  margin: 0;
+  max-width: 58ch;
 }
 
 /* --- Story --------------------------------------------------------------- */

@@ -91,7 +91,7 @@ export function AboutPage() {
           <div className={styles.heroInner}>
             <p className="eyebrow">ABOUT HEALING HORIZONS</p>
             <h1 id="about-heading">About Healing Horizons Behavioral Health</h1>
-            <p className="eyebrow" style={{ color: 'var(--text-brand)', marginTop: 'calc(-1 * var(--space-2))' }}>
+            <p className={`eyebrow ${styles.heroSubtitle}`}>
               Empowering Independence, Recovery &amp; Community Living
             </p>
             <p className={styles.lead}>

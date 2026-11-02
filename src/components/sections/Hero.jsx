@@ -36,8 +36,8 @@ export function Hero() {
               Psychiatric Rehabilitation <span className={styles.titleBreak}>Services in Maryland</span>
             </h1>
 
-            <p className={styles.subtitle} style={{ fontSize: '1.25rem', fontWeight: 600, color: 'var(--color-primary-dark, #1B365D)', marginTop: '-0.5rem', marginBottom: '1rem' }}>
-            Empowering Independence, Recovery &amp; Community Living
+            <p className={styles.subtitle}>
+              Empowering Independence, Recovery &amp; Community Living
             </p>
 
             <p className={styles.intro}>
